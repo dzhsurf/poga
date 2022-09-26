@@ -87,7 +87,13 @@
         "memory_resource": "c",
         "utility": "c",
         "stop_token": "c",
-        "cinttypes": "c"
+        "cinttypes": "c",
+        "__tree": "cpp",
+        "forward_list": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "typeindex": "cpp",
+        "unordered_set": "cpp"
     },
-    "C_Cpp.intelliSenseEngineFallback": "Enabled"
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
 }

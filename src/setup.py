@@ -13,6 +13,7 @@ from distutils.sysconfig import customize_compiler
 from distutils.util import change_root
 from distutils import log
 from distutils import sysconfig
+import pybind11
 
 POGA_VERSION = '0.1.0'
 YOGA_VERSION_REQUIRED = '1.19.0'
@@ -365,10 +366,10 @@ class install_poga_header(Command):
         return self.outfiles
 
     def get_inputs(self):
-        return [os.path.join('poga', 'poga.h')]
+        return [os.path.join('poga', 'poga.hpp')]
 
     def run(self):
-        hname = "poga.h"
+        hname = "poga.hpp"
         source = self.get_inputs()[0]
 
         # for things using get_include()
@@ -460,11 +461,10 @@ class build_ext(du_build_ext):
             ext.libraries += ['yoga.lib']
         else:
             ext.libraries += ['yoga']
-            # pkg_config_version_check('libyoga', YOGA_VERSION_REQUIRED)
-            # ext.include_dirs += pkg_config_parse('--cflags-only-I', 'libyoga')
-            # ext.library_dirs += pkg_config_parse('--libs-only-L', 'libyoga')
-            # ext.libraries += pkg_config_parse('--libs-only-l', 'libyoga')
-
+            #pkg_config_version_check('pybind11', YOGA_VERSION_REQUIRED)
+            #ext.include_dirs += pkg_config_parse('--cflags-only-I', 'libyoga')
+            #ext.library_dirs += pkg_config_parse('--libs-only-L', 'libyoga')
+            #ext.libraries += pkg_config_parse('--libs-only-l', 'libyoga')
             compiler = new_compiler(compiler=self.compiler)
             customize_compiler(compiler)
             add_ext_cflags(ext, compiler)
@@ -487,10 +487,8 @@ def main():
     poga_ext = Extension(
         name='poga.libpoga_capi',
         sources=[
-            'poga/poga_module.cpp',
-            'poga/internal/YGNodeRef_binding.cpp',
-            'poga/internal/private.cpp',
-            'poga/internal/capi_binding.cpp',
+            'poga/poga_cmodule.cpp',
+            'poga/poga_manager.cpp',
         ],
         libraries=[],
         library_dirs=[
@@ -498,10 +496,11 @@ def main():
         ],
         include_dirs=[
             "deps/yoga/include",
+            pybind11.get_include(),
         ],
         # extra_objects=extra_objects,
         depends=[
-            'poga/poga.h',
+            'poga/poga.hpp',
         ],
         define_macros=[
             ("POGA_VERSION_MAJOR", POGA_VERSION.split('.')[0]),
