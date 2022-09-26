@@ -1,4 +1,5 @@
-from .libpoga_capi import *
+from . import libpoga_capi
+from .poga_layout import PogaLayout
 
 def get_include():
     import os
