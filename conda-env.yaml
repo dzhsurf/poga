@@ -1,0 +1,9 @@
+name: poga
+
+channels:
+  - conda-forge 
+  - default 
+
+dependencies:
+  - python=3.9
+
