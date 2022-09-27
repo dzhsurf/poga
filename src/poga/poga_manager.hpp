@@ -38,8 +38,14 @@ class PogaManager {
     py::object get_node_context(const PGNode& node);
 
     void update_measure_method(const PGNode& node, const py::function& func);
+    void update_baseline_method(const PGNode& node, const py::function& func);
+    void update_config_logger_method(const PGConfig& config,
+                                     const py::function& func);
+    void update_config_clone_node_method(const PGConfig& config,
+                                         const py::function& func);
 
     void release_node_resources(const PGNode& node);
+    void release_config_resources(const PGConfig& config);
 
     // YGMeasureFunc callback
     static YGSize poga_measure_method(YGNodeRef node,
@@ -48,13 +54,36 @@ class PogaManager {
                                       float height,
                                       YGMeasureMode height_mode);
 
+    // YGBaselineFunc callback
+    static float poga_baseline_method(YGNodeRef node,
+                                      float width,
+                                      float height);
+
+    // YGConfigLoggerFunc callback
+    static int poga_config_logger_method(YGConfigRef config,
+                                         YGNodeRef node,
+                                         YGLogLevel level,
+                                         const char* format,
+                                         va_list args);
+
+    // YGCloneNodeFunc callback
+    static YGNodeRef poga_config_clone_node_method(YGNodeRef oldNode,
+                                                   YGNodeRef owner,
+                                                   int childIndex);
+
    private:
     PogaManager();
 
     py::function get_measure_method_by_node(YGNodeRef node);
+    py::function get_baseline_method_by_node(YGNodeRef node);
+    py::function get_config_logger_method_by_config(YGConfigRef config);
+    py::function get_config_clone_node_method_by_config(YGConfigRef config);
 
     std::map<YGNodeRef, py::object> _node_context_map;
     std::map<YGNodeRef, py::function> _node_measure_func_map;
+    std::map<YGNodeRef, py::function> _node_baseline_func_map;
+    std::map<YGConfigRef, py::function> _config_logger_func_map;
+    std::map<YGConfigRef, py::function> _config_clone_node_func_map;
 };
 
 }  // namespace poga

@@ -30,6 +30,91 @@ PYBIND11_MODULE(libpoga_capi, m) {
     py::class_<YGSize>(m, "YGSize")
         .def_readwrite("width", &YGSize::width)
         .def_readwrite("height", &YGSize::height);
+    py::enum_<YGMeasureMode>(m, "YGMeasureMode")
+        .value("Undefined", YGMeasureMode::YGMeasureModeUndefined)
+        .value("Exactly", YGMeasureMode::YGMeasureModeExactly)
+        .value("AtMost", YGMeasureMode::YGMeasureModeAtMost)
+        .export_values();
+    py::enum_<YGNodeType>(m, "YGNodeType")
+        .value("Default", YGNodeType::YGNodeTypeDefault)
+        .value("Text", YGNodeType::YGNodeTypeText)
+        .export_values();
+    py::enum_<YGDirection>(m, "YGDirection")
+        .value("Inherit", YGDirection::YGDirectionInherit)
+        .value("LTR", YGDirection::YGDirectionLTR)
+        .value("RTL", YGDirection::YGDirectionRTL)
+        .export_values();
+    py::enum_<YGFlexDirection>(m, "YGFlexDirection")
+        .value("Column", YGFlexDirection::YGFlexDirectionColumn)
+        .value("ColumnReverse", YGFlexDirection::YGFlexDirectionColumnReverse)
+        .value("Row", YGFlexDirection::YGFlexDirectionRow)
+        .value("RowReverse", YGFlexDirection::YGFlexDirectionRowReverse)
+        .export_values();
+    py::enum_<YGJustify>(m, "YGJustify")
+        .value("FlexStart", YGJustify::YGJustifyFlexStart)
+        .value("Center", YGJustify::YGJustifyCenter)
+        .value("FlexEnd", YGJustify::YGJustifyFlexEnd)
+        .value("SpaceBetween", YGJustify::YGJustifySpaceBetween)
+        .value("SpaceAround", YGJustify::YGJustifySpaceAround)
+        .value("SpaceEvenly", YGJustify::YGJustifySpaceEvenly)
+        .export_values();
+    py::enum_<YGAlign>(m, "YGAlign")
+        .value("Auto", YGAlign::YGAlignAuto)
+        .value("FlexStart", YGAlign::YGAlignFlexStart)
+        .value("Center", YGAlign::YGAlignCenter)
+        .value("FlexEnd", YGAlign::YGAlignFlexEnd)
+        .value("Stretch", YGAlign::YGAlignStretch)
+        .value("Baseline", YGAlign::YGAlignBaseline)
+        .value("SpaceBetween", YGAlign::YGAlignSpaceBetween)
+        .value("SpaceAround", YGAlign::YGAlignSpaceAround)
+        .export_values();
+    py::enum_<YGPositionType>(m, "YGPositionType")
+        .value("Static", YGPositionType::YGPositionTypeStatic)
+        .value("Relative", YGPositionType::YGPositionTypeRelative)
+        .value("Absolute", YGPositionType::YGPositionTypeAbsolute)
+        .export_values();
+    py::enum_<YGWrap>(m, "YGWrap")
+        .value("NoWrap", YGWrap::YGWrapNoWrap)
+        .value("Wrap", YGWrap::YGWrapWrap)
+        .value("WrapReverse", YGWrap::YGWrapWrapReverse)
+        .export_values();
+    py::enum_<YGOverflow>(m, "YGOverflow")
+        .value("Visible", YGOverflow::YGOverflowVisible)
+        .value("Hidden", YGOverflow::YGOverflowHidden)
+        .value("Scroll", YGOverflow::YGOverflowScroll)
+        .export_values();
+    py::enum_<YGEdge>(m, "YGEdge")
+        .value("Left", YGEdge::YGEdgeLeft)
+        .value("Top", YGEdge::YGEdgeTop)
+        .value("Right", YGEdge::YGEdgeRight)
+        .value("Bottom", YGEdge::YGEdgeBottom)
+        .value("Start", YGEdge::YGEdgeStart)
+        .value("End", YGEdge::YGEdgeEnd)
+        .value("Horizontal", YGEdge::YGEdgeHorizontal)
+        .value("Vertical", YGEdge::YGEdgeVertical)
+        .value("All", YGEdge::YGEdgeAll)
+        .export_values();
+    py::enum_<YGUnit>(m, "YGUnit")
+        .value("Undefined", YGUnit::YGUnitUndefined)
+        .value("Point", YGUnit::YGUnitPoint)
+        .value("Percent", YGUnit::YGUnitPercent)
+        .value("Auto", YGUnit::YGUnitAuto)
+        .export_values();
+    py::class_<YGValue>(m, "YGValue")
+        .def_readwrite("value", &YGValue::value)
+        .def_readwrite("unit", &YGValue::unit);
+    py::enum_<YGLogLevel>(m, "YGLogLevel")
+        .value("Error", YGLogLevel::YGLogLevelError)
+        .value("Warn", YGLogLevel::YGLogLevelWarn)
+        .value("Info", YGLogLevel::YGLogLevelInfo)
+        .value("Debug", YGLogLevel::YGLogLevelDebug)
+        .value("Verbose", YGLogLevel::YGLogLevelVerbose)
+        .value("Fatal", YGLogLevel::YGLogLevelFatal)
+        .export_values();
+    py::enum_<YGExperimentalFeature>(m, "YGExperimentalFeature")
+        .value("WebFlexBasis",
+               YGExperimentalFeature::YGExperimentalFeatureWebFlexBasis)
+        .export_values();
 
     // YGNode capi
     m.def("YGNodeNew", []() { return PGNode(YGNodeNew()); });
@@ -144,129 +229,370 @@ PYBIND11_MODULE(libpoga_capi, m) {
         "Do not mix YGNodeGetContext/YGNodeSetContext in Python/C++ side");
     m.def("YGNodeHasMeasureFunc",
           [](PGNode node) { return YGNodeHasMeasureFunc(node.get()); });
-    m.def("YGNodeSetMeasureFunc",
-          [](const PGNode& node, const py::function& measure_func) {
-              poga::PogaManager::get_instance().update_measure_method(
-                  node, measure_func);
-              if (measure_func.is_none()) {
-                  YGNodeSetMeasureFunc(node.get(), nullptr);
-              } else {
-                  YGNodeSetMeasureFunc(node.get(),
-                                       poga::PogaManager::poga_measure_method);
-              }
+    m.def("YGNodeSetMeasureFunc", [](const PGNode& node,
+                                     const py::function& func) {
+        poga::PogaManager::get_instance().update_measure_method(node, func);
+        if (func.is_none()) {
+            YGNodeSetMeasureFunc(node.get(), nullptr);
+        } else {
+            YGNodeSetMeasureFunc(node.get(),
+                                 poga::PogaManager::poga_measure_method);
+        }
+    });
+    m.def("YGNodeHasBaselineFunc",
+          [](const PGNode& node) { YGNodeHasBaselineFunc(node.get()); });
+    m.def("YGNodeSetBaselineFunc", [](const PGNode& node,
+                                      const py::function& func) {
+        poga::PogaManager::get_instance().update_baseline_method(node, func);
+        if (func.is_none()) {
+            YGNodeSetBaselineFunc(node.get(), nullptr);
+        } else {
+            YGNodeSetBaselineFunc(node.get(),
+                                  poga::PogaManager::poga_baseline_method);
+        }
+    });
+    // m.def("YGNodeGetDirtiedFunc",
+    //       [](const PGNode& node) { YGNodeGetDirtiedFunc(node.get()); });
+    // m.def("YGNodeSetDirtiedFunc", [](const PGNode& node) {
+    //     YGNodeSetDirtiedFunc(node.get(), nullptr);
+    // });
+    // m.def("YGNodeSetPrintFunc", [](const PGNode& node, const py::function&
+    // func) {
+    //     YGNodeSetPrintFunc(node.get(), func);
+    // });
+    m.def("YGNodeGetHasNewLayout",
+          [](const PGNode& node) { return YGNodeGetHasNewLayout(node.get()); });
+    m.def("YGNodeSetHasNewLayout", [](const PGNode& node, bool has_new_layout) {
+        YGNodeSetHasNewLayout(node.get(), has_new_layout);
+    });
+    m.def("YGNodeGetNodeType",
+          [](const PGNode& node) { return YGNodeGetNodeType(node.get()); });
+    m.def("YGNodeSetNodeType", [](const PGNode& node, YGNodeType type) {
+        YGNodeSetNodeType(node.get(), type);
+    });
+    m.def("YGNodeIsDirty",
+          [](const PGNode& node) { return YGNodeIsDirty(node.get()); });
+    m.def("YGNodeLayoutGetDidUseLegacyFlag", [](const PGNode& node) {
+        return YGNodeLayoutGetDidUseLegacyFlag(node.get());
+    });
+    // YGNodeStyle interface
+    m.def("YGNodeStyleSetDirection",
+          [](const PGNode& node, YGDirection direction) {
+              YGNodeStyleSetDirection(node.get(), direction);
           });
+    m.def("YGNodeStyleGetDirection", [](const PGNode& node) {
+        return YGNodeStyleGetDirection(node.get());
+    });
+    m.def("YGNodeStyleSetFlexDirection",
+          [](const PGNode& node, YGFlexDirection flex_direction) {
+              YGNodeStyleSetFlexDirection(node.get(), flex_direction);
+          });
+    m.def("YGNodeStyleGetFlexDirection", [](const PGNode& node) {
+        return YGNodeStyleGetFlexDirection(node.get());
+    });
+    m.def("YGNodeStyleSetJustifyContent",
+          [](const PGNode& node, YGJustify justify_content) {
+              YGNodeStyleSetJustifyContent(node.get(), justify_content);
+          });
+    m.def("YGNodeStyleGetJustify", [](const PGNode& node) {
+        return YGNodeStyleGetJustifyContent(
+            static_cast<YGNodeConstRef>(node.get()));
+    });
+    m.def("YGNodeStyleSetAlignContent",
+          [](const PGNode& node, YGAlign align_content) {
+              YGNodeStyleSetAlignContent(node.get(), align_content);
+          });
+    m.def("YGNodeStyleGetAlignContent", [](const PGNode& node) {
+        return YGNodeStyleGetAlignContent(
+            static_cast<YGNodeConstRef>(node.get()));
+    });
+    m.def("YGNodeStyleSetAlignItems",
+          [](const PGNode& node, YGAlign align_items) {
+              YGNodeStyleSetAlignItems(node.get(), align_items);
+          });
+    m.def("YGNodeStyleGetAlignItems", [](const PGNode& node) {
+        return YGNodeStyleGetAlignItems(
+            static_cast<YGNodeConstRef>(node.get()));
+    });
+    m.def("YGNodeStyleSetAlignSelf",
+          [](const PGNode& node, YGAlign align_self) {
+              YGNodeStyleSetAlignSelf(node.get(), align_self);
+          });
+    m.def("YGNodeStyleGetAlignSelf", [](const PGNode& node) {
+        return YGNodeStyleGetAlignSelf(static_cast<YGNodeConstRef>(node.get()));
+    });
+    m.def("YGNodeStyleSetPositionType",
+          [](const PGNode& node, YGPositionType position_type) {
+              YGNodeStyleSetPositionType(node.get(), position_type);
+          });
+    m.def("YGNodeStyleGetPositionType", [](const PGNode& node) {
+        return YGNodeStyleGetPositionType(
+            static_cast<YGNodeConstRef>(node.get()));
+    });
+    m.def("YGNodeStyleSetFlexWrap", [](const PGNode& node, YGWrap flex_wrap) {
+        YGNodeStyleSetFlexWrap(node.get(), flex_wrap);
+    });
+    m.def("YGNodeStyleGetFlexWrap", [](const PGNode& node) {
+        return YGNodeStyleGetFlexWrap(static_cast<YGNodeConstRef>(node.get()));
+    });
+    m.def("YGNodeStyleSetOverflow",
+          [](const PGNode& node, YGOverflow overflow) {
+              YGNodeStyleSetOverflow(node.get(), overflow);
+          });
+    m.def("YGNodeStyleGetOverflow", [](const PGNode& node) {
+        return YGNodeStyleGetOverflow(static_cast<YGNodeConstRef>(node.get()));
+    });
+    m.def("YGNodeStyleSetDisplay", [](const PGNode& node, YGDisplay display) {
+        YGNodeStyleSetDisplay(node.get(), display);
+    });
+    m.def("YGNodeStyleGetDisplay", [](const PGNode& node) {
+        return YGNodeStyleGetDisplay(static_cast<YGNodeConstRef>(node.get()));
+    });
+    m.def("YGNodeStyleSetFlex", [](const PGNode& node, float flex) {
+        YGNodeStyleSetFlex(node.get(), flex);
+    });
+    m.def("YGNodeStyleGetFlex", [](const PGNode& node) {
+        return YGNodeStyleGetFlex(static_cast<YGNodeConstRef>(node.get()));
+    });
+    m.def("YGNodeStyleSetFlexGrow", [](const PGNode& node, float flex_grow) {
+        YGNodeStyleSetFlexGrow(node.get(), flex_grow);
+    });
+    m.def("YGNodeStyleGetFlexGrow", [](const PGNode& node) {
+        return YGNodeStyleGetFlexGrow(static_cast<YGNodeConstRef>(node.get()));
+    });
+    m.def("YGNodeStyleSetFlexShrink",
+          [](const PGNode& node, float flex_shrink) {
+              YGNodeStyleSetFlexShrink(node.get(), flex_shrink);
+          });
+    m.def("YGNodeStyleGetFlexShrink", [](const PGNode& node) {
+        return YGNodeStyleGetFlexShrink(
+            static_cast<YGNodeConstRef>(node.get()));
+    });
+    m.def("YGNodeStyleSetFlexBasis", [](const PGNode& node, float flex_basis) {
+        YGNodeStyleSetFlexBasis(node.get(), flex_basis);
+    });
+    m.def("YGNodeStyleSetFlexBasisPercent",
+          [](const PGNode& node, float flex_basis) {
+              YGNodeStyleSetFlexBasisPercent(node.get(), flex_basis);
+          });
+    m.def("YGNodeStyleSetFlexBasisAuto",
+          [](const PGNode& node, float flex_basis) {
+              YGNodeStyleSetFlexBasisAuto(node.get());
+          });
+    m.def("YGNodeStyleGetFlexBasis", [](const PGNode& node) {
+        return YGNodeStyleGetFlexBasis(static_cast<YGNodeConstRef>(node.get()));
+    });
+    m.def("YGNodeStyleSetPosition",
+          [](const PGNode& node, YGEdge edge, float position) {
+              YGNodeStyleSetPosition(node.get(), edge, position);
+          });
+    m.def("YGNodeStyleSetPositionPercent",
+          [](const PGNode& node, YGEdge edge, float position) {
+              YGNodeStyleSetPositionPercent(node.get(), edge, position);
+          });
+    m.def("YGNodeStyleGetPosition", [](const PGNode& node, YGEdge edge) {
+        return YGNodeStyleGetPosition(static_cast<YGNodeConstRef>(node.get()),
+                                      edge);
+    });
+    m.def("YGNodeStyleSetMargin",
+          [](const PGNode& node, YGEdge edge, float margin) {
+              YGNodeStyleSetMargin(node.get(), edge, margin);
+          });
+    m.def("YGNodeStyleSetMarginPercent",
+          [](const PGNode& node, YGEdge edge, float margin) {
+              YGNodeStyleSetMarginPercent(node.get(), edge, margin);
+          });
+    m.def("YGNodeStyleSetMarginAuto", [](const PGNode& node, YGEdge edge) {
+        YGNodeStyleSetMarginAuto(node.get(), edge);
+    });
+    m.def("YGNodeStyleGetMargin", [](const PGNode& node, YGEdge edge) {
+        YGNodeStyleGetMargin(node.get(), edge);
+    });
+    m.def("YGNodeStyleSetPadding",
+          [](const PGNode& node, YGEdge edge, float padding) {
+              YGNodeStyleSetPadding(node.get(), edge, padding);
+          });
+    m.def("YGNodeStyleSetPaddingPercent",
+          [](const PGNode& node, YGEdge edge, float padding) {
+              YGNodeStyleSetPaddingPercent(node.get(), edge, padding);
+          });
+    m.def("YGNodeStyleGetPadding", [](const PGNode& node, YGEdge edge) {
+        YGNodeStyleGetPadding(node.get(), edge);
+    });
+    m.def("YGNodeStyleSetBorder",
+          [](const PGNode& node, YGEdge edge, float border) {
+              YGNodeStyleSetBorder(node.get(), edge, border);
+          });
+    m.def("YGNodeStyleGetBorder", [](const PGNode& node, YGEdge edge) {
+        YGNodeStyleGetBorder(node.get(), edge);
+    });
+    m.def("YGNodeStyleSetWidth", [](const PGNode& node, float width) {
+        YGNodeStyleSetWidth(node.get(), width);
+    });
+    m.def("YGNodeStyleSetWidthPercent", [](const PGNode& node, float width) {
+        YGNodeStyleSetWidthPercent(node.get(), width);
+    });
+    m.def("YGNodeStyleSetWidthAuto",
+          [](const PGNode& node) { YGNodeStyleSetWidthAuto(node.get()); });
+    m.def("YGNodeStyleGetWidth",
+          [](const PGNode& node) { return YGNodeStyleGetWidth(node.get()); });
+
+    m.def("YGNodeStyleSetHeight", [](const PGNode& node, float height) {
+        YGNodeStyleSetHeight(node.get(), height);
+    });
+    m.def("YGNodeStyleSetHeightPercent", [](const PGNode& node, float height) {
+        YGNodeStyleSetHeightPercent(node.get(), height);
+    });
+    m.def("YGNodeStyleSetHeightAuto",
+          [](const PGNode& node) { YGNodeStyleSetHeightAuto(node.get()); });
+    m.def("YGNodeStyleGetHeight",
+          [](const PGNode& node) { return YGNodeStyleGetHeight(node.get()); });
+
+    m.def("YGNodeStyleSetMinWidth", [](const PGNode& node, float min_width) {
+        YGNodeStyleSetMinWidth(node.get(), min_width);
+    });
+    m.def("YGNodeStyleSetMinWidthPercent",
+          [](const PGNode& node, float min_width) {
+              YGNodeStyleSetMinWidthPercent(node.get(), min_width);
+          });
+    m.def("YGNodeStyleGetMinWidth", [](const PGNode& node) {
+        return YGNodeStyleGetMinWidth(node.get());
+    });
+
+    m.def("YGNodeStyleSetMinHeight", [](const PGNode& node, float min_height) {
+        YGNodeStyleSetMinHeight(node.get(), min_height);
+    });
+    m.def("YGNodeStyleSetMinHeightPercent",
+          [](const PGNode& node, float min_height) {
+              YGNodeStyleSetMinHeightPercent(node.get(), min_height);
+          });
+    m.def("YGNodeStyleGetMinHeight", [](const PGNode& node) {
+        return YGNodeStyleGetMinHeight(node.get());
+    });
+
+    m.def("YGNodeStyleSetMaxHeight", [](const PGNode& node, float max_height) {
+        YGNodeStyleSetMaxHeight(node.get(), max_height);
+    });
+    m.def("YGNodeStyleSetMaxHeightPercent",
+          [](const PGNode& node, float max_height) {
+              YGNodeStyleSetMaxHeightPercent(node.get(), max_height);
+          });
+    m.def("YGNodeStyleGetMaxHeight", [](const PGNode& node) {
+        return YGNodeStyleGetMaxHeight(node.get());
+    });
+
+    m.def("YGNodeStyleSetAspectRatio",
+          [](const PGNode& node, float aspect_ratio) {
+              return YGNodeStyleSetAspectRatio(node.get(), aspect_ratio);
+          });
+    m.def("YGNodeStyleGetAspectRatio", [](const PGNode& node) {
+        return YGNodeStyleGetAspectRatio(node.get());
+    });
+
+    // YGNodeLayout interface
+    m.def("YGNodeLayoutGetLeft",
+          [](const PGNode& node) { return YGNodeLayoutGetLeft(node.get()); });
+    m.def("YGNodeLayoutGetTop",
+          [](const PGNode& node) { return YGNodeLayoutGetTop(node.get()); });
+    m.def("YGNodeLayoutGetRight",
+          [](const PGNode& node) { return YGNodeLayoutGetRight(node.get()); });
+    m.def("YGNodeLayoutGetBottom",
+          [](const PGNode& node) { return YGNodeLayoutGetBottom(node.get()); });
+    m.def("YGNodeLayoutGetWidth",
+          [](const PGNode& node) { return YGNodeLayoutGetWidth(node.get()); });
+    m.def("YGNodeLayoutGetHeight",
+          [](const PGNode& node) { return YGNodeLayoutGetHeight(node.get()); });
+    m.def("YGNodeLayoutGetDirection", [](const PGNode& node) {
+        return YGNodeLayoutGetDirection(node.get());
+    });
+    m.def("YGNodeLayoutGetHadOverflow", [](const PGNode& node) {
+        return YGNodeLayoutGetHadOverflow(node.get());
+    });
+    m.def(
+        "YGNodeLayoutGetDidLegacyStretchFlagAffectLayout",
+        [](const PGNode& node) {
+            return YGNodeLayoutGetDidLegacyStretchFlagAffectLayout(node.get());
+        });
+
+    m.def("YGNodeLayoutGetMargin", [](const PGNode& node, YGEdge edge) {
+        return YGNodeLayoutGetMargin(node.get(), edge);
+    });
+    m.def("YGNodeLayoutGetBorder", [](const PGNode& node, YGEdge edge) {
+        return YGNodeLayoutGetBorder(node.get(), edge);
+    });
+    m.def("YGNodeLayoutGetPadding", [](const PGNode& node, YGEdge edge) {
+        return YGNodeLayoutGetPadding(node.get(), edge);
+    });
+
+    // YGConfig interface
+    m.def("YGConfigSetLogger", [](const PGConfig& config,
+                                  const py::function& func) {
+        poga::PogaManager::get_instance().update_config_logger_method(
+            config.get(), func);
+        if (func.is_none()) {
+            YGConfigSetLogger(config.get(), nullptr);
+        } else {
+            YGConfigSetLogger(config.get(),
+                              poga::PogaManager::poga_config_logger_method);
+        }
+    });
+    m.def("YGConfigSetPrintTreeFlag", [](const PGConfig& config, bool enabled) {
+        YGConfigSetPrintTreeFlag(config.get(), enabled);
+    });
+    m.def("YGConfigSetPointScaleFactor",
+          [](const PGConfig& config, float pixels_in_point) {
+              YGConfigSetPointScaleFactor(config.get(), pixels_in_point);
+          });
+    m.def("YGConfigSetShouldDiffLayoutWithoutLegacyStretchBehaviour",
+          [](const PGConfig& config, bool should_diff_layout) {
+              YGConfigSetShouldDiffLayoutWithoutLegacyStretchBehaviour(
+                  config.get(), should_diff_layout);
+          });
+    m.def("YGConfigSetUseLegacyStretchBehaviour",
+          [](const PGConfig& config, bool use_legacy_stretch_behaviour) {
+              YGConfigSetUseLegacyStretchBehaviour(
+                  config.get(), use_legacy_stretch_behaviour);
+          });
+    m.def("YGConfigNew", []() { return PGConfig(YGConfigNew()); });
+    m.def("YGConfigFree", [](const PGConfig& config) {
+        poga::PogaManager::get_instance().release_config_resources(config);
+        YGConfigFree(config.get());
+    });
+    m.def("YGConfigCopy", [](const PGConfig& dest, const PGConfig& src) {
+        YGConfigCopy(dest.get(), src.get());
+    });
+    m.def("YGConfigGetInstanceCount",
+          []() { return YGConfigGetInstanceCount(); });
+    m.def("YGConfigSetExperimentalFeatureEnabled",
+          [](const PGConfig& config, YGExperimentalFeature feature,
+             bool enabled) {
+              return YGConfigSetExperimentalFeatureEnabled(config.get(),
+                                                           feature, enabled);
+          });
+    // m.def("YGConfigIsExperimentalFeatureEnabled",
+    //       [](const PGConfig& config, YGExperimentalFeature feature) {
+    //           return YGConfigIsExperimentalFeatureEnabled(config.get(),
+    //                                                       feature);
+    //       });
+    m.def("YGConfigSetUseWebDefaults",
+          [](const PGConfig& config, bool enabled) {
+              YGConfigSetUseWebDefaults(config.get(), enabled);
+          });
+    m.def("YGConfigGetUseWebDefaults", [](const PGConfig& config) {
+        return YGConfigGetUseWebDefaults(config.get());
+    });
+    // TODO: config clone node callback without config object.
+    // m.def("YGConfigSetCloneNodeFunc", [](const PGConfig& config,
+    //                                      const py::function& func) {
+    //     poga::PogaManager::get_instance().update_config_clone_node_method(func);
+    //     if (func.is_none()) {
+    //         YGConfigSetCloneNodeFunc(config.get(), nullptr);
+    //     } else {
+    //         YGConfigSetCloneNodeFunc(
+    //             config.get(),
+    //             poga::PogaManager::poga_config_clone_node_method);
+    //     }
+    // });
 }
 
 }  // namespace poga
-
-//     {"ygnode_set_measure_func", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_has_baseline_func", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_set_baseline_func", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_get_dirtied_func", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_set_dirtied_func", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_set_print_func", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_get_has_new_layout", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_set_has_new_layout", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_get_node_type", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_set_node_type", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_is_dirty", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_layout_get_did_use_legacy_flag", (PyCFunction)NULL,
-//     METH_VARARGS},
-
-//     {"ygnode_style_set_direction", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_direction", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_flex_direction", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_flex_direction", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_justify_content", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_justify)content", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_align_content", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_align_content", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_align_items", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_align_items", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_align_self", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_align_self", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_position_type", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_position_type", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_flex_wrap", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_flex_wrap", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_overflow", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_overflow", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_display", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_display", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_flex", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_flex", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_flex_grow", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_flex_grow", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_flex_shink", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_flex_shink", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_flex_basis", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_flex_basis_percent", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_flex_basis_auto", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_flex_basis", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_position", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_position_percent", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_position", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_margin", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_margin_percent", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_margin_auto", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_margin", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_padding", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_padding_percent", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_padding", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_border", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_border", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_width", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_width_percent", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_width_auto", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_width", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_height", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_height_percent", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_height_auto", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_height", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_min_width", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_min_width_percent", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_min_width", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_min_height", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_min_height_percent", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_min_height", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_max_height", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_max_height_percent", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_max_height", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_set_aspect_ratio", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_style_get_aspect_ratio", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_layout_get_left", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_layout_get_top", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_layout_get_right", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_layout_get_botttom", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_layout_get_width", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_layout_get_height", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_layout_get_direction", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_layout_get_had_overflow", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_layout_get_did_legacy_stretch_flag_affect_layout",
-//      (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_layout_get_margin", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_layout_get_border", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygnode_layout_get_padding", (PyCFunction)NULL, METH_VARARGS},
-
-//     // YGConfig
-//     {"ygconfig_set_logger", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygconfig_set_print_tree_flag", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygconfig_set_point_scale_factor", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygconfig_set_should_diff_layout_without_legacu_stretch_behaviour",
-//      (PyCFunction)NULL, METH_VARARGS},
-//     {"ygconfig_set_use_legacy_stretch_behaviour", (PyCFunction)NULL,
-//      METH_VARARGS},
-//     {"ygconfig_new", (PyCFunction)NULL, METH_NOARGS},
-//     {"ygconfig_free", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygconfig_copy", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygconfig_get_instance_count", (PyCFunction)NULL, METH_NOARGS},
-//     {"ygconfig_set_experimental_feature_enabled", (PyCFunction)NULL,
-//      METH_VARARGS},
-//     {"ygconfig_is_experimental_feature_enabled", (PyCFunction)NULL,
-//      METH_VARARGS},
-//     {"ygconfig_set_use_web_defaults", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygconfig_get_use_web_defaults", (PyCFunction)NULL, METH_VARARGS},
-//     {"ygconfig_set_clone_node_func", (PyCFunction)NULL, METH_VARARGS},
-
-//     {NULL, NULL, 0, NULL},
-// };
