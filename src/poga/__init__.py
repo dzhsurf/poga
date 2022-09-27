@@ -1,6 +1,7 @@
 from . import libpoga_capi
 from .poga_layout import PogaLayout
 
+
 def get_include():
     import os
 
@@ -20,4 +21,5 @@ def get_include():
 
     # in case we are in an .egg
     import pkg_resources
+
     return pkg_resources.resource_filename(__name__, "include")
