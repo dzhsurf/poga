@@ -458,7 +458,7 @@ class build_ext(du_build_ext):
         # the paths to the Cairo headers and libraries,
         # respectively.
         if self.compiler_type == "msvc":
-            ext.libraries += ['yoga.lib']
+            ext.libraries += ['yoga']
         else:
             ext.libraries += ['yoga']
             #pkg_config_version_check('pybind11', YOGA_VERSION_REQUIRED)
@@ -477,12 +477,9 @@ def main():
     if sys.version_info[0] < 3:
         raise Exception("Python 2 no longer supported")
 
-    # static_libraries = ["yoga"]
-    # static_lib_dir = 'deps/yoga/lib'
-    # if sys.platform == 'win32':
-    #     extra_objects = ['{}/{}.lib'.format(static_lib_dir, l) for l in static_libraries]
-    # else: # POSIX
-    #     extra_objects = ['{}/lib{}.a'.format(static_lib_dir, l) for l in static_libraries]
+    library_dirs = [ os.path.join(f"deps/yoga/lib/", sys.platform) ]
+    if sys.platform == "win32":
+        library_dirs.append(os.path.join(f"deps/yoga/lib/win32/", "vs16_x86"))
 
     poga_ext = Extension(
         name='poga.libpoga_capi',
@@ -491,14 +488,11 @@ def main():
             'poga/poga_manager.cpp',
         ],
         libraries=[],
-        library_dirs=[
-            "deps/yoga/lib",
-        ],
+        library_dirs=library_dirs,
         include_dirs=[
             "deps/yoga/include",
             pybind11.get_include(),
         ],
-        # extra_objects=extra_objects,
         depends=[
             'poga/poga.hpp',
         ],
