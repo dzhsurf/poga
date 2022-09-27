@@ -68,6 +68,10 @@ PYBIND11_MODULE(libpoga_capi, m) {
         .value("SpaceBetween", YGAlign::YGAlignSpaceBetween)
         .value("SpaceAround", YGAlign::YGAlignSpaceAround)
         .export_values();
+    py::enum_<YGDisplay>(m, "YGDisplay")
+        .value("Flex", YGDisplay::YGDisplayFlex)
+        .value("DisplayNone", YGDisplay::YGDisplayNone)
+        .export_values();
     py::enum_<YGPositionType>(m, "YGPositionType")
         .value("Static", YGPositionType::YGPositionTypeStatic)
         .value("Relative", YGPositionType::YGPositionTypeRelative)
@@ -376,7 +380,7 @@ PYBIND11_MODULE(libpoga_capi, m) {
               YGNodeStyleSetFlexBasisPercent(node.get(), flex_basis);
           });
     m.def("YGNodeStyleSetFlexBasisAuto",
-          [](const PGNode& node, float flex_basis) {
+          [](const PGNode& node) {
               YGNodeStyleSetFlexBasisAuto(node.get());
           });
     m.def("YGNodeStyleGetFlexBasis", [](const PGNode& node) {
@@ -406,7 +410,7 @@ PYBIND11_MODULE(libpoga_capi, m) {
         YGNodeStyleSetMarginAuto(node.get(), edge);
     });
     m.def("YGNodeStyleGetMargin", [](const PGNode& node, YGEdge edge) {
-        YGNodeStyleGetMargin(node.get(), edge);
+        return YGNodeStyleGetMargin(node.get(), edge);
     });
     m.def("YGNodeStyleSetPadding",
           [](const PGNode& node, YGEdge edge, float padding) {
@@ -417,14 +421,14 @@ PYBIND11_MODULE(libpoga_capi, m) {
               YGNodeStyleSetPaddingPercent(node.get(), edge, padding);
           });
     m.def("YGNodeStyleGetPadding", [](const PGNode& node, YGEdge edge) {
-        YGNodeStyleGetPadding(node.get(), edge);
+        return YGNodeStyleGetPadding(node.get(), edge);
     });
     m.def("YGNodeStyleSetBorder",
           [](const PGNode& node, YGEdge edge, float border) {
               YGNodeStyleSetBorder(node.get(), edge, border);
           });
     m.def("YGNodeStyleGetBorder", [](const PGNode& node, YGEdge edge) {
-        YGNodeStyleGetBorder(node.get(), edge);
+        return YGNodeStyleGetBorder(node.get(), edge);
     });
     m.def("YGNodeStyleSetWidth", [](const PGNode& node, float width) {
         YGNodeStyleSetWidth(node.get(), width);
@@ -566,7 +570,7 @@ PYBIND11_MODULE(libpoga_capi, m) {
     m.def("YGConfigSetExperimentalFeatureEnabled",
           [](const PGConfig& config, YGExperimentalFeature feature,
              bool enabled) {
-              return YGConfigSetExperimentalFeatureEnabled(config.get(),
+              YGConfigSetExperimentalFeatureEnabled(config.get(),
                                                            feature, enabled);
           });
     // m.def("YGConfigIsExperimentalFeatureEnabled",
