@@ -15,7 +15,7 @@ from distutils import log
 from distutils import sysconfig
 import pybind11
 
-POGA_VERSION = '0.1.0'
+POGA_VERSION = '0.1.1'
 YOGA_VERSION_REQUIRED = '1.19.0'
 
 def get_command_class(name):
