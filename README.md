@@ -6,5 +6,5 @@ Poga Documentation
 Introduction
 -----------------
 
-Poga is an Python binds for YogaLayout library.
+Poga is an Python binding for YogaLayout library.
 
