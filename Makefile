@@ -17,12 +17,12 @@ export PRINT_HELP_PYSCRIPT
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-.PHONY: lint
-lint: format-check pylint mypy ## Run all lint task
+# .PHONY: lint
+# lint: format-check pylint mypy ## Run all lint task
 
-.PHONY: pylint
-pylint:
-	poetry run pylint -j 0 $(SRC_DIRS) --disable=C0114,C0115,C0116
+# .PHONY: pylint
+# pylint:
+# 	poetry run pylint --unsafe-load-any-extension=y -j 0 $(SRC_DIRS) --disable=C0114,C0115,C0116
 
 .PHONY: format-check
 format-check: ## Just check format
@@ -33,13 +33,21 @@ format: ## Black & isort the code
 	poetry run black $(SRC_DIRS)
 	poetry run isort $(SRC_DIRS)
 
-.PHONY: pydoc
-pydoc:
-	poetry run pydocstyle renaissance
+# .PHONY: pydoc
+# pydoc:
+# 	poetry run pydocstyle renaissance
 
-.PHONY: mypy
-mypy:
-	poetry mypy $(SRC_DIRS)
+# .PHONY: mypy
+# mypy:
+# 	poetry mypy $(SRC_DIRS)
+
+.PHONY: gendocs
+gendocs:
+	sphinx-apidoc -o docs/source src/poga
+
+.PHONY: docs
+docs:
+	sphinx-build -b html docs/source docs/build/html
 
 .PHONY: localinstall
 localinstall:

@@ -4,3 +4,13 @@ src/dist/
 *.egg-info
 *.pyc
 *.swp
+*.dll
+*.so
+.envrc
+poetry.lock
+docs/source/generated/
+docs/en/**/doctrees/
+docs/zh_CN/**/doctrees/
+docs/en/**/gettext/
+docs/build/doctrees/
+docs/build/html/.doctrees/
