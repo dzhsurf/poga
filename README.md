@@ -36,7 +36,7 @@ Using Binding CAPI directily
 
     def main():
         node = YGNodeNew()
-        YGNodeSetNodeType(node, YGNodeText.Default)
+        YGNodeSetNodeType(node, YGNodeType.Default)
         YGNodeFree(node)
 ```
 
