@@ -1,5 +1,26 @@
-poga package
+Poga Package
 ============
+
+
+.. note:: Current Version
+
+   Poga: 0.1.2
+
+   YogaLayout: 1.19.0
+
+How to install poga package?
+----------------------------
+
+.. code-block::
+
+   pip install poga
+
+   from poga.libpoga_capi import *
+
+   def main():
+      node = YGNodeNew()
+      YGNodeFree(node)
+
 
 Submodules
 ----------

@@ -173,9 +173,40 @@
 <h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">¶</a></h1>
 <section id="poga-documentation">
 <h2>Poga Documentation<a class="headerlink" href="#poga-documentation" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="https://dzhsurf.github.io/poga/"><img alt="Docs" src="https://img.shields.io/badge/docs-latest-informational" /></a></p>
 <section id="introduction">
 <h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h3>
-<p>Poga is an Python binding for YogaLayout library.</p>
+<p>Poga is a Python binding for YogaLayout.</p>
+<p>It provides Python API for YogaLayout. And a high-level interface PogaLayout.</p>
+</section>
+<section id="install">
+<h3>Install<a class="headerlink" href="#install" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>    pip install poga
+</pre></div>
+</div>
+</section>
+<section id="quickstart">
+<h3>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">¶</a></h3>
+<p>Using high-level interface PogaLayout</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">poga</span> <span class="kn">import</span> <span class="n">PogaLayout</span>
+
+    <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">PogaLayout</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Using Binding CAPI directily</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">poga.libpoga_capi</span> <span class="kn">import</span> <span class="o">*</span>
+
+    <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">YGNodeNew</span><span class="p">()</span>
+        <span class="n">YGNodeSetNodeType</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">YGNodeText</span><span class="o">.</span><span class="n">Default</span><span class="p">)</span>
+        <span class="n">YGNodeFree</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="building">
+<h3>Building<a class="headerlink" href="#building" title="Permalink to this heading">¶</a></h3>
+<p>TODO: …</p>
 </section>
 </section>
 </section>
@@ -197,6 +228,9 @@
 <li><a class="reference internal" href="#">Quickstart</a><ul>
 <li><a class="reference internal" href="#poga-documentation">Poga Documentation</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li><a class="reference internal" href="#building">Building</a></li>
 </ul>
 </li>
 </ul>
