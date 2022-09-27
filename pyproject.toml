@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poga"
-version = "0.1.1"
+version = "0.1.2"
 description = "Python bindings for YogaLayout"
 authors = ["dzhsurf <dzhsurf@gmail.com>"]
 keywords = ["YogaLayout", "Yoga", "Poga"]
@@ -12,7 +12,7 @@ include = [ "LICENSE" ]
 packages = [
 	{ include = "poga", from = "src" }
 ]
-exclude = [ "**/*.pyc", "**/*.pyi" ]
+exclude = [ "**/*.pyc", "**/*.hpp", "**/*.cpp" ]
 
 [tool.poetry.dependencies]
 python = "^3.9"

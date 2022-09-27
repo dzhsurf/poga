@@ -15,7 +15,7 @@ from distutils import log
 from distutils import sysconfig
 import pybind11
 
-POGA_VERSION = '0.1.1'
+POGA_VERSION = '0.1.2'
 YOGA_VERSION_REQUIRED = '1.19.0'
 
 def get_command_class(name):
@@ -366,7 +366,7 @@ class install_poga_header(Command):
         return self.outfiles
 
     def get_inputs(self):
-        return [os.path.join('poga', 'poga.hpp')]
+        return [os.path.join('poga/capi', 'poga.hpp')]
 
     def run(self):
         hname = "poga.hpp"
@@ -484,17 +484,14 @@ def main():
     poga_ext = Extension(
         name='poga.libpoga_capi',
         sources=[
-            'poga/poga_cmodule.cpp',
-            'poga/poga_manager.cpp',
+            'poga/capi/poga_cmodule.cpp',
+            'poga/capi/poga_manager.cpp',
         ],
         libraries=[],
         library_dirs=library_dirs,
         include_dirs=[
             "deps/yoga/include",
             pybind11.get_include(),
-        ],
-        depends=[
-            'poga/poga.hpp',
         ],
         define_macros=[
             ("POGA_VERSION_MAJOR", POGA_VERSION.split('.')[0]),
@@ -530,6 +527,14 @@ def main():
         license="MIT",
         ext_modules=[poga_ext],
         packages=find_packages(include=['poga', 'poga.*']),
+        package_data={
+            "poga": [
+                "libpoga_capi.pyi",
+                "py.typed",
+                "*.so",
+                "*.dll",
+            ],
+        },
         classifiers=[
             'Operating System :: OS Independent',
             'Programming Language :: Python :: 3',
