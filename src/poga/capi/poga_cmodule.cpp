@@ -27,9 +27,31 @@ PYBIND11_MODULE(libpoga_capi, m) {
           py::arg("force_floor"));
 
     // base types
-    py::class_<PGNode>(m, "YGNodeRef");
-    py::class_<PGConfig>(m, "YGConfigRef");
-    py::class_<YGSize>(m, "YGSize")
+    py::class_<PGNode>(m, "YGNodeRef", R"(YGNodeRef
+    Create from YGNodeNew
+    )");
+    py::class_<PGConfig>(m, "YGConfigRef", R"(YGConfigRef
+    Create from YGConfigNew
+    )");
+    py::class_<YGSize>(m, "YGSize", R"(YGSize
+
+Attributes:
+    width (float): width
+    height (float): height
+
+.. code-block::
+
+    def __init__(self, width: float, height: float): ...
+
+    )")
+        .def(py::init<>())
+        .def(py::init([](float width, float height) {
+                 auto obj = YGSize();
+                 obj.width = width;
+                 obj.height = height;
+                 return obj;
+             }),
+             py::arg("width"), py::arg("height"))
         .def_readwrite("width", &YGSize::width)
         .def_readwrite("height", &YGSize::height);
     py::enum_<YGMeasureMode>(m, "YGMeasureMode")
@@ -106,7 +128,25 @@ PYBIND11_MODULE(libpoga_capi, m) {
         .value("Percent", YGUnit::YGUnitPercent)
         .value("Auto", YGUnit::YGUnitAuto)
         .export_values();
-    py::class_<YGValue>(m, "YGValue")
+    py::class_<YGValue>(m, "YGValue", R"(YGValue
+
+Attributes:
+    value (float): The value of the object.
+    unit (YGUnit): The unit of the value.
+
+.. code-block::
+
+    def __init__(self, value: float, unit: YGUnit): ...
+
+    )")
+        .def(py::init<>())
+        .def(py::init([](float value, YGUnit unit) {
+                 auto obj = YGValue();
+                 obj.value = value;
+                 obj.unit = unit;
+                 return obj;
+             }),
+             py::arg("value"), py::arg("unit"))
         .def_readwrite("value", &YGValue::value)
         .def_readwrite("unit", &YGValue::unit);
     py::enum_<YGLogLevel>(m, "YGLogLevel")
@@ -200,7 +240,18 @@ PYBIND11_MODULE(libpoga_capi, m) {
             }
             YGNodeSetChildren(owner.get(), node_children);
         },
-        py::arg("owner"), py::arg("children"));
+        py::arg("owner"), py::arg("children"), R"(YGNodeSetChildren
+
+Args:
+    owner (YGNodeRef): owner
+    children (List[YGNodeRef]): children node
+
+.. code-block::
+
+    def YGNodeSetChildren(node: YGNodeRef, children: List[YGNodeRef]): ...
+
+
+    )");
     m.def(
         "YGNodeSetIsReferenceBaseline",
         [](const PGNode& node, bool is_reference_baseline) {
@@ -298,7 +349,27 @@ PYBIND11_MODULE(libpoga_capi, m) {
                                      poga::PogaManager::poga_measure_method);
             }
         },
-        py::arg("node"), py::arg("fn"));
+        py::arg("node"), py::arg("fn"), R"(Callback function define
+
+.. code-block::
+
+    def fn(node: YGNodeRef,
+            width: float, width_mode: YGMeasureMode,
+            height: float, height_mode: YGMeasureMode)
+        -> YGSize:
+        pass
+
+Args:
+    node (YGNodeRef): Node
+    width (float): Width
+    width_mode (YGMeasureMode): Width mode
+    height (float): Height
+    height_mode (YGMeasureMode): Height mode
+
+Returns:
+    YGSize: Return measure size.
+
+        )");
     m.def(
         "YGNodeHasBaselineFunc",
         [](const PGNode& node) { YGNodeHasBaselineFunc(node.get()); },
