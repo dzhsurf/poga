@@ -27,6 +27,7 @@ PYBIND11_MODULE(libpoga_capi, m) {
           py::arg("force_floor"));
 
     // base types
+    m.attr("YGUndefined") = py::float_(YGUndefined);
     py::class_<PGNode>(m, "YGNodeRef", R"(YGNodeRef
     Create from YGNodeNew
     )");
