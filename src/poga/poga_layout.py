@@ -1,3 +1,4 @@
+from cmath import nan
 import sys
 from typing import Any, Dict, List, Tuple
 
@@ -515,8 +516,6 @@ class PogaLayout:
 
     @property
     def intrinsic_size(self) -> Tuple[float, float]:
-        # TODO, CAPI expose YGUndefined
-        YGUndefined = 0.0
         constrained_size = [YGUndefined, YGUndefined]
         return self.calculate_layout_with_size(constrained_size)
 

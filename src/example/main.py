@@ -22,19 +22,7 @@ def fn(a: int, b: int) -> poga.libpoga_capi.YGSize:
 
 def main():
     print(dir(poga.libpoga_capi))
-    node = poga.libpoga_capi.YGNodeNew()
-    poga.libpoga_capi.YGNodeSetMeasureFunc(node, fn)
-    get_context(node)
-    set_context(node)
-    get_context(node)
-    a = TestContext()
-    poga.libpoga_capi.YGNodeSetContext(node, a)
-    print("a = none")
-    a = None
-    print("free node")
-    poga.libpoga_capi.YGNodeFree(node)
-    print("after free node")
-    # print(poga.PogaLayout())
+    print(poga.PogaLayout())
 
 
 if __name__ == "__main__":
