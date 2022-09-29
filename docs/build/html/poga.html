@@ -1163,6 +1163,723 @@
 <dt class="sig sig-object py" id="poga.poga_layout.PogaLayout">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PogaLayout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#poga.poga_view.PogaView" title="poga.poga_view.PogaView"><span class="pre">PogaView</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poga.poga_layout.PogaLayout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.align_content">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">align_content</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGAlign" title="poga.libpoga_capi.YGAlign"><span class="pre">YGAlign</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.align_content" title="Permalink to this definition">¶</a></dt>
+<dd><p>align_content property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGAlign" title="poga.libpoga_capi.YGAlign">YGAlign</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.align_items">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">align_items</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGAlign" title="poga.libpoga_capi.YGAlign"><span class="pre">YGAlign</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.align_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>align_items property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGAlign" title="poga.libpoga_capi.YGAlign">YGAlign</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.align_self">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">align_self</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGAlign" title="poga.libpoga_capi.YGAlign"><span class="pre">YGAlign</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.align_self" title="Permalink to this definition">¶</a></dt>
+<dd><p>align_self property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGAlign" title="poga.libpoga_capi.YGAlign">YGAlign</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.apply_layout">
+<span class="sig-name descname"><span class="pre">apply_layout</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#poga.poga_layout.PogaLayout.apply_layout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.apply_layout_preserving_origin">
+<span class="sig-name descname"><span class="pre">apply_layout_preserving_origin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preserver_origin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poga.poga_layout.PogaLayout.apply_layout_preserving_origin" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>preserver_origin</strong> (<em>bool</em>) – preserver origin</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.apply_layout_preserving_origin_with_dimension_flexibility">
+<span class="sig-name descname"><span class="pre">apply_layout_preserving_origin_with_dimension_flexibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preserver_origin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimension_flexibility</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poga.poga_layout.PogaLayout.apply_layout_preserving_origin_with_dimension_flexibility" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>preserver_origin</strong> (<em>bool</em>) – preserver origin</p></li>
+<li><p><strong>dimension_flexibility</strong> (<em>bool</em>) – dimension flexibility</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.aspect_ratio">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">aspect_ratio</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.aspect_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>aspect_ratio property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.border_bottom_width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">border_bottom_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.border_bottom_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>border_bottom_width property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.border_end_width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">border_end_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.border_end_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>border_end_width property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.border_left_width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">border_left_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.border_left_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>border_left_width property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.border_right_width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">border_right_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.border_right_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>border_right_width property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.border_start_width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">border_start_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.border_start_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>border_start_width property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.border_top_width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">border_top_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.border_top_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>border_top_width property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.border_width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">border_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.border_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>border_width property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.bottom">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bottom</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.bottom" title="Permalink to this definition">¶</a></dt>
+<dd><p>bottom property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.calculate_layout_with_size">
+<span class="sig-name descname"><span class="pre">calculate_layout_with_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#poga.poga_layout.PogaLayout.calculate_layout_with_size" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>size</strong> (<em>Tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em>) – layout area size</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return size</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[float, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.direction">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">direction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGDirection" title="poga.libpoga_capi.YGDirection"><span class="pre">YGDirection</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>direction property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>direction type.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#poga.libpoga_capi.YGDirection" title="poga.libpoga_capi.YGDirection">YGDirection</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.display">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">display</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGDisplay" title="poga.libpoga_capi.YGDisplay"><span class="pre">YGDisplay</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.display" title="Permalink to this definition">¶</a></dt>
+<dd><p>display property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGDisplay" title="poga.libpoga_capi.YGDisplay">YGDisplay</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.end">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">end</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>end property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.flex">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flex</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.flex" title="Permalink to this definition">¶</a></dt>
+<dd><p>flex property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>flex</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>flex (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.flex_basis">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flex_basis</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.flex_basis" title="Permalink to this definition">¶</a></dt>
+<dd><p>flex_basis property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.flex_direction">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flex_direction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGFlexDirection" title="poga.libpoga_capi.YGFlexDirection"><span class="pre">YGFlexDirection</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.flex_direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>flex_direction property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>flex direction type.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#poga.libpoga_capi.YGFlexDirection" title="poga.libpoga_capi.YGFlexDirection">YGFlexDirection</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.flex_grow">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flex_grow</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.flex_grow" title="Permalink to this definition">¶</a></dt>
+<dd><p>flex_grow property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.flex_shrink">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flex_shrink</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.flex_shrink" title="Permalink to this definition">¶</a></dt>
+<dd><p>flex_shrink property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.flex_wrap">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flex_wrap</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGWrap" title="poga.libpoga_capi.YGWrap"><span class="pre">YGWrap</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.flex_wrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>flex_wrap property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGWrap" title="poga.libpoga_capi.YGWrap">YGWrap</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.get_global_config">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_global_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#poga.libpoga_capi.YGConfigRef" title="poga.libpoga_capi.YGConfigRef"><span class="pre">YGConfigRef</span></a></span></span><a class="headerlink" href="#poga.poga_layout.PogaLayout.get_global_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return global config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Return global config object.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#poga.libpoga_capi.YGConfigRef" title="poga.libpoga_capi.YGConfigRef">YGConfigRef</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.height">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">height</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>height property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.intrinsic_size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">intrinsic_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.intrinsic_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns:
+Tuple[float, float]: Return size</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.is_dirty">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_dirty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.is_dirty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns:
+bool: Return is dirty</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.is_enabled">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_enabled</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.is_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is_enabled property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>is_enabled</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.is_included_in_layout">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_included_in_layout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.is_included_in_layout" title="Permalink to this definition">¶</a></dt>
+<dd><p>is_included_in_layout property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>is_included_in_layout</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.is_leaf">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_leaf</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.is_leaf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns:
+bool: Return is leaf</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.justify_content">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">justify_content</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGJustify" title="poga.libpoga_capi.YGJustify"><span class="pre">YGJustify</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.justify_content" title="Permalink to this definition">¶</a></dt>
+<dd><p>justify_content property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGJustify" title="poga.libpoga_capi.YGJustify">YGJustify</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.left">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.left" title="Permalink to this definition">¶</a></dt>
+<dd><p>left property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.margin">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">margin</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.margin" title="Permalink to this definition">¶</a></dt>
+<dd><p>margin property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.margin_bottom">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">margin_bottom</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.margin_bottom" title="Permalink to this definition">¶</a></dt>
+<dd><p>margin_bottom property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.margin_end">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">margin_end</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.margin_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>margin_end property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.margin_horizontal">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">margin_horizontal</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.margin_horizontal" title="Permalink to this definition">¶</a></dt>
+<dd><p>margin_horizontal property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.margin_left">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">margin_left</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.margin_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>margin_left property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.margin_right">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">margin_right</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.margin_right" title="Permalink to this definition">¶</a></dt>
+<dd><p>margin_right property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.margin_start">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">margin_start</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.margin_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>margin_start property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.margin_top">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">margin_top</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.margin_top" title="Permalink to this definition">¶</a></dt>
+<dd><p>margin_top property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.margin_vertical">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">margin_vertical</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.margin_vertical" title="Permalink to this definition">¶</a></dt>
+<dd><p>margin_vertical property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.mark_dirty">
+<span class="sig-name descname"><span class="pre">mark_dirty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#poga.poga_layout.PogaLayout.mark_dirty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.max_height">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max_height</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.max_height" title="Permalink to this definition">¶</a></dt>
+<dd><p>max_height property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.max_width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.max_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>max_width property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.min_height">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">min_height</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.min_height" title="Permalink to this definition">¶</a></dt>
+<dd><p>min_height property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.min_width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">min_width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.min_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>min_width property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.number_of_children">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">number_of_children</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.number_of_children" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns:
+int: Return number of children</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.overflow">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">overflow</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGOverflow" title="poga.libpoga_capi.YGOverflow"><span class="pre">YGOverflow</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.overflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>overflow property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGOverflow" title="poga.libpoga_capi.YGOverflow">YGOverflow</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.padding">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">padding</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.padding" title="Permalink to this definition">¶</a></dt>
+<dd><p>padding property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.padding_bottom">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">padding_bottom</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.padding_bottom" title="Permalink to this definition">¶</a></dt>
+<dd><p>padding_bottom property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.padding_end">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">padding_end</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.padding_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>padding_end property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.padding_horizontal">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">padding_horizontal</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.padding_horizontal" title="Permalink to this definition">¶</a></dt>
+<dd><p>padding_horizontal property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>padding_horizontal</strong> (<a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><em>YGValue</em></a>) – padding_horizontal</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.padding_left">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">padding_left</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.padding_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>padding_left property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.padding_right">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">padding_right</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.padding_right" title="Permalink to this definition">¶</a></dt>
+<dd><p>padding_right property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.padding_start">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">padding_start</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.padding_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>padding_start property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.padding_top">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">padding_top</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.padding_top" title="Permalink to this definition">¶</a></dt>
+<dd><p>padding_top property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.padding_vertical">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">padding_vertical</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.padding_vertical" title="Permalink to this definition">¶</a></dt>
+<dd><p>padding_vertical property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.position">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">position</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGPositionType" title="poga.libpoga_capi.YGPositionType"><span class="pre">YGPositionType</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.position" title="Permalink to this definition">¶</a></dt>
+<dd><p>position property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGPositionType" title="poga.libpoga_capi.YGPositionType">YGPositionType</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.release_global_config">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">release_global_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#poga.poga_layout.PogaLayout.release_global_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release global config.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.resolved_direction">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">resolved_direction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGDirection" title="poga.libpoga_capi.YGDirection"><span class="pre">YGDirection</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.resolved_direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>resolved_direction property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGDirection" title="poga.libpoga_capi.YGDirection">YGDirection</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.right">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">right</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.right" title="Permalink to this definition">¶</a></dt>
+<dd><p>right property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.start">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">start</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>start property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.top">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">top</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.top" title="Permalink to this definition">¶</a></dt>
+<dd><p>top property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="poga.poga_layout.PogaLayout.width">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">width</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue"><span class="pre">YGValue</span></a></em><a class="headerlink" href="#poga.poga_layout.PogaLayout.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>width property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#poga.libpoga_capi.YGValue" title="poga.libpoga_capi.YGValue">YGValue</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1180,6 +1897,124 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PogaView</span></span><a class="headerlink" href="#poga.poga_view.PogaView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
 <p>PogaView interface</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_view.PogaView.bounds_size">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bounds_size</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#poga.poga_view.PogaView.bounds_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the layout bounds size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bounds size, mainly equal the frame size.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple[float, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_view.PogaView.frame_origin">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">frame_origin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#poga.poga_view.PogaView.frame_origin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return frame position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Return frame (x, y) position.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple[float, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_view.PogaView.poga_layout">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">poga_layout</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#poga.poga_layout.PogaLayout" title="poga.poga_layout.PogaLayout"><span class="pre">PogaLayout</span></a></span></span><a class="headerlink" href="#poga.poga_view.PogaView.poga_layout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return PogaLayout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>PogaLayout object</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#poga.poga_layout.PogaLayout" title="poga.poga_layout.PogaLayout">PogaLayout</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_view.PogaView.set_frame_origin">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_frame_origin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poga.poga_view.PogaView.set_frame_origin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the frame position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – The frame x position</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – The frame y position</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_view.PogaView.set_frame_size">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_frame_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poga.poga_view.PogaView.set_frame_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the frame size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>float</em>) – The frame width</p></li>
+<li><p><strong>height</strong> (<em>float</em>) – The frame height</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_view.PogaView.size_that_fits">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">size_that_fits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#poga.poga_view.PogaView.size_that_fits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the frame size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>float</em>) – Parent layout width.</p></li>
+<li><p><strong>height</strong> (<em>float</em>) – Parent layout height.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return frame size (width, height).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[float, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_view.PogaView.subviews">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">subviews</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#poga.poga_view.PogaView" title="poga.poga_view.PogaView"><span class="pre">PogaView</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#poga.poga_view.PogaView.subviews" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return subviews, subview type must be PogaView.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>subviews</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Iterable[<a class="reference internal" href="#poga.poga_view.PogaView" title="poga.poga_view.PogaView">PogaView</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_view.PogaView.subviews_count">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">subviews_count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#poga.poga_view.PogaView.subviews_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return subviews count.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>subviews count</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -1397,12 +2232,90 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#module-poga.poga_layout">poga_layout module</a><ul>
-<li><a class="reference internal" href="#poga.poga_layout.PogaLayout"><code class="docutils literal notranslate"><span class="pre">PogaLayout</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout"><code class="docutils literal notranslate"><span class="pre">PogaLayout</span></code></a><ul>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.align_content"><code class="docutils literal notranslate"><span class="pre">PogaLayout.align_content</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.align_items"><code class="docutils literal notranslate"><span class="pre">PogaLayout.align_items</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.align_self"><code class="docutils literal notranslate"><span class="pre">PogaLayout.align_self</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.apply_layout"><code class="docutils literal notranslate"><span class="pre">PogaLayout.apply_layout()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.apply_layout_preserving_origin"><code class="docutils literal notranslate"><span class="pre">PogaLayout.apply_layout_preserving_origin()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.apply_layout_preserving_origin_with_dimension_flexibility"><code class="docutils literal notranslate"><span class="pre">PogaLayout.apply_layout_preserving_origin_with_dimension_flexibility()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.aspect_ratio"><code class="docutils literal notranslate"><span class="pre">PogaLayout.aspect_ratio</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.border_bottom_width"><code class="docutils literal notranslate"><span class="pre">PogaLayout.border_bottom_width</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.border_end_width"><code class="docutils literal notranslate"><span class="pre">PogaLayout.border_end_width</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.border_left_width"><code class="docutils literal notranslate"><span class="pre">PogaLayout.border_left_width</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.border_right_width"><code class="docutils literal notranslate"><span class="pre">PogaLayout.border_right_width</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.border_start_width"><code class="docutils literal notranslate"><span class="pre">PogaLayout.border_start_width</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.border_top_width"><code class="docutils literal notranslate"><span class="pre">PogaLayout.border_top_width</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.border_width"><code class="docutils literal notranslate"><span class="pre">PogaLayout.border_width</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.bottom"><code class="docutils literal notranslate"><span class="pre">PogaLayout.bottom</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.calculate_layout_with_size"><code class="docutils literal notranslate"><span class="pre">PogaLayout.calculate_layout_with_size()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.direction"><code class="docutils literal notranslate"><span class="pre">PogaLayout.direction</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.display"><code class="docutils literal notranslate"><span class="pre">PogaLayout.display</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.end"><code class="docutils literal notranslate"><span class="pre">PogaLayout.end</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.flex"><code class="docutils literal notranslate"><span class="pre">PogaLayout.flex</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.flex_basis"><code class="docutils literal notranslate"><span class="pre">PogaLayout.flex_basis</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.flex_direction"><code class="docutils literal notranslate"><span class="pre">PogaLayout.flex_direction</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.flex_grow"><code class="docutils literal notranslate"><span class="pre">PogaLayout.flex_grow</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.flex_shrink"><code class="docutils literal notranslate"><span class="pre">PogaLayout.flex_shrink</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.flex_wrap"><code class="docutils literal notranslate"><span class="pre">PogaLayout.flex_wrap</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.get_global_config"><code class="docutils literal notranslate"><span class="pre">PogaLayout.get_global_config()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.height"><code class="docutils literal notranslate"><span class="pre">PogaLayout.height</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.intrinsic_size"><code class="docutils literal notranslate"><span class="pre">PogaLayout.intrinsic_size</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.is_dirty"><code class="docutils literal notranslate"><span class="pre">PogaLayout.is_dirty</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.is_enabled"><code class="docutils literal notranslate"><span class="pre">PogaLayout.is_enabled</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.is_included_in_layout"><code class="docutils literal notranslate"><span class="pre">PogaLayout.is_included_in_layout</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.is_leaf"><code class="docutils literal notranslate"><span class="pre">PogaLayout.is_leaf</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.justify_content"><code class="docutils literal notranslate"><span class="pre">PogaLayout.justify_content</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.left"><code class="docutils literal notranslate"><span class="pre">PogaLayout.left</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.margin"><code class="docutils literal notranslate"><span class="pre">PogaLayout.margin</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.margin_bottom"><code class="docutils literal notranslate"><span class="pre">PogaLayout.margin_bottom</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.margin_end"><code class="docutils literal notranslate"><span class="pre">PogaLayout.margin_end</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.margin_horizontal"><code class="docutils literal notranslate"><span class="pre">PogaLayout.margin_horizontal</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.margin_left"><code class="docutils literal notranslate"><span class="pre">PogaLayout.margin_left</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.margin_right"><code class="docutils literal notranslate"><span class="pre">PogaLayout.margin_right</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.margin_start"><code class="docutils literal notranslate"><span class="pre">PogaLayout.margin_start</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.margin_top"><code class="docutils literal notranslate"><span class="pre">PogaLayout.margin_top</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.margin_vertical"><code class="docutils literal notranslate"><span class="pre">PogaLayout.margin_vertical</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.mark_dirty"><code class="docutils literal notranslate"><span class="pre">PogaLayout.mark_dirty()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.max_height"><code class="docutils literal notranslate"><span class="pre">PogaLayout.max_height</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.max_width"><code class="docutils literal notranslate"><span class="pre">PogaLayout.max_width</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.min_height"><code class="docutils literal notranslate"><span class="pre">PogaLayout.min_height</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.min_width"><code class="docutils literal notranslate"><span class="pre">PogaLayout.min_width</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.number_of_children"><code class="docutils literal notranslate"><span class="pre">PogaLayout.number_of_children</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.overflow"><code class="docutils literal notranslate"><span class="pre">PogaLayout.overflow</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.padding"><code class="docutils literal notranslate"><span class="pre">PogaLayout.padding</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.padding_bottom"><code class="docutils literal notranslate"><span class="pre">PogaLayout.padding_bottom</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.padding_end"><code class="docutils literal notranslate"><span class="pre">PogaLayout.padding_end</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.padding_horizontal"><code class="docutils literal notranslate"><span class="pre">PogaLayout.padding_horizontal</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.padding_left"><code class="docutils literal notranslate"><span class="pre">PogaLayout.padding_left</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.padding_right"><code class="docutils literal notranslate"><span class="pre">PogaLayout.padding_right</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.padding_start"><code class="docutils literal notranslate"><span class="pre">PogaLayout.padding_start</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.padding_top"><code class="docutils literal notranslate"><span class="pre">PogaLayout.padding_top</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.padding_vertical"><code class="docutils literal notranslate"><span class="pre">PogaLayout.padding_vertical</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.position"><code class="docutils literal notranslate"><span class="pre">PogaLayout.position</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.release_global_config"><code class="docutils literal notranslate"><span class="pre">PogaLayout.release_global_config()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.resolved_direction"><code class="docutils literal notranslate"><span class="pre">PogaLayout.resolved_direction</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.right"><code class="docutils literal notranslate"><span class="pre">PogaLayout.right</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.start"><code class="docutils literal notranslate"><span class="pre">PogaLayout.start</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.top"><code class="docutils literal notranslate"><span class="pre">PogaLayout.top</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout.width"><code class="docutils literal notranslate"><span class="pre">PogaLayout.width</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#poga.poga_layout.YGDimensionFlexibility"><code class="docutils literal notranslate"><span class="pre">YGDimensionFlexibility</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-poga.poga_view">poga_view module</a><ul>
-<li><a class="reference internal" href="#poga.poga_view.PogaView"><code class="docutils literal notranslate"><span class="pre">PogaView</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_view.PogaView"><code class="docutils literal notranslate"><span class="pre">PogaView</span></code></a><ul>
+<li><a class="reference internal" href="#poga.poga_view.PogaView.bounds_size"><code class="docutils literal notranslate"><span class="pre">PogaView.bounds_size()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_view.PogaView.frame_origin"><code class="docutils literal notranslate"><span class="pre">PogaView.frame_origin()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_view.PogaView.poga_layout"><code class="docutils literal notranslate"><span class="pre">PogaView.poga_layout()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_view.PogaView.set_frame_origin"><code class="docutils literal notranslate"><span class="pre">PogaView.set_frame_origin()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_view.PogaView.set_frame_size"><code class="docutils literal notranslate"><span class="pre">PogaView.set_frame_size()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_view.PogaView.size_that_fits"><code class="docutils literal notranslate"><span class="pre">PogaView.size_that_fits()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_view.PogaView.subviews"><code class="docutils literal notranslate"><span class="pre">PogaView.subviews()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_view.PogaView.subviews_count"><code class="docutils literal notranslate"><span class="pre">PogaView.subviews_count()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
