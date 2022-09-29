@@ -525,7 +525,7 @@ def main():
         packages=find_packages(include=["poga", "poga.*"]),
         package_data={
             "poga": [
-                "libpoga_capi.pyi",
+                "*.pyi",
                 "py.typed",
                 "*.so",
                 "*.dll",

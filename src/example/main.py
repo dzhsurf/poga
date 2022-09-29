@@ -1,8 +1,6 @@
 from typing import Iterable, Tuple
 
-import poga
-from poga import PogaLayout, PogaView
-from poga.libpoga_capi import YGNodeIsSame, YGNodeNew
+from poga import *
 
 
 class MyView(PogaView):
@@ -32,9 +30,9 @@ class MyView(PogaView):
 
 
 def main():
-    print(dir(poga.libpoga_capi))
+    print(dir(libpoga_capi))
     view = MyView()
-    layout = poga.PogaLayout(view)
+    layout = PogaLayout(view)
     print(layout)
 
 
