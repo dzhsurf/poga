@@ -1,3 +1,4 @@
+from math import isnan, nan
 import sys
 import weakref
 from enum import Enum
@@ -20,7 +21,7 @@ class PogaLayout:
     __global_config = None
 
     __node: YGNodeRef = None
-    __enabled: bool = False
+    __enabled: bool = True
     __is_included_in_layout: bool = True
     __view: ReferenceType[PogaView] = None
 
@@ -43,7 +44,7 @@ class PogaLayout:
 
     def __init__(self, view: PogaView):
         self.__node = YGNodeNewWithConfig(PogaLayout.get_global_config())
-        self.__enabled = False
+        self.__enabled = True
         self.__is_included_in_layout = True
         self.__view = weakref.ref(view)
         YGNodeSetContext(self.__node, self.__view)
@@ -479,7 +480,7 @@ class PogaLayout:
         elif width.unit == YGUnit.Percent:
             YGNodeStyleSetWidthPercent(self.__node, width.value)
         elif width.unit == YGUnit.Auto:
-            YGNodeStyleSetWidthAuto(self.__node, width.value)
+            YGNodeStyleSetWidthAuto(self.__node)
 
     @property
     def height(self) -> YGValue:
@@ -492,7 +493,7 @@ class PogaLayout:
         elif height.unit == YGUnit.Percent:
             YGNodeStyleSetHeightPercent(self.__node, height.value)
         elif height.unit == YGUnit.Auto:
-            YGNodeStyleSetHeightAuto(self.__node, height.value)
+            YGNodeStyleSetHeightAuto(self.__node)
 
     @property
     def min_width(self) -> YGValue:
@@ -658,7 +659,9 @@ class PogaLayout:
         )
 
     @staticmethod
-    def __round_pixel_value__(value: float):
+    def __round_pixel_value__(value: float) -> float:
+        if isnan(value):
+            return value
         scale = 2.0  # TODO
         return round(value * scale) / scale
 
@@ -675,7 +678,6 @@ class PogaLayout:
             YGNodeLayoutGetLeft(node),
             YGNodeLayoutGetTop(node),
         )
-
         bottom_right = (
             top_left[0] + YGNodeLayoutGetWidth(node),
             top_left[1] + YGNodeLayoutGetHeight(node),
@@ -726,8 +728,7 @@ class PogaLayout:
                     continue
                 if sub_poga.is_enabled and sub_poga.is_included_in_layout:
                     subviews_to_include.append(subview)
-
-            if PogaLayout.__has_exact_same_children__(node, subviews_to_include):
+            if not PogaLayout.__has_exact_same_children__(node, subviews_to_include):
                 YGNodeRemoveAllChildren(node)
                 for i in range(len(subviews_to_include)):
                     child = subviews_to_include[i].poga_layout().__node
