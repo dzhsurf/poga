@@ -1,7 +1,7 @@
-from math import isnan, nan
 import sys
 import weakref
 from enum import Enum
+from math import isnan, nan
 from typing import Any, Dict, Iterable, List, Tuple
 from weakref import ReferenceType
 

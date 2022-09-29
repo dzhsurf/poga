@@ -188,10 +188,15 @@
 <section id="quickstart">
 <h3>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">¶</a></h3>
 <p>Using high-level interface PogaLayout</p>
+<p>More details you can refer to the PGLayout of the pydui-gtk project below.</p>
+<p>https://github.com/dzhsurf/pydui</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">poga</span> <span class="kn">import</span> <span class="n">PogaLayout</span>
 
     <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
         <span class="n">layout</span> <span class="o">=</span> <span class="n">PogaLayout</span><span class="p">()</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">flex_direction</span> <span class="o">=</span> <span class="n">YGFlexDirection</span><span class="o">.</span><span class="n">FlexStart</span>
+        <span class="c1"># ...</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">apply_layout</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Using Binding CAPI directily</p>

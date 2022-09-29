@@ -22,11 +22,18 @@ Quickstart
 
 Using high-level interface PogaLayout
 
+More details you can refer to the PGLayout of the pydui-gtk project below.
+
+https://github.com/dzhsurf/pydui
+
 ```python
     from poga import PogaLayout
 
     def main():
         layout = PogaLayout()
+        layout.flex_direction = YGFlexDirection.FlexStart
+        # ...
+        layout.apply_layout()
 ```
 
 Using Binding CAPI directily
