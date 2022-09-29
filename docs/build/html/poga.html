@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Poga Package &#8212; poga https://pypi.org/project/poga/ documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -14,6 +14,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <script src="_static/js/petite-vue.js"></script>
     <link rel="shortcut icon" href="https://pypi.org/static/images/logo-small.95de8436.svg"/>
@@ -171,16 +172,22 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Current Version</p>
-<p>Poga: 0.1.2</p>
+<p>Poga: 0.1.5</p>
 <p>YogaLayout: 1.19.0</p>
 </div>
 <section id="how-to-install-poga-package">
 <h2>How to install poga package?<a class="headerlink" href="#how-to-install-poga-package" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">poga</span>
 
-<span class="kn">from</span> <span class="nn">poga.libpoga_capi</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">poga</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+   <span class="c1"># use PogaLayout</span>
+   <span class="n">layout</span> <span class="o">=</span> <span class="n">PogaLayout</span><span class="p">(</span><span class="n">MyPogaView</span><span class="p">())</span>
+   <span class="c1"># ...</span>
+   <span class="n">layout</span><span class="o">.</span><span class="n">apply_layout</span><span class="p">()</span>
+
+   <span class="c1"># use capi directly</span>
    <span class="n">node</span> <span class="o">=</span> <span class="n">YGNodeNew</span><span class="p">()</span>
    <span class="n">YGNodeFree</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 </pre></div>
@@ -1154,7 +1161,7 @@
 <span id="poga-layout-module"></span><h2>poga_layout module<a class="headerlink" href="#module-poga.poga_layout" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="poga.poga_layout.PogaLayout">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PogaLayout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PogaView</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poga.poga_layout.PogaLayout" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PogaLayout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#poga.poga_view.PogaView" title="poga.poga_view.PogaView"><span class="pre">PogaView</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poga.poga_layout.PogaLayout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 </dd></dl>
 
@@ -1163,6 +1170,16 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">YGDimensionFlexibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poga.poga_layout.YGDimensionFlexibility" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <p>An enumeration.</p>
+</dd></dl>
+
+</section>
+<section id="module-poga.poga_view">
+<span id="poga-view-module"></span><h2>poga_view module<a class="headerlink" href="#module-poga.poga_view" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="poga.poga_view.PogaView">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PogaView</span></span><a class="headerlink" href="#poga.poga_view.PogaView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>PogaView interface</p>
 </dd></dl>
 
 </section>
@@ -1185,8 +1202,209 @@
 <li><a class="reference internal" href="#">Poga Package</a><ul>
 <li><a class="reference internal" href="#how-to-install-poga-package">How to install poga package?</a></li>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-poga.libpoga_capi">libpoga_capi module</a></li>
-<li><a class="reference internal" href="#module-poga.poga_layout">poga_layout module</a></li>
+<li><a class="reference internal" href="#module-poga.libpoga_capi">libpoga_capi module</a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGAlign"><code class="docutils literal notranslate"><span class="pre">YGAlign</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGAlign.name"><code class="docutils literal notranslate"><span class="pre">YGAlign.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGConfigCopy"><code class="docutils literal notranslate"><span class="pre">YGConfigCopy()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGConfigFree"><code class="docutils literal notranslate"><span class="pre">YGConfigFree()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGConfigGetInstanceCount"><code class="docutils literal notranslate"><span class="pre">YGConfigGetInstanceCount()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGConfigGetUseWebDefaults"><code class="docutils literal notranslate"><span class="pre">YGConfigGetUseWebDefaults()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGConfigNew"><code class="docutils literal notranslate"><span class="pre">YGConfigNew()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGConfigRef"><code class="docutils literal notranslate"><span class="pre">YGConfigRef</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGConfigSetExperimentalFeatureEnabled"><code class="docutils literal notranslate"><span class="pre">YGConfigSetExperimentalFeatureEnabled()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGConfigSetLogger"><code class="docutils literal notranslate"><span class="pre">YGConfigSetLogger()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGConfigSetPointScaleFactor"><code class="docutils literal notranslate"><span class="pre">YGConfigSetPointScaleFactor()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGConfigSetPrintTreeFlag"><code class="docutils literal notranslate"><span class="pre">YGConfigSetPrintTreeFlag()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGConfigSetShouldDiffLayoutWithoutLegacyStretchBehaviour"><code class="docutils literal notranslate"><span class="pre">YGConfigSetShouldDiffLayoutWithoutLegacyStretchBehaviour()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGConfigSetUseLegacyStretchBehaviour"><code class="docutils literal notranslate"><span class="pre">YGConfigSetUseLegacyStretchBehaviour()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGConfigSetUseWebDefaults"><code class="docutils literal notranslate"><span class="pre">YGConfigSetUseWebDefaults()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGDirection"><code class="docutils literal notranslate"><span class="pre">YGDirection</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGDirection.name"><code class="docutils literal notranslate"><span class="pre">YGDirection.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGDisplay"><code class="docutils literal notranslate"><span class="pre">YGDisplay</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGDisplay.name"><code class="docutils literal notranslate"><span class="pre">YGDisplay.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGEdge"><code class="docutils literal notranslate"><span class="pre">YGEdge</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGEdge.name"><code class="docutils literal notranslate"><span class="pre">YGEdge.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGExperimentalFeature"><code class="docutils literal notranslate"><span class="pre">YGExperimentalFeature</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGExperimentalFeature.name"><code class="docutils literal notranslate"><span class="pre">YGExperimentalFeature.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGFlexDirection"><code class="docutils literal notranslate"><span class="pre">YGFlexDirection</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGFlexDirection.name"><code class="docutils literal notranslate"><span class="pre">YGFlexDirection.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGFloatIsUndefined"><code class="docutils literal notranslate"><span class="pre">YGFloatIsUndefined()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGJustify"><code class="docutils literal notranslate"><span class="pre">YGJustify</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGJustify.name"><code class="docutils literal notranslate"><span class="pre">YGJustify.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGLogLevel"><code class="docutils literal notranslate"><span class="pre">YGLogLevel</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGLogLevel.name"><code class="docutils literal notranslate"><span class="pre">YGLogLevel.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGMeasureMode"><code class="docutils literal notranslate"><span class="pre">YGMeasureMode</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGMeasureMode.name"><code class="docutils literal notranslate"><span class="pre">YGMeasureMode.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeCalculateLayout"><code class="docutils literal notranslate"><span class="pre">YGNodeCalculateLayout()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeCanUseCachedMeasurement"><code class="docutils literal notranslate"><span class="pre">YGNodeCanUseCachedMeasurement()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeClone"><code class="docutils literal notranslate"><span class="pre">YGNodeClone()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeCopyStyle"><code class="docutils literal notranslate"><span class="pre">YGNodeCopyStyle()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeFree"><code class="docutils literal notranslate"><span class="pre">YGNodeFree()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeGetChild"><code class="docutils literal notranslate"><span class="pre">YGNodeGetChild()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeGetChildCount"><code class="docutils literal notranslate"><span class="pre">YGNodeGetChildCount()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeGetContext"><code class="docutils literal notranslate"><span class="pre">YGNodeGetContext()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeGetHasNewLayout"><code class="docutils literal notranslate"><span class="pre">YGNodeGetHasNewLayout()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeGetNodeType"><code class="docutils literal notranslate"><span class="pre">YGNodeGetNodeType()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeGetOwner"><code class="docutils literal notranslate"><span class="pre">YGNodeGetOwner()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeGetParent"><code class="docutils literal notranslate"><span class="pre">YGNodeGetParent()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeHasBaselineFunc"><code class="docutils literal notranslate"><span class="pre">YGNodeHasBaselineFunc()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeHasMeasureFunc"><code class="docutils literal notranslate"><span class="pre">YGNodeHasMeasureFunc()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeInsertChild"><code class="docutils literal notranslate"><span class="pre">YGNodeInsertChild()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeIsDirty"><code class="docutils literal notranslate"><span class="pre">YGNodeIsDirty()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeIsReferenceBaseline"><code class="docutils literal notranslate"><span class="pre">YGNodeIsReferenceBaseline()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeIsSame"><code class="docutils literal notranslate"><span class="pre">YGNodeIsSame()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeLayoutGetBorder"><code class="docutils literal notranslate"><span class="pre">YGNodeLayoutGetBorder()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeLayoutGetBottom"><code class="docutils literal notranslate"><span class="pre">YGNodeLayoutGetBottom()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeLayoutGetDidLegacyStretchFlagAffectLayout"><code class="docutils literal notranslate"><span class="pre">YGNodeLayoutGetDidLegacyStretchFlagAffectLayout()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeLayoutGetDidUseLegacyFlag"><code class="docutils literal notranslate"><span class="pre">YGNodeLayoutGetDidUseLegacyFlag()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeLayoutGetDirection"><code class="docutils literal notranslate"><span class="pre">YGNodeLayoutGetDirection()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeLayoutGetHadOverflow"><code class="docutils literal notranslate"><span class="pre">YGNodeLayoutGetHadOverflow()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeLayoutGetHeight"><code class="docutils literal notranslate"><span class="pre">YGNodeLayoutGetHeight()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeLayoutGetLeft"><code class="docutils literal notranslate"><span class="pre">YGNodeLayoutGetLeft()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeLayoutGetMargin"><code class="docutils literal notranslate"><span class="pre">YGNodeLayoutGetMargin()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeLayoutGetPadding"><code class="docutils literal notranslate"><span class="pre">YGNodeLayoutGetPadding()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeLayoutGetRight"><code class="docutils literal notranslate"><span class="pre">YGNodeLayoutGetRight()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeLayoutGetTop"><code class="docutils literal notranslate"><span class="pre">YGNodeLayoutGetTop()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeLayoutGetWidth"><code class="docutils literal notranslate"><span class="pre">YGNodeLayoutGetWidth()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeMarkDirty"><code class="docutils literal notranslate"><span class="pre">YGNodeMarkDirty()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeMarkDirtyAndPropogateToDescendants"><code class="docutils literal notranslate"><span class="pre">YGNodeMarkDirtyAndPropogateToDescendants()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeNew"><code class="docutils literal notranslate"><span class="pre">YGNodeNew()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeNewWithConfig"><code class="docutils literal notranslate"><span class="pre">YGNodeNewWithConfig()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeRef"><code class="docutils literal notranslate"><span class="pre">YGNodeRef</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeRemoveAllChildren"><code class="docutils literal notranslate"><span class="pre">YGNodeRemoveAllChildren()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeRemoveChild"><code class="docutils literal notranslate"><span class="pre">YGNodeRemoveChild()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeReset"><code class="docutils literal notranslate"><span class="pre">YGNodeReset()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeSetBaselineFunc"><code class="docutils literal notranslate"><span class="pre">YGNodeSetBaselineFunc()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeSetChildren"><code class="docutils literal notranslate"><span class="pre">YGNodeSetChildren()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeSetContext"><code class="docutils literal notranslate"><span class="pre">YGNodeSetContext()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeSetHasNewLayout"><code class="docutils literal notranslate"><span class="pre">YGNodeSetHasNewLayout()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeSetIsReferenceBaseline"><code class="docutils literal notranslate"><span class="pre">YGNodeSetIsReferenceBaseline()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeSetMeasureFunc"><code class="docutils literal notranslate"><span class="pre">YGNodeSetMeasureFunc()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeSetNodeType"><code class="docutils literal notranslate"><span class="pre">YGNodeSetNodeType()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetAlignContent"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetAlignContent()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetAlignItems"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetAlignItems()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetAlignSelf"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetAlignSelf()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetAspectRatio"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetAspectRatio()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetBorder"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetBorder()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetDirection"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetDirection()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetDisplay"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetDisplay()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetFlex"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetFlex()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetFlexBasis"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetFlexBasis()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetFlexDirection"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetFlexDirection()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetFlexGrow"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetFlexGrow()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetFlexShrink"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetFlexShrink()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetFlexWrap"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetFlexWrap()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetHeight"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetHeight()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetJustify"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetJustify()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetMargin"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetMargin()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetMaxHeight"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetMaxHeight()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetMinHeight"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetMinHeight()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetMinWidth"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetMinWidth()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetOverflow"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetOverflow()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetPadding"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetPadding()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetPosition"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetPosition()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetPositionType"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetPositionType()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleGetWidth"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleGetWidth()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetAlignContent"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetAlignContent()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetAlignItems"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetAlignItems()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetAlignSelf"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetAlignSelf()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetAspectRatio"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetAspectRatio()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetBorder"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetBorder()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetDirection"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetDirection()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetDisplay"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetDisplay()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetFlex"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetFlex()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetFlexBasis"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetFlexBasis()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetFlexBasisAuto"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetFlexBasisAuto()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetFlexBasisPercent"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetFlexBasisPercent()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetFlexDirection"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetFlexDirection()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetFlexGrow"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetFlexGrow()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetFlexShrink"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetFlexShrink()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetFlexWrap"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetFlexWrap()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetHeight"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetHeight()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetHeightAuto"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetHeightAuto()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetHeightPercent"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetHeightPercent()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetJustifyContent"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetJustifyContent()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetMargin"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetMargin()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetMarginAuto"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetMarginAuto()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetMarginPercent"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetMarginPercent()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetMaxHeight"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetMaxHeight()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetMaxHeightPercent"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetMaxHeightPercent()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetMinHeight"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetMinHeight()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetMinHeightPercent"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetMinHeightPercent()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetMinWidth"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetMinWidth()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetMinWidthPercent"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetMinWidthPercent()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetOverflow"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetOverflow()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetPadding"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetPadding()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetPaddingPercent"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetPaddingPercent()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetPosition"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetPosition()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetPositionPercent"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetPositionPercent()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetPositionType"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetPositionType()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetWidth"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetWidth()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetWidthAuto"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetWidthAuto()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeStyleSetWidthPercent"><code class="docutils literal notranslate"><span class="pre">YGNodeStyleSetWidthPercent()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeSwapChild"><code class="docutils literal notranslate"><span class="pre">YGNodeSwapChild()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeType"><code class="docutils literal notranslate"><span class="pre">YGNodeType</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGNodeType.name"><code class="docutils literal notranslate"><span class="pre">YGNodeType.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGOverflow"><code class="docutils literal notranslate"><span class="pre">YGOverflow</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGOverflow.name"><code class="docutils literal notranslate"><span class="pre">YGOverflow.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGPositionType"><code class="docutils literal notranslate"><span class="pre">YGPositionType</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGPositionType.name"><code class="docutils literal notranslate"><span class="pre">YGPositionType.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGRoundValueToPixelGrid"><code class="docutils literal notranslate"><span class="pre">YGRoundValueToPixelGrid()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGSize"><code class="docutils literal notranslate"><span class="pre">YGSize</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGSize.width"><code class="docutils literal notranslate"><span class="pre">YGSize.width</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGSize.height"><code class="docutils literal notranslate"><span class="pre">YGSize.height</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGUnit"><code class="docutils literal notranslate"><span class="pre">YGUnit</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGUnit.name"><code class="docutils literal notranslate"><span class="pre">YGUnit.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGValue"><code class="docutils literal notranslate"><span class="pre">YGValue</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGValue.value"><code class="docutils literal notranslate"><span class="pre">YGValue.value</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGValue.unit"><code class="docutils literal notranslate"><span class="pre">YGValue.unit</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGWrap"><code class="docutils literal notranslate"><span class="pre">YGWrap</span></code></a><ul>
+<li><a class="reference internal" href="#poga.libpoga_capi.YGWrap.name"><code class="docutils literal notranslate"><span class="pre">YGWrap.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poga.libpoga_capi.poga_version"><code class="docutils literal notranslate"><span class="pre">poga_version()</span></code></a></li>
+<li><a class="reference internal" href="#poga.libpoga_capi.poga_yoga_version"><code class="docutils literal notranslate"><span class="pre">poga_yoga_version()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-poga.poga_layout">poga_layout module</a><ul>
+<li><a class="reference internal" href="#poga.poga_layout.PogaLayout"><code class="docutils literal notranslate"><span class="pre">PogaLayout</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_layout.YGDimensionFlexibility"><code class="docutils literal notranslate"><span class="pre">YGDimensionFlexibility</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-poga.poga_view">poga_view module</a><ul>
+<li><a class="reference internal" href="#poga.poga_view.PogaView"><code class="docutils literal notranslate"><span class="pre">PogaView</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1215,7 +1433,7 @@
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Hiram Deng.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.2.2.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

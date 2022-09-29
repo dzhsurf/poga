@@ -4,7 +4,7 @@ Poga Package
 
 .. note:: Current Version
 
-   Poga: 0.1.2
+   Poga: 0.1.5
 
    YogaLayout: 1.19.0
 
@@ -15,9 +15,15 @@ How to install poga package?
 
    pip install poga
 
-   from poga.libpoga_capi import *
+   from poga import *
 
    def main():
+      # use PogaLayout
+      layout = PogaLayout(MyPogaView())
+      # ...
+      layout.apply_layout()
+
+      # use capi directly
       node = YGNodeNew()
       YGNodeFree(node)
 
@@ -36,6 +42,13 @@ poga\_layout module
 ------------------------
 
 .. automodule:: poga.poga_layout
+   :members:
+   :show-inheritance:
+
+poga\_view module
+------------------------
+
+.. automodule:: poga.poga_view
    :members:
    :show-inheritance:
 
