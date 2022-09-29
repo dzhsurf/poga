@@ -23,7 +23,11 @@ class PogaLayout:
     __node: YGNodeRef = None
     __enabled: bool = True
     __is_included_in_layout: bool = True
-    __view: ReferenceType[PogaView] = None
+    if sys.version_info >= (3, 8):
+        # Python 3.8+ specific definitions and imports
+        __view: ReferenceType[PogaView] = None
+    else:
+        __view: Any = None
 
     @staticmethod
     def release_global_config():
@@ -57,7 +61,6 @@ class PogaLayout:
         self.flex_wrap = YGWrap.Wrap
         self.justify_content = YGJustify.FlexStart
         # self.aspect_ratio
-
 
     def __del__(self):
         YGNodeSetContext(self.__node, None)
@@ -660,8 +663,8 @@ class PogaLayout:
         if view is None:
             return (0.0, 0.0)
 
-        #size_that_fits = (0.0, 0.0)
-        #if view.subviews_count() > 0:
+        # size_that_fits = (0.0, 0.0)
+        # if view.subviews_count() > 0:
         size_that_fits = view.size_that_fits(constrained_width, constrained_height)
 
         return YGSize(

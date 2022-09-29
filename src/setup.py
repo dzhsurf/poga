@@ -496,9 +496,7 @@ def main():
         ],
     )
 
-    # with io.open('README.rst', encoding="utf-8") as h:
-    #     long_description = h.read()
-    long_description = ""
+    # long_description = "Python binding for YogaLayout"
 
     cmdclass = {
         "build_ext": build_ext,
@@ -517,7 +515,7 @@ def main():
             "Source": "https://github.com/dzhsurf/poga",
         },
         description="Python interface for YogaLayout",
-        long_description=long_description,
+        # long_description=long_description,
         maintainer="Hiram Deng",
         maintainer_email="dzhsurf@gmail.com",
         license="MIT",
