@@ -4,6 +4,8 @@
 
 #include <Yoga.h>
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+#include <pybind11/functional.h>
 #include <map>
 
 namespace py = pybind11;
@@ -37,12 +39,12 @@ class PogaManager {
     void set_node_context(const PGNode& node, const py::object& obj);
     py::object get_node_context(const PGNode& node);
 
-    void update_measure_method(const PGNode& node, const py::function& func);
-    void update_baseline_method(const PGNode& node, const py::function& func);
+    void update_measure_method(const PGNode& node, const std::optional<py::function>& fn);
+    void update_baseline_method(const PGNode& node, const std::optional<py::function>& fn);
     void update_config_logger_method(const PGConfig& config,
-                                     const py::function& func);
+                                     const std::optional<py::function>& fn);
     void update_config_clone_node_method(const PGConfig& config,
-                                         const py::function& func);
+                                         const std::optional<py::function>& fn);
 
     void release_node_resources(const PGNode& node);
     void release_config_resources(const PGConfig& config);
@@ -74,10 +76,10 @@ class PogaManager {
    private:
     PogaManager();
 
-    py::function get_measure_method_by_node(YGNodeRef node);
-    py::function get_baseline_method_by_node(YGNodeRef node);
-    py::function get_config_logger_method_by_config(YGConfigRef config);
-    py::function get_config_clone_node_method_by_config(YGConfigRef config);
+    std::optional<py::function> get_measure_method_by_node(YGNodeRef node);
+    std::optional<py::function> get_baseline_method_by_node(YGNodeRef node);
+    std::optional<py::function> get_config_logger_method_by_config(YGConfigRef config);
+    std::optional<py::function> get_config_clone_node_method_by_config(YGConfigRef config);
 
     std::map<YGNodeRef, py::object> _node_context_map;
     std::map<YGNodeRef, py::function> _node_measure_func_map;

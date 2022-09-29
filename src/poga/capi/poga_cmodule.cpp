@@ -1,5 +1,8 @@
 #include <Yoga.h>
+#include <pybind11/functional.h>
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+// #include <optional>
 #include "poga_manager.hpp"
 
 namespace py = pybind11;
@@ -25,9 +28,12 @@ PYBIND11_MODULE(libpoga_capi, m) {
     m.def("YGRoundValueToPixelGrid", &YGRoundValueToPixelGrid, py::arg("value"),
           py::arg("point_scale_factor"), py::arg("force_ceil"),
           py::arg("force_floor"));
-    m.def("YGNodeIsSame", [](const PGNode& node1, const PGNode& node2){
-        return node1.get() == node2.get();
-    }, py::arg("node1"), py::arg("node2"));
+    m.def(
+        "YGNodeIsSame",
+        [](const PGNode& node1, const PGNode& node2) {
+            return node1.get() == node2.get();
+        },
+        py::arg("node1"), py::arg("node2"));
 
     // base types
     m.attr("YGUndefined") = py::float_(YGUndefined);
@@ -331,7 +337,7 @@ Args:
         [](const PGNode& node, const py::object& pyobj) {
             PogaManager::get_instance().set_node_context(node, pyobj);
             if (pyobj.is_none()) {
-                YGNodeSetContext(node.get(), nullptr);
+                YGNodeSetContext(node.get(), NULL);
             } else {
                 YGNodeSetContext(node.get(), node.get());
             }
@@ -344,16 +350,16 @@ Args:
         py::arg("node"));
     m.def(
         "YGNodeSetMeasureFunc",
-        [](const PGNode& node, const py::function& func) {
-            poga::PogaManager::get_instance().update_measure_method(node, func);
-            if (func.is_none()) {
-                YGNodeSetMeasureFunc(node.get(), nullptr);
-            } else {
+        [](const PGNode& node, const std::optional<py::function>& fn) {
+            poga::PogaManager::get_instance().update_measure_method(node, fn);
+            if (fn) {
                 YGNodeSetMeasureFunc(node.get(),
                                      poga::PogaManager::poga_measure_method);
+            } else {
+                YGNodeSetMeasureFunc(node.get(), NULL);
             }
         },
-        py::arg("node"), py::arg("fn"), R"(Callback function define
+        py::arg("node"), py::arg("fn") = py::none(), R"(Callback function define
 
 .. code-block::
 
@@ -380,17 +386,16 @@ Returns:
         py::arg("node"));
     m.def(
         "YGNodeSetBaselineFunc",
-        [](const PGNode& node, const py::function& func) {
-            poga::PogaManager::get_instance().update_baseline_method(node,
-                                                                     func);
-            if (func.is_none()) {
-                YGNodeSetBaselineFunc(node.get(), nullptr);
-            } else {
+        [](const PGNode& node, const std::optional<py::function>& fn) {
+            poga::PogaManager::get_instance().update_baseline_method(node, fn);
+            if (fn) {
                 YGNodeSetBaselineFunc(node.get(),
                                       poga::PogaManager::poga_baseline_method);
+            } else {
+                YGNodeSetBaselineFunc(node.get(), NULL);
             }
         },
-        py::arg("node"), py::arg("fn"));
+        py::arg("node"), py::arg("fn") = py::none());
     // m.def("YGNodeGetDirtiedFunc",
     //       [](const PGNode& node) { YGNodeGetDirtiedFunc(node.get()); });
     // m.def("YGNodeSetDirtiedFunc", [](const PGNode& node) {
@@ -861,17 +866,17 @@ Returns:
     // YGConfig interface
     m.def(
         "YGConfigSetLogger",
-        [](const PGConfig& config, const py::function& func) {
+        [](const PGConfig& config, const std::optional<py::function>& fn) {
             poga::PogaManager::get_instance().update_config_logger_method(
-                config.get(), func);
-            if (func.is_none()) {
-                YGConfigSetLogger(config.get(), nullptr);
-            } else {
+                config.get(), fn);
+            if (fn) {
                 YGConfigSetLogger(config.get(),
                                   poga::PogaManager::poga_config_logger_method);
+            } else {
+                YGConfigSetLogger(config.get(), NULL);
             }
         },
-        py::arg("config"), py::arg("fn"));
+        py::arg("config"), py::arg("fn") = py::none());
     m.def(
         "YGConfigSetPrintTreeFlag",
         [](const PGConfig& config, bool enabled) {

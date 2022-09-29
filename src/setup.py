@@ -153,7 +153,7 @@ def add_ext_cflags(ext, compiler):
     ]
 
     args += [
-        "-std=gnu++14",
+        "-std=gnu++17",
     ]
     if sys.platform == "darwin":
         args += [
