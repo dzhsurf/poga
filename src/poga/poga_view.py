@@ -11,7 +11,7 @@ class PogaView(ABC):
     """PogaView interface"""
 
     @abstractmethod
-    def size_that_fits(self) -> Tuple[float, float]:
+    def size_that_fits(self, width: float, height: float) -> Tuple[float, float]:
         pass
 
     @abstractmethod
