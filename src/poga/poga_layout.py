@@ -48,6 +48,16 @@ class PogaLayout:
         self.__is_included_in_layout = True
         self.__view = weakref.ref(view)
         YGNodeSetContext(self.__node, self.__view)
+        # initial default value
+        self.direction = YGDirection.LTR
+        self.flex_direction = YGFlexDirection.Row
+        self.align_content = YGAlign.FlexStart
+        self.align_items = YGAlign.FlexStart
+        self.align_self = YGAlign.Auto
+        self.flex_wrap = YGWrap.Wrap
+        self.justify_content = YGJustify.FlexStart
+        # self.aspect_ratio
+
 
     def __del__(self):
         YGNodeSetContext(self.__node, None)
@@ -610,6 +620,7 @@ class PogaLayout:
                     continue
                 if poga_layout.is_enabled and poga_layout.is_included_in_layout:
                     return False
+
         return True
 
     @property
@@ -649,9 +660,9 @@ class PogaLayout:
         if view is None:
             return (0.0, 0.0)
 
-        size_that_fits = (0.0, 0.0)
-        if view.subviews_count() > 0:
-            size_that_fits = view.size_that_fits((constrained_width, constrained_height))
+        #size_that_fits = (0.0, 0.0)
+        #if view.subviews_count() > 0:
+        size_that_fits = view.size_that_fits(constrained_width, constrained_height)
 
         return YGSize(
             PogaLayout.__sanitize_measurement__(constrained_width, size_that_fits[0], width_mode),
