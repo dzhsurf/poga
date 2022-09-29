@@ -25,6 +25,9 @@ PYBIND11_MODULE(libpoga_capi, m) {
     m.def("YGRoundValueToPixelGrid", &YGRoundValueToPixelGrid, py::arg("value"),
           py::arg("point_scale_factor"), py::arg("force_ceil"),
           py::arg("force_floor"));
+    m.def("YGNodeIsSame", [](const PGNode& node1, const PGNode& node2){
+        return node1.get() == node2.get();
+    }, py::arg("node1"), py::arg("node2"));
 
     // base types
     m.attr("YGUndefined") = py::float_(YGUndefined);

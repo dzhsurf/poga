@@ -1,5 +1,6 @@
 from . import libpoga_capi
 from .poga_layout import PogaLayout
+from .poga_view import PogaView
 
 
 def get_include():
