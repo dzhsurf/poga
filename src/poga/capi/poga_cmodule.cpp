@@ -9,7 +9,7 @@ namespace py = pybind11;
 namespace poga {
 
 std::string poga_string_version() {
-    return "0.1.5";
+    return "0.1.6";
 }
 
 std::string poga_yoga_string_version() {
