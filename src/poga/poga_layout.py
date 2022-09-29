@@ -23,8 +23,8 @@ class PogaLayout:
     __node: YGNodeRef = None
     __enabled: bool = True
     __is_included_in_layout: bool = True
-    if sys.version_info >= (3, 8):
-        # Python 3.8+ specific definitions and imports
+    if sys.version_info >= (3, 9):
+        # Python 3.9+ specific definitions and imports
         __view: ReferenceType[PogaView] = None
     else:
         __view: Any = None
