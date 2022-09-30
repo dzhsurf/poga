@@ -17,8 +17,9 @@ class YGDimensionFlexibility(Enum):
 class PogaLayout:
     """PogaLayout"""
 
-    global __global_config
+    global __global_config, __global_point_scale_factor
     __global_config = None
+    __global_point_scale_factor = 1.0
 
     __node: YGNodeRef = None
     __enabled: bool = True
@@ -38,18 +39,28 @@ class PogaLayout:
             PogaLayout.__global_config = None
 
     @staticmethod
+    def config_set_point_scale_factor(scale: float):
+        global __global_point_scale_factor
+        __global_point_scale_factor = scale
+        YGConfigSetPointScaleFactor(PogaLayout.get_global_config(), __global_point_scale_factor)
+
+    @staticmethod
+    def config_get_point_scale_factor():
+        global __global_point_scale_factor
+        return __global_point_scale_factor
+
+    @staticmethod
     def get_global_config() -> YGConfigRef:
         """Return global config
 
         Returns:
             YGConfigRef: Return global config object.
         """
-        global __global_config
+        global __global_config, __global_point_scale_factor
         if __global_config is None:
             __global_config = YGConfigNew()
             YGConfigSetExperimentalFeatureEnabled(__global_config, YGExperimentalFeature.WebFlexBasis, True)
-            scale: float = 2.0  # TODO: get screen scale
-            YGConfigSetPointScaleFactor(__global_config, scale)
+            YGConfigSetPointScaleFactor(__global_config, __global_point_scale_factor)
         return __global_config
 
     def __init__(self, view: PogaView):
