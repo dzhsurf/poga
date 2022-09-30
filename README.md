@@ -14,6 +14,7 @@ Install
 -------
 
 ```shell
+    # Python version requires >= 3.7
     pip install poga
 ```
 
@@ -50,4 +51,24 @@ Using Binding CAPI directily
 Building
 --------
 
-TODO: ...
+Since there's a need for a cpp compiler to build the python extension module, you should install the build-essential tools before you build the package. 
+
+Windows: VS16 - VS2019
+
+Mac: XCode commandline-tools
+
+Linux: TODO...
+
+```shell
+# checkout the code and enter the diretory
+conda env create -f conda-env.yaml # setup the py env. highly recommended.
+conda activate poga
+# or you can just install the dependencies by poetry. 
+poetry install
+# after finish setup the environment. go to install the package.
+pip install -e . # install package
+cd src && pip install -e . # enter the src dictory use the setuptools to build the libpoga_capi module
+# now, all done. run the sample code 
+python example/main.py
+```
+
