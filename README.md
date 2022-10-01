@@ -53,11 +53,11 @@ Building
 
 Since there's a need for a cpp compiler to build the python extension module, you should install the build-essential tools before you build the package. 
 
-Windows: VS16 - VS2019
+* Windows: `VS16 - VS2019 Build Tools`
 
-Mac: XCode commandline-tools
+* MacOS: `XCode Command Line Tools`
 
-Linux: TODO...
+* Linux (Ubuntu):  `build-essential`
 
 ```shell
 # checkout the code and enter the diretory
