@@ -190,7 +190,7 @@
 </section>
 <section id="quickstart">
 <h3>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">¶</a></h3>
-<p>Using high-level interface PogaLayout</p>
+<p>Use high-level interface PogaLayout</p>
 <p>More details you can refer to the PGLayout of the pydui-gtk project below.</p>
 <p>https://github.com/dzhsurf/pydui</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">poga</span> <span class="kn">import</span> <span class="n">PogaLayout</span>
@@ -202,7 +202,7 @@
         <span class="n">layout</span><span class="o">.</span><span class="n">apply_layout</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Using Binding CAPI directily</p>
+<p>Use Binding CAPI directily</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">poga.libpoga_capi</span> <span class="kn">import</span> <span class="o">*</span>
 
     <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
@@ -223,13 +223,11 @@
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># checkout the code and enter the diretory</span>
 conda env create -f conda-env.yaml <span class="c1"># setup the py env. highly recommended.</span>
 conda activate poga
+pip install -e .
 <span class="c1"># or you can just install the dependencies by poetry.</span>
 poetry install
-<span class="c1"># after finish setup the environment. go to install the package.</span>
-pip install -e . <span class="c1"># install package</span>
-<span class="nb">cd</span> src <span class="o">&amp;&amp;</span> pip install -e . <span class="c1"># enter the src dictory use the setuptools to build the libpoga_capi module</span>
 <span class="c1"># now, all done. run the sample code</span>
-python example/main.py
+python src/example/main.py
 </pre></div>
 </div>
 </section>
@@ -403,7 +401,7 @@ python -m line_profiler benchmark.py.lprof
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Hiram Deng.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.2.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.2.3.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

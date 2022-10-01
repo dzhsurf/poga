@@ -73,13 +73,11 @@ Since there's a need for a cpp compiler to build the python extension module, yo
 # checkout the code and enter the diretory
 conda env create -f conda-env.yaml # setup the py env. highly recommended.
 conda activate poga
+pip install -e . 
 # or you can just install the dependencies by poetry. 
 poetry install
-# after finish setup the environment. go to install the package.
-pip install -e . # install package
-cd src && pip install -e . # enter the src dictory use the setuptools to build the libpoga_capi module
 # now, all done. run the sample code 
-python example/main.py
+python src/example/main.py
 ```
 
 
