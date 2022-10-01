@@ -20,8 +20,7 @@ def stack_with_flex():
         YGNodeInsertChild(root, child, 0)
 
     YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
-    # TODO:
-    # YGNodeFreeRecursive(root)
+    YGNodeFreeRecursive(root)
 
 @profile
 def align_stretch_in_undefined_axis():
@@ -33,7 +32,7 @@ def align_stretch_in_undefined_axis():
         YGNodeInsertChild(root, child, 0)
 
     YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
-    # YGNodeFreeRecursive(root)
+    YGNodeFreeRecursive(root)
 
 @profile
 def nested_flex():
@@ -50,7 +49,7 @@ def nested_flex():
             YGNodeInsertChild(child, grand_child, 0);
 
     YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
-    # YGNodeFreeRecursive(root)
+    YGNodeFreeRecursive(root)
 
 
 @profile
@@ -87,7 +86,7 @@ def huge_nested_layout():
                     YGNodeInsertChild(grand_grand_child, grand_grand_grand_child, 0);
 
     YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
-    # YGNodeFreeRecursive(root)
+    YGNodeFreeRecursive(root)
 
 def main():
     stack_with_flex()

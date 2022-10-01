@@ -2,14 +2,13 @@
 #include <pybind11/functional.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
-// #include <optional>
 #include "poga_manager.hpp"
 
 namespace py = pybind11;
 namespace poga {
 
 std::string poga_string_version() {
-    return "0.1.6";
+    return "0.1.7";
 }
 
 std::string poga_yoga_string_version() {
@@ -194,10 +193,15 @@ Attributes:
             YGNodeFree(node.get());
         },
         py::arg("node"));
-    // m.def("YGNodeFreeRecursive", [](const PGNode& node) {
-    //     PogaManager::get_instance().release_node_resources(node);
-    //     YGNodeFreeRecursive(node.get());
-    // });
+    m.def(
+        "YGNodeFreeRecursive",
+        [](const PGNode& node) {
+            // YGNodeFreeRecursive(node.get());
+            YGNodeFreeRecursiveWithCleanupFunc(node.get(), [](YGNodeRef node) {
+                PogaManager::get_instance().release_node_resources(node);
+            });
+        },
+        py::arg("node"));
     m.def(
         "YGNodeReset", [](const PGNode& node) { YGNodeReset(node.get()); },
         py::arg("node"));
