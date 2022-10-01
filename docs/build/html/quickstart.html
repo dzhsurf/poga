@@ -182,7 +182,8 @@
 </section>
 <section id="install">
 <h3>Install<a class="headerlink" href="#install" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>    pip install poga
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># Python version requires &gt;= 3.7</span>
+    pip install poga
 </pre></div>
 </div>
 </section>
@@ -212,7 +213,24 @@
 </section>
 <section id="building">
 <h3>Building<a class="headerlink" href="#building" title="Permalink to this heading">¶</a></h3>
-<p>TODO: …</p>
+<p>Since there’s a need for a cpp compiler to build the python extension module, you should install the build-essential tools before you build the package.</p>
+<ul class="simple">
+<li><p>Windows: <code class="docutils literal notranslate"><span class="pre">VS16</span> <span class="pre">-</span> <span class="pre">VS2019</span> <span class="pre">Build</span> <span class="pre">Tools</span></code></p></li>
+<li><p>MacOS: <code class="docutils literal notranslate"><span class="pre">XCode</span> <span class="pre">Command</span> <span class="pre">Line</span> <span class="pre">Tools</span></code></p></li>
+<li><p>Linux (Ubuntu):  <code class="docutils literal notranslate"><span class="pre">build-essential</span></code></p></li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># checkout the code and enter the diretory</span>
+conda env create -f conda-env.yaml <span class="c1"># setup the py env. highly recommended.</span>
+conda activate poga
+<span class="c1"># or you can just install the dependencies by poetry.</span>
+poetry install
+<span class="c1"># after finish setup the environment. go to install the package.</span>
+pip install -e . <span class="c1"># install package</span>
+<span class="nb">cd</span> src <span class="o">&amp;&amp;</span> pip install -e . <span class="c1"># enter the src dictory use the setuptools to build the libpoga_capi module</span>
+<span class="c1"># now, all done. run the sample code</span>
+python example/main.py
+</pre></div>
+</div>
 </section>
 </section>
 </section>
