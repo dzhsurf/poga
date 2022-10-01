@@ -1,7 +1,7 @@
 .PHONY:
 .DEFAULT_GOAL := help
 
-SRC_DIRS := src tests
+SRC_DIRS := src tests benchmark
 define PRINT_HELP_PYSCRIPT
 import re, sys
 

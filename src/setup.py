@@ -460,9 +460,9 @@ class build_ext(du_build_ext):
                 "/std:c++17",
             ]
             ext.extra_compile_args += args
-            #ext.libraries += ["yoga"]
+            # ext.libraries += ["yoga"]
         else:
-            #ext.libraries += ["yoga"]
+            # ext.libraries += ["yoga"]
             # pkg_config_version_check('pybind11', YOGA_VERSION_REQUIRED)
             # ext.include_dirs += pkg_config_parse('--cflags-only-I', 'libyoga')
             # ext.library_dirs += pkg_config_parse('--libs-only-L', 'libyoga')
@@ -478,7 +478,6 @@ def main():
 
     if sys.version_info[0] < 3:
         raise Exception("Python 2 no longer supported")
-
 
     poga_ext = Extension(
         name="poga.libpoga_capi",

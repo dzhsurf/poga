@@ -1,13 +1,15 @@
 from poga import *
 from poga.libpoga_capi import *
 
-def measure_fn(node: YGNodeRef,
-    width: float, width_mode: YGMeasureMode,
-    height: float, height_mode: YGMeasureMode) -> YGSize:
+
+def measure_fn(
+    node: YGNodeRef, width: float, width_mode: YGMeasureMode, height: float, height_mode: YGMeasureMode
+) -> YGSize:
     return YGSize(
         10 if width_mode == YGMeasureMode.Undefined else width,
         10 if height_mode == YGMeasureMode.Undefined else height,
     )
+
 
 @profile
 def stack_with_flex():
@@ -22,6 +24,7 @@ def stack_with_flex():
     YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
     YGNodeFreeRecursive(root)
 
+
 @profile
 def align_stretch_in_undefined_axis():
     root = YGNodeNew()
@@ -34,6 +37,7 @@ def align_stretch_in_undefined_axis():
     YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
     YGNodeFreeRecursive(root)
 
+
 @profile
 def nested_flex():
     root = YGNodeNew()
@@ -44,9 +48,9 @@ def nested_flex():
 
         for ii in range(10):
             grand_child = YGNodeNew()
-            YGNodeSetMeasureFunc(grand_child, measure_fn);
-            YGNodeStyleSetFlex(grand_child, 1);
-            YGNodeInsertChild(child, grand_child, 0);
+            YGNodeSetMeasureFunc(grand_child, measure_fn)
+            YGNodeStyleSetFlex(grand_child, 1)
+            YGNodeInsertChild(child, grand_child, 0)
 
     YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
     YGNodeFreeRecursive(root)
@@ -56,7 +60,7 @@ def nested_flex():
 def huge_nested_layout():
     root = YGNodeNew()
     for i in range(10):
-        child = YGNodeNew();
+        child = YGNodeNew()
         YGNodeStyleSetFlexGrow(child, 1)
         YGNodeStyleSetWidth(child, 10)
         YGNodeStyleSetHeight(child, 10)
@@ -79,14 +83,15 @@ def huge_nested_layout():
 
                 for iiii in range(10):
                     grand_grand_grand_child = YGNodeNew()
-                    YGNodeStyleSetFlexDirection(grand_grand_grand_child, YGFlexDirection.Row);
-                    YGNodeStyleSetFlexGrow(grand_grand_grand_child, 1);
-                    YGNodeStyleSetWidth(grand_grand_grand_child, 10);
-                    YGNodeStyleSetHeight(grand_grand_grand_child, 10);
-                    YGNodeInsertChild(grand_grand_child, grand_grand_grand_child, 0);
+                    YGNodeStyleSetFlexDirection(grand_grand_grand_child, YGFlexDirection.Row)
+                    YGNodeStyleSetFlexGrow(grand_grand_grand_child, 1)
+                    YGNodeStyleSetWidth(grand_grand_grand_child, 10)
+                    YGNodeStyleSetHeight(grand_grand_grand_child, 10)
+                    YGNodeInsertChild(grand_grand_child, grand_grand_grand_child, 0)
 
     YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
     YGNodeFreeRecursive(root)
+
 
 def main():
     stack_with_flex()
@@ -94,5 +99,6 @@ def main():
     nested_flex()
     huge_nested_layout()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
