@@ -1,6 +1,6 @@
 
-src/build/
-src/dist/
+build/
+dist/
 *.egg-info
 *.pyc
 *.swp

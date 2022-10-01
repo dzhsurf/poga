@@ -4,11 +4,15 @@
 #include <pybind11/stl.h>
 #include "poga_manager.hpp"
 
+#define POGA_STRINGIFY(s) POGA_STRINGIFY_ARG(s)
+#define POGA_STRINGIFY_ARG(s) #s
+
 namespace py = pybind11;
 namespace poga {
 
 std::string poga_string_version() {
-    return "0.1.7";
+    return POGA_STRINGIFY(POGA_VERSION_MAJOR) "." POGA_STRINGIFY(
+        POGA_VERSION_MINOR) "." POGA_STRINGIFY(POGA_VERSION_MICRO);
 }
 
 std::string poga_yoga_string_version() {

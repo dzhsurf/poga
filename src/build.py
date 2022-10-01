@@ -7,14 +7,14 @@ import subprocess
 import sys
 from distutils import log, sysconfig
 from distutils.ccompiler import new_compiler
+from distutils.command.build_ext import build_ext
 from distutils.core import Command, Distribution, Extension
 from distutils.sysconfig import customize_compiler
 from distutils.util import change_root
 
 import pybind11
-from setuptools import find_packages, setup
 
-POGA_VERSION = "0.1.7"
+POGA_VERSION = "0.1.10"
 YOGA_VERSION_REQUIRED = "1.19.0"
 
 
@@ -275,7 +275,7 @@ class install_poga_header(Command):
         return self.outfiles
 
     def get_inputs(self):
-        return [os.path.join("poga/capi", "poga.hpp")]
+        return [os.path.join("src/poga/capi", "poga.hpp")]
 
     def run(self):
         hname = "poga.hpp"
@@ -382,35 +382,31 @@ class build_ext(du_build_ext):
         du_build_ext.run(self)
 
 
-def main():
-
-    if sys.version_info[0] < 3:
-        raise Exception("Python 2 no longer supported")
-
+def build(setup_kwargs):
     poga_ext = Extension(
         name="poga.libpoga_capi",
         sources=[
-            "poga/capi/poga_cmodule.cpp",
-            "poga/capi/poga_manager.cpp",
+            "src/poga/capi/poga_cmodule.cpp",
+            "src/poga/capi/poga_manager.cpp",
             # Yoga src
-            "deps/yoga/event/event.cpp",
-            "deps/yoga/internal/experiments.cpp",
-            "deps/yoga/log.cpp",
-            "deps/yoga/Utils.cpp",
-            "deps/yoga/YGConfig.cpp",
-            "deps/yoga/YGEnums.cpp",
-            "deps/yoga/YGLayout.cpp",
-            "deps/yoga/YGNode.cpp",
-            "deps/yoga/YGNodePrint.cpp",
-            "deps/yoga/YGStyle.cpp",
-            "deps/yoga/YGValue.cpp",
-            "deps/yoga/Yoga.cpp",
+            "src/poga/deps/yoga/event/event.cpp",
+            "src/poga/deps/yoga/internal/experiments.cpp",
+            "src/poga/deps/yoga/log.cpp",
+            "src/poga/deps/yoga/Utils.cpp",
+            "src/poga/deps/yoga/YGConfig.cpp",
+            "src/poga/deps/yoga/YGEnums.cpp",
+            "src/poga/deps/yoga/YGLayout.cpp",
+            "src/poga/deps/yoga/YGNode.cpp",
+            "src/poga/deps/yoga/YGNodePrint.cpp",
+            "src/poga/deps/yoga/YGStyle.cpp",
+            "src/poga/deps/yoga/YGValue.cpp",
+            "src/poga/deps/yoga/Yoga.cpp",
         ],
         libraries=[],
         library_dirs=[],
         include_dirs=[
-            "deps",
-            "deps/yoga",
+            "src/poga/deps",
+            "src/poga/deps/yoga",
             pybind11.get_include(),
         ],
         define_macros=[
@@ -420,50 +416,19 @@ def main():
         ],
     )
 
-    # long_description = "Python binding for YogaLayout"
-
     cmdclass = {
         "build_ext": build_ext,
-        "install_lib": install_lib,
-        "install_pkgconfig": install_pkgconfig,
-        "install_poga_header": install_poga_header,
-        # "test": test_cmd,
-        # "build_tests": build_tests,
-        "sdist": sdist,
+        # "install_lib": install_lib,
+        # "install_pkgconfig": install_pkgconfig,
+        # "install_poga_header": install_poga_header,
+        # # "test": test_cmd,
+        # # "build_tests": build_tests,
+        # "sdist": sdist,
     }
-    setup(
-        name="poga",
-        version=POGA_VERSION,
-        url="https://dzhsurf.github.io/poga",
-        project_urls={
-            "Source": "https://github.com/dzhsurf/poga",
-        },
-        description="Python interface for YogaLayout",
-        # long_description=long_description,
-        maintainer="Hiram Deng",
-        maintainer_email="dzhsurf@gmail.com",
-        license="MIT",
-        ext_modules=[poga_ext],
-        packages=find_packages(include=["poga", "poga.*"]),
-        package_data={
-            "poga": [
-                "*.pyi",
-                "py.typed",
-                "*.so",
-                "*.dll",
-            ],
-        },
-        classifiers=[
-            "Operating System :: OS Independent",
-            "Programming Language :: Python :: 3",
-            "Programming Language :: Python :: Implementation :: CPython",
-            "Programming Language :: Python :: Implementation :: PyPy",
-            "License :: OSI Approved :: MIT ",
-        ],
-        cmdclass=cmdclass,
-        python_requires=">=3.7",
+
+    setup_kwargs.update(
+        {
+            "ext_modules": [poga_ext],
+            "cmdclass": cmdclass,
+        }
     )
-
-
-if __name__ == "__main__":
-    main()

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poga"
-version = "0.1.7"
+version = "0.1.10"
 description = "Python bindings for YogaLayout"
 authors = ["dzhsurf <dzhsurf@gmail.com>"]
 keywords = ["YogaLayout", "Yoga", "Poga"]
@@ -10,9 +10,10 @@ homepage = "https://github.com/dzhsurf/poga"
 repository = "https://github.com/dzhsurf/poga"
 include = [ "LICENSE" ]
 packages = [
-	{ include = "poga", from = "src" }
+	{ include = "poga", from = "src" },
 ]
-exclude = [ "**/*.pyc", "**/*.hpp", "**/*.cpp" ]
+exclude = [ "**/*.pyc" ]
+build = "src/build.py"
 
 [tool.poetry.dependencies]
 python = ">=3.7"
@@ -21,16 +22,17 @@ python = ">=3.7"
 black = ">=22.8.0"
 sphinx = ">=5.1.1"
 pytest = ">=7.1.3"
-pybind11 = ">=2.10.0"
 piccolo-theme = ">=0.12.0"
 myst_parser = ">=0.18.1"
 line-profiler = ">=3.5.1"
+pybind11 = ">=2.10.0"
 
 [tool.poetry.scripts]
 
 [build-system]
-requires = ["poetry-core>=1.0.0", "setuptools", "wheel"]
+requires = ["poetry-core>=1.0.0", "setuptools", "wheel", "pybind11>=2.10.0"]
 build-backend = "poetry.core.masonry.api"
+
 
 [tool.black]
 line-length = 120

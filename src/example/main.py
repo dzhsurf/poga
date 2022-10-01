@@ -1,6 +1,7 @@
 from typing import Iterable, Tuple
 
 from poga import *
+from poga import libpoga_capi
 
 
 class MyView(PogaView):
@@ -30,6 +31,7 @@ class MyView(PogaView):
 
 
 def main():
+    print(libpoga_capi.poga_version())
     print(dir(libpoga_capi))
     view = MyView()
     layout = PogaLayout(view)
