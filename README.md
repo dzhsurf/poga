@@ -90,27 +90,27 @@ MacBook Pro (15-inch, 2016)
 
 
 
-```plain
+```
 Timer unit: 1e-06 s
 
 Total time: 0.000157 s
 File: benchmark.py
 Function: stack_with_flex at line 12
 
-Line #  Hits         Time  Per Hit   % Time  Line Contents
-12                                           @profile
-13                                           def stack_with_flex():
-14         1         28.0     28.0     17.8      root = YGNodeNew()
-15         1          8.0      8.0      5.1      YGNodeStyleSetWidth(root, 100)
-16         1          2.0      2.0      1.3      YGNodeStyleSetHeight(root, 100)
-17        11          8.0      0.7      5.1      for i in range(10):
-18        10         27.0      2.7     17.2          child = YGNodeNew()
-19        10         17.0      1.7     10.8          YGNodeStyleSetFlex(child, i)
-20        10         17.0      1.7     10.8          YGNodeInsertChild(root, child, 0)
-21
-22         1         50.0     50.0     31.8      YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
-23                                               # TODO:
-24                                               # YGNodeFreeRecursive(root)
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+    12                                           @profile
+    13                                           def stack_with_flex():
+    14         1         28.0     28.0     17.8      root = YGNodeNew()
+    15         1          8.0      8.0      5.1      YGNodeStyleSetWidth(root, 100)
+    16         1          2.0      2.0      1.3      YGNodeStyleSetHeight(root, 100)
+    17        11          8.0      0.7      5.1      for i in range(10):
+    18        10         27.0      2.7     17.2          child = YGNodeNew()
+    19        10         17.0      1.7     10.8          YGNodeStyleSetFlex(child, i)
+    20        10         17.0      1.7     10.8          YGNodeInsertChild(root, child, 0)
+    21
+    22         1         50.0     50.0     31.8      YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
+    23                                               # TODO:
+    24                                               # YGNodeFreeRecursive(root)
 
 Total time: 0.000201 s
 File: benchmark.py

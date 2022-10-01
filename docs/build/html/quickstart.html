@@ -239,118 +239,113 @@ python -m line_profiler benchmark.py.lprof
 </pre></div>
 </div>
 <p>MacBook Pro (15-inch, 2016)</p>
-<ul>
+<ul class="simple">
 <li><p>Processor 2.7GHz Quad-core Intel Core i7</p></li>
-<li><p>Memory 16GB 2133 MHz LPDDR3</p>
-<p>Timer unit: 1e-06 s</p>
-<p>Total time: 0.000157 s
-File: benchmark.py
-Function: stack_with_flex at line 12</p>
-</li>
+<li><p>Memory 16GB 2133 MHz LPDDR3</p></li>
 </ul>
-</section>
-</section>
-<section id="line-hits-time-per-hit-time-line-contents">
-<h2>Line #  Hits         Time  Per Hit   % Time  Line Contents<a class="headerlink" href="#line-hits-time-per-hit-time-line-contents" title="Permalink to this heading">¶</a></h2>
-<p>12                                           &#64;profile
-13                                           def stack_with_flex():
-14         1         28.0     28.0     17.8      root = YGNodeNew()
-15         1          8.0      8.0      5.1      YGNodeStyleSetWidth(root, 100)
-16         1          2.0      2.0      1.3      YGNodeStyleSetHeight(root, 100)
-17        11          8.0      0.7      5.1      for i in range(10):
-18        10         27.0      2.7     17.2          child = YGNodeNew()
-19        10         17.0      1.7     10.8          YGNodeStyleSetFlex(child, i)
-20        10         17.0      1.7     10.8          YGNodeInsertChild(root, child, 0)
-21
-22         1         50.0     50.0     31.8      YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
-23                                               # TODO:
-24                                               # YGNodeFreeRecursive(root)</p>
-<p>Total time: 0.000201 s
-File: benchmark.py
-Function: align_stretch_in_undefined_axis at line 26</p>
-</section>
-<section id="id1">
-<h2>Line #      Hits         Time  Per Hit   % Time  Line Contents<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  26                                           @profile
-  27                                           def align_stretch_in_undefined_axis():
-  28         1          2.0      2.0      1.0      root = YGNodeNew()
-  29        11          6.0      0.5      3.0      for i in range(10):
-  30        10         19.0      1.9      9.5          child = YGNodeNew()
-  31        10         13.0      1.3      6.5          YGNodeStyleSetHeight(child, 20)
-  32        10         23.0      2.3     11.4          YGNodeSetMeasureFunc(child, measure_fn)
-  33        10         15.0      1.5      7.5          YGNodeInsertChild(root, child, 0)
-  34
-  35         1        123.0    123.0     61.2      YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
-  36                                               # YGNodeFreeRecursive(root)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Timer</span> <span class="n">unit</span><span class="p">:</span> <span class="mf">1e-06</span> <span class="n">s</span>
+
+<span class="n">Total</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.000157</span> <span class="n">s</span>
+<span class="n">File</span><span class="p">:</span> <span class="n">benchmark</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Function</span><span class="p">:</span> <span class="n">stack_with_flex</span> <span class="n">at</span> <span class="n">line</span> <span class="mi">12</span>
+
+<span class="n">Line</span> <span class="c1">#      Hits         Time  Per Hit   % Time  Line Contents</span>
+    <span class="mi">12</span>                                           <span class="nd">@profile</span>
+    <span class="mi">13</span>                                           <span class="k">def</span> <span class="nf">stack_with_flex</span><span class="p">():</span>
+    <span class="mi">14</span>         <span class="mi">1</span>         <span class="mf">28.0</span>     <span class="mf">28.0</span>     <span class="mf">17.8</span>      <span class="n">root</span> <span class="o">=</span> <span class="n">YGNodeNew</span><span class="p">()</span>
+    <span class="mi">15</span>         <span class="mi">1</span>          <span class="mf">8.0</span>      <span class="mf">8.0</span>      <span class="mf">5.1</span>      <span class="n">YGNodeStyleSetWidth</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="mi">16</span>         <span class="mi">1</span>          <span class="mf">2.0</span>      <span class="mf">2.0</span>      <span class="mf">1.3</span>      <span class="n">YGNodeStyleSetHeight</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="mi">17</span>        <span class="mi">11</span>          <span class="mf">8.0</span>      <span class="mf">0.7</span>      <span class="mf">5.1</span>      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="mi">18</span>        <span class="mi">10</span>         <span class="mf">27.0</span>      <span class="mf">2.7</span>     <span class="mf">17.2</span>          <span class="n">child</span> <span class="o">=</span> <span class="n">YGNodeNew</span><span class="p">()</span>
+    <span class="mi">19</span>        <span class="mi">10</span>         <span class="mf">17.0</span>      <span class="mf">1.7</span>     <span class="mf">10.8</span>          <span class="n">YGNodeStyleSetFlex</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="mi">20</span>        <span class="mi">10</span>         <span class="mf">17.0</span>      <span class="mf">1.7</span>     <span class="mf">10.8</span>          <span class="n">YGNodeInsertChild</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="mi">21</span>
+    <span class="mi">22</span>         <span class="mi">1</span>         <span class="mf">50.0</span>     <span class="mf">50.0</span>     <span class="mf">31.8</span>      <span class="n">YGNodeCalculateLayout</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">YGUndefined</span><span class="p">,</span> <span class="n">YGUndefined</span><span class="p">,</span> <span class="n">YGDirection</span><span class="o">.</span><span class="n">LTR</span><span class="p">)</span>
+    <span class="mi">23</span>                                               <span class="c1"># TODO:</span>
+    <span class="mi">24</span>                                               <span class="c1"># YGNodeFreeRecursive(root)</span>
+
+<span class="n">Total</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.000201</span> <span class="n">s</span>
+<span class="n">File</span><span class="p">:</span> <span class="n">benchmark</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Function</span><span class="p">:</span> <span class="n">align_stretch_in_undefined_axis</span> <span class="n">at</span> <span class="n">line</span> <span class="mi">26</span>
+
+<span class="n">Line</span> <span class="c1">#      Hits         Time  Per Hit   % Time  Line Contents</span>
+    <span class="mi">26</span>                                           <span class="nd">@profile</span>
+    <span class="mi">27</span>                                           <span class="k">def</span> <span class="nf">align_stretch_in_undefined_axis</span><span class="p">():</span>
+    <span class="mi">28</span>         <span class="mi">1</span>          <span class="mf">2.0</span>      <span class="mf">2.0</span>      <span class="mf">1.0</span>      <span class="n">root</span> <span class="o">=</span> <span class="n">YGNodeNew</span><span class="p">()</span>
+    <span class="mi">29</span>        <span class="mi">11</span>          <span class="mf">6.0</span>      <span class="mf">0.5</span>      <span class="mf">3.0</span>      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="mi">30</span>        <span class="mi">10</span>         <span class="mf">19.0</span>      <span class="mf">1.9</span>      <span class="mf">9.5</span>          <span class="n">child</span> <span class="o">=</span> <span class="n">YGNodeNew</span><span class="p">()</span>
+    <span class="mi">31</span>        <span class="mi">10</span>         <span class="mf">13.0</span>      <span class="mf">1.3</span>      <span class="mf">6.5</span>          <span class="n">YGNodeStyleSetHeight</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="mi">32</span>        <span class="mi">10</span>         <span class="mf">23.0</span>      <span class="mf">2.3</span>     <span class="mf">11.4</span>          <span class="n">YGNodeSetMeasureFunc</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">measure_fn</span><span class="p">)</span>
+    <span class="mi">33</span>        <span class="mi">10</span>         <span class="mf">15.0</span>      <span class="mf">1.5</span>      <span class="mf">7.5</span>          <span class="n">YGNodeInsertChild</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="mi">34</span>
+    <span class="mi">35</span>         <span class="mi">1</span>        <span class="mf">123.0</span>    <span class="mf">123.0</span>     <span class="mf">61.2</span>      <span class="n">YGNodeCalculateLayout</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">YGUndefined</span><span class="p">,</span> <span class="n">YGUndefined</span><span class="p">,</span> <span class="n">YGDirection</span><span class="o">.</span><span class="n">LTR</span><span class="p">)</span>
+    <span class="mi">36</span>                                               <span class="c1"># YGNodeFreeRecursive(root)</span>
+
+<span class="n">Total</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.001938</span> <span class="n">s</span>
+<span class="n">File</span><span class="p">:</span> <span class="n">benchmark</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Function</span><span class="p">:</span> <span class="n">nested_flex</span> <span class="n">at</span> <span class="n">line</span> <span class="mi">38</span>
+
+<span class="n">Line</span> <span class="c1">#      Hits         Time  Per Hit   % Time  Line Contents</span>
+    <span class="mi">38</span>                                           <span class="nd">@profile</span>
+    <span class="mi">39</span>                                           <span class="k">def</span> <span class="nf">nested_flex</span><span class="p">():</span>
+    <span class="mi">40</span>         <span class="mi">1</span>          <span class="mf">6.0</span>      <span class="mf">6.0</span>      <span class="mf">0.3</span>      <span class="n">root</span> <span class="o">=</span> <span class="n">YGNodeNew</span><span class="p">()</span>
+    <span class="mi">41</span>        <span class="mi">11</span>         <span class="mf">10.0</span>      <span class="mf">0.9</span>      <span class="mf">0.5</span>      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="mi">42</span>        <span class="mi">10</span>         <span class="mf">21.0</span>      <span class="mf">2.1</span>      <span class="mf">1.1</span>          <span class="n">child</span> <span class="o">=</span> <span class="n">YGNodeNew</span><span class="p">()</span>
+    <span class="mi">43</span>        <span class="mi">10</span>         <span class="mf">12.0</span>      <span class="mf">1.2</span>      <span class="mf">0.6</span>          <span class="n">YGNodeStyleSetFlex</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="mi">44</span>        <span class="mi">10</span>         <span class="mf">16.0</span>      <span class="mf">1.6</span>      <span class="mf">0.8</span>          <span class="n">YGNodeInsertChild</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="mi">45</span>
+    <span class="mi">46</span>       <span class="mi">110</span>         <span class="mf">67.0</span>      <span class="mf">0.6</span>      <span class="mf">3.5</span>          <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="mi">47</span>       <span class="mi">100</span>        <span class="mf">216.0</span>      <span class="mf">2.2</span>     <span class="mf">11.1</span>              <span class="n">grand_child</span> <span class="o">=</span> <span class="n">YGNodeNew</span><span class="p">()</span>
+    <span class="mi">48</span>       <span class="mi">100</span>        <span class="mf">136.0</span>      <span class="mf">1.4</span>      <span class="mf">7.0</span>              <span class="n">YGNodeSetMeasureFunc</span><span class="p">(</span><span class="n">grand_child</span><span class="p">,</span> <span class="n">measure_fn</span><span class="p">);</span>
+    <span class="mi">49</span>       <span class="mi">100</span>        <span class="mf">112.0</span>      <span class="mf">1.1</span>      <span class="mf">5.8</span>              <span class="n">YGNodeStyleSetFlex</span><span class="p">(</span><span class="n">grand_child</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="mi">50</span>       <span class="mi">100</span>        <span class="mf">152.0</span>      <span class="mf">1.5</span>      <span class="mf">7.8</span>              <span class="n">YGNodeInsertChild</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">grand_child</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="mi">51</span>
+    <span class="mi">52</span>         <span class="mi">1</span>       <span class="mf">1190.0</span>   <span class="mf">1190.0</span>     <span class="mf">61.4</span>      <span class="n">YGNodeCalculateLayout</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">YGUndefined</span><span class="p">,</span> <span class="n">YGUndefined</span><span class="p">,</span> <span class="n">YGDirection</span><span class="o">.</span><span class="n">LTR</span><span class="p">)</span>
+    <span class="mi">53</span>                                               <span class="c1"># YGNodeFreeRecursive(root)</span>
+
+<span class="n">Total</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.086841</span> <span class="n">s</span>
+<span class="n">File</span><span class="p">:</span> <span class="n">benchmark</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Function</span><span class="p">:</span> <span class="n">huge_nested_layout</span> <span class="n">at</span> <span class="n">line</span> <span class="mi">56</span>
+
+<span class="n">Line</span> <span class="c1">#      Hits         Time  Per Hit   % Time  Line Contents</span>
+    <span class="mi">56</span>                                           <span class="nd">@profile</span>
+    <span class="mi">57</span>                                           <span class="k">def</span> <span class="nf">huge_nested_layout</span><span class="p">():</span>
+    <span class="mi">58</span>         <span class="mi">1</span>          <span class="mf">6.0</span>      <span class="mf">6.0</span>      <span class="mf">0.0</span>      <span class="n">root</span> <span class="o">=</span> <span class="n">YGNodeNew</span><span class="p">()</span>
+    <span class="mi">59</span>        <span class="mi">11</span>          <span class="mf">7.0</span>      <span class="mf">0.6</span>      <span class="mf">0.0</span>      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="mi">60</span>        <span class="mi">10</span>         <span class="mf">16.0</span>      <span class="mf">1.6</span>      <span class="mf">0.0</span>          <span class="n">child</span> <span class="o">=</span> <span class="n">YGNodeNew</span><span class="p">();</span>
+    <span class="mi">61</span>        <span class="mi">10</span>          <span class="mf">9.0</span>      <span class="mf">0.9</span>      <span class="mf">0.0</span>          <span class="n">YGNodeStyleSetFlexGrow</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="mi">62</span>        <span class="mi">10</span>         <span class="mf">10.0</span>      <span class="mf">1.0</span>      <span class="mf">0.0</span>          <span class="n">YGNodeStyleSetWidth</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="mi">63</span>        <span class="mi">10</span>         <span class="mf">10.0</span>      <span class="mf">1.0</span>      <span class="mf">0.0</span>          <span class="n">YGNodeStyleSetHeight</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="mi">64</span>        <span class="mi">10</span>         <span class="mf">13.0</span>      <span class="mf">1.3</span>      <span class="mf">0.0</span>          <span class="n">YGNodeInsertChild</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">child</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="mi">65</span>
+    <span class="mi">66</span>       <span class="mi">110</span>         <span class="mf">54.0</span>      <span class="mf">0.5</span>      <span class="mf">0.1</span>          <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="mi">67</span>       <span class="mi">100</span>        <span class="mf">189.0</span>      <span class="mf">1.9</span>      <span class="mf">0.2</span>              <span class="n">grand_child</span> <span class="o">=</span> <span class="n">YGNodeNew</span><span class="p">()</span>
+    <span class="mi">68</span>       <span class="mi">100</span>        <span class="mf">106.0</span>      <span class="mf">1.1</span>      <span class="mf">0.1</span>              <span class="n">YGNodeStyleSetFlexDirection</span><span class="p">(</span><span class="n">grand_child</span><span class="p">,</span> <span class="n">YGFlexDirection</span><span class="o">.</span><span class="n">Row</span><span class="p">)</span>
+    <span class="mi">69</span>       <span class="mi">100</span>         <span class="mf">90.0</span>      <span class="mf">0.9</span>      <span class="mf">0.1</span>              <span class="n">YGNodeStyleSetFlexGrow</span><span class="p">(</span><span class="n">grand_child</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="mi">70</span>       <span class="mi">100</span>         <span class="mf">89.0</span>      <span class="mf">0.9</span>      <span class="mf">0.1</span>              <span class="n">YGNodeStyleSetWidth</span><span class="p">(</span><span class="n">grand_child</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="mi">71</span>       <span class="mi">100</span>         <span class="mf">86.0</span>      <span class="mf">0.9</span>      <span class="mf">0.1</span>              <span class="n">YGNodeStyleSetHeight</span><span class="p">(</span><span class="n">grand_child</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="mi">72</span>       <span class="mi">100</span>        <span class="mf">116.0</span>      <span class="mf">1.2</span>      <span class="mf">0.1</span>              <span class="n">YGNodeInsertChild</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">grand_child</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="mi">73</span>
+    <span class="mi">74</span>      <span class="mi">1100</span>        <span class="mf">539.0</span>      <span class="mf">0.5</span>      <span class="mf">0.6</span>              <span class="k">for</span> <span class="n">iii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="mi">75</span>      <span class="mi">1000</span>       <span class="mf">1640.0</span>      <span class="mf">1.6</span>      <span class="mf">1.9</span>                  <span class="n">grand_grand_child</span> <span class="o">=</span> <span class="n">YGNodeNew</span><span class="p">()</span>
+    <span class="mi">76</span>      <span class="mi">1000</span>        <span class="mf">922.0</span>      <span class="mf">0.9</span>      <span class="mf">1.1</span>                  <span class="n">YGNodeStyleSetFlexGrow</span><span class="p">(</span><span class="n">grand_grand_child</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="mi">77</span>      <span class="mi">1000</span>        <span class="mf">906.0</span>      <span class="mf">0.9</span>      <span class="mf">1.0</span>                  <span class="n">YGNodeStyleSetWidth</span><span class="p">(</span><span class="n">grand_grand_child</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="mi">78</span>      <span class="mi">1000</span>        <span class="mf">909.0</span>      <span class="mf">0.9</span>      <span class="mf">1.0</span>                  <span class="n">YGNodeStyleSetHeight</span><span class="p">(</span><span class="n">grand_grand_child</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="mi">79</span>      <span class="mi">1000</span>       <span class="mf">1142.0</span>      <span class="mf">1.1</span>      <span class="mf">1.3</span>                  <span class="n">YGNodeInsertChild</span><span class="p">(</span><span class="n">grand_child</span><span class="p">,</span> <span class="n">grand_grand_child</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="mi">80</span>
+    <span class="mi">81</span>     <span class="mi">11000</span>       <span class="mf">5428.0</span>      <span class="mf">0.5</span>      <span class="mf">6.3</span>                  <span class="k">for</span> <span class="n">iiii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="mi">82</span>     <span class="mi">10000</span>      <span class="mf">16694.0</span>      <span class="mf">1.7</span>     <span class="mf">19.2</span>                      <span class="n">grand_grand_grand_child</span> <span class="o">=</span> <span class="n">YGNodeNew</span><span class="p">()</span>
+    <span class="mi">83</span>     <span class="mi">10000</span>      <span class="mf">10450.0</span>      <span class="mf">1.0</span>     <span class="mf">12.0</span>                      <span class="n">YGNodeStyleSetFlexDirection</span><span class="p">(</span><span class="n">grand_grand_grand_child</span><span class="p">,</span> <span class="n">YGFlexDirection</span><span class="o">.</span><span class="n">Row</span><span class="p">);</span>
+    <span class="mi">84</span>     <span class="mi">10000</span>       <span class="mf">9240.0</span>      <span class="mf">0.9</span>     <span class="mf">10.6</span>                      <span class="n">YGNodeStyleSetFlexGrow</span><span class="p">(</span><span class="n">grand_grand_grand_child</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="mi">85</span>     <span class="mi">10000</span>       <span class="mf">9187.0</span>      <span class="mf">0.9</span>     <span class="mf">10.6</span>                      <span class="n">YGNodeStyleSetWidth</span><span class="p">(</span><span class="n">grand_grand_grand_child</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="mi">86</span>     <span class="mi">10000</span>       <span class="mf">9251.0</span>      <span class="mf">0.9</span>     <span class="mf">10.7</span>                      <span class="n">YGNodeStyleSetHeight</span><span class="p">(</span><span class="n">grand_grand_grand_child</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="mi">87</span>     <span class="mi">10000</span>      <span class="mf">11221.0</span>      <span class="mf">1.1</span>     <span class="mf">12.9</span>                      <span class="n">YGNodeInsertChild</span><span class="p">(</span><span class="n">grand_grand_child</span><span class="p">,</span> <span class="n">grand_grand_grand_child</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="mi">88</span>
+    <span class="mi">89</span>         <span class="mi">1</span>       <span class="mf">8511.0</span>   <span class="mf">8511.0</span>      <span class="mf">9.8</span>      <span class="n">YGNodeCalculateLayout</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">YGUndefined</span><span class="p">,</span> <span class="n">YGUndefined</span><span class="p">,</span> <span class="n">YGDirection</span><span class="o">.</span><span class="n">LTR</span><span class="p">)</span>
+    <span class="mi">90</span>                                               <span class="c1"># YGNodeFreeRecursive(root)</span>
 </pre></div>
 </div>
-<p>Total time: 0.001938 s
-File: benchmark.py
-Function: nested_flex at line 38</p>
 </section>
-<section id="id2">
-<h2>Line #      Hits         Time  Per Hit   % Time  Line Contents<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  38                                           @profile
-  39                                           def nested_flex():
-  40         1          6.0      6.0      0.3      root = YGNodeNew()
-  41        11         10.0      0.9      0.5      for i in range(10):
-  42        10         21.0      2.1      1.1          child = YGNodeNew()
-  43        10         12.0      1.2      0.6          YGNodeStyleSetFlex(child, 1)
-  44        10         16.0      1.6      0.8          YGNodeInsertChild(root, child, 0)
-  45
-  46       110         67.0      0.6      3.5          for ii in range(10):
-  47       100        216.0      2.2     11.1              grand_child = YGNodeNew()
-  48       100        136.0      1.4      7.0              YGNodeSetMeasureFunc(grand_child, measure_fn);
-  49       100        112.0      1.1      5.8              YGNodeStyleSetFlex(grand_child, 1);
-  50       100        152.0      1.5      7.8              YGNodeInsertChild(child, grand_child, 0);
-  51
-  52         1       1190.0   1190.0     61.4      YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
-  53                                               # YGNodeFreeRecursive(root)
-</pre></div>
-</div>
-<p>Total time: 0.086841 s
-File: benchmark.py
-Function: huge_nested_layout at line 56</p>
-</section>
-<section id="id3">
-<h2>Line #      Hits         Time  Per Hit   % Time  Line Contents<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  56                                           @profile
-  57                                           def huge_nested_layout():
-  58         1          6.0      6.0      0.0      root = YGNodeNew()
-  59        11          7.0      0.6      0.0      for i in range(10):
-  60        10         16.0      1.6      0.0          child = YGNodeNew();
-  61        10          9.0      0.9      0.0          YGNodeStyleSetFlexGrow(child, 1)
-  62        10         10.0      1.0      0.0          YGNodeStyleSetWidth(child, 10)
-  63        10         10.0      1.0      0.0          YGNodeStyleSetHeight(child, 10)
-  64        10         13.0      1.3      0.0          YGNodeInsertChild(root, child, 0)
-  65
-  66       110         54.0      0.5      0.1          for ii in range(10):
-  67       100        189.0      1.9      0.2              grand_child = YGNodeNew()
-  68       100        106.0      1.1      0.1              YGNodeStyleSetFlexDirection(grand_child, YGFlexDirection.Row)
-  69       100         90.0      0.9      0.1              YGNodeStyleSetFlexGrow(grand_child, 1)
-  70       100         89.0      0.9      0.1              YGNodeStyleSetWidth(grand_child, 10)
-  71       100         86.0      0.9      0.1              YGNodeStyleSetHeight(grand_child, 10)
-  72       100        116.0      1.2      0.1              YGNodeInsertChild(child, grand_child, 0)
-  73
-  74      1100        539.0      0.5      0.6              for iii in range(10):
-  75      1000       1640.0      1.6      1.9                  grand_grand_child = YGNodeNew()
-  76      1000        922.0      0.9      1.1                  YGNodeStyleSetFlexGrow(grand_grand_child, 1)
-  77      1000        906.0      0.9      1.0                  YGNodeStyleSetWidth(grand_grand_child, 10)
-  78      1000        909.0      0.9      1.0                  YGNodeStyleSetHeight(grand_grand_child, 10)
-  79      1000       1142.0      1.1      1.3                  YGNodeInsertChild(grand_child, grand_grand_child, 0)
-  80
-  81     11000       5428.0      0.5      6.3                  for iiii in range(10):
-  82     10000      16694.0      1.7     19.2                      grand_grand_grand_child = YGNodeNew()
-  83     10000      10450.0      1.0     12.0                      YGNodeStyleSetFlexDirection(grand_grand_grand_child, YGFlexDirection.Row);
-  84     10000       9240.0      0.9     10.6                      YGNodeStyleSetFlexGrow(grand_grand_grand_child, 1);
-  85     10000       9187.0      0.9     10.6                      YGNodeStyleSetWidth(grand_grand_grand_child, 10);
-  86     10000       9251.0      0.9     10.7                      YGNodeStyleSetHeight(grand_grand_grand_child, 10);
-  87     10000      11221.0      1.1     12.9                      YGNodeInsertChild(grand_grand_child, grand_grand_grand_child, 0);
-  88
-  89         1       8511.0   8511.0      9.8      YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
-  90                                               # YGNodeFreeRecursive(root)
-</pre></div>
-</div>
 </section>
 </section>
 
@@ -377,10 +372,6 @@ Function: huge_nested_layout at line 56</p>
 <li><a class="reference internal" href="#benchmark">Benchmark</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#line-hits-time-per-hit-time-line-contents">Line #  Hits         Time  Per Hit   % Time  Line Contents</a></li>
-<li><a class="reference internal" href="#id1">Line #      Hits         Time  Per Hit   % Time  Line Contents</a></li>
-<li><a class="reference internal" href="#id2">Line #      Hits         Time  Per Hit   % Time  Line Contents</a></li>
-<li><a class="reference internal" href="#id3">Line #      Hits         Time  Per Hit   % Time  Line Contents</a></li>
 </ul>
 </li>
 </ul>
