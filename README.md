@@ -1,7 +1,9 @@
-Poga Documentation
-=================
+Poga
+====
 
-[![Docs](https://img.shields.io/badge/docs-latest-informational)](https://dzhsurf.github.io/poga/)
+ [![Docs](https://img.shields.io/badge/docs-latest-informational)](https://dzhsurf.github.io/poga/) 
+
+
 
 Introduction
 -----------------
@@ -10,6 +12,10 @@ Poga is a Python binding for YogaLayout.
 
 It provides Python API for YogaLayout. And a high-level interface PogaLayout.
 
+YogaLayout: https://yogalayout.com/
+
+
+
 Install
 -------
 
@@ -17,6 +23,8 @@ Install
     # Python version requires >= 3.7
     pip install poga
 ```
+
+
 
 Quickstart
 ----------
@@ -76,7 +84,8 @@ python example/main.py
 
 
 
-## Benchmark
+Benchmark
+---------
 
 ```shell
 kernprof -l benchmark.py
