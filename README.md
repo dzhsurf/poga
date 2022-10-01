@@ -29,7 +29,7 @@ Install
 Quickstart
 ----------
 
-Using high-level interface PogaLayout
+Use high-level interface PogaLayout
 
 More details you can refer to the PGLayout of the pydui-gtk project below.
 
@@ -45,7 +45,7 @@ https://github.com/dzhsurf/pydui
         layout.apply_layout()
 ```
 
-Using Binding CAPI directily
+Use Binding CAPI directily
 
 ```python
     from poga.libpoga_capi import *
