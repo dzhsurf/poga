@@ -1,4 +1,3 @@
-from . import libpoga_capi
 from .poga_layout import PogaLayout
 from .poga_types import *
 from .poga_view import PogaView
