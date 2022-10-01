@@ -150,11 +150,13 @@ def add_ext_cflags(ext, compiler):
     args += [
         "-fno-strict-aliasing",
         "-fvisibility=hidden",
-    ]
-
-    args += [
+        "-fno-omit-frame-pointer",
+        "-fexceptions",
+        "-ffunction-sections",
+        "-fdata-sections",
         "-std=gnu++17",
     ]
+
     if sys.platform == "darwin":
         args += [
             "-mmacosx-version-min=10.9",
@@ -454,9 +456,10 @@ class build_ext(du_build_ext):
         # the paths to the Cairo headers and libraries,
         # respectively.
         if self.compiler_type == "msvc":
-            ext.libraries += ["yoga"]
+            pass
+            #ext.libraries += ["yoga"]
         else:
-            ext.libraries += ["yoga"]
+            #ext.libraries += ["yoga"]
             # pkg_config_version_check('pybind11', YOGA_VERSION_REQUIRED)
             # ext.include_dirs += pkg_config_parse('--cflags-only-I', 'libyoga')
             # ext.library_dirs += pkg_config_parse('--libs-only-L', 'libyoga')
@@ -473,20 +476,31 @@ def main():
     if sys.version_info[0] < 3:
         raise Exception("Python 2 no longer supported")
 
-    library_dirs = [os.path.join(f"deps/yoga/lib/", sys.platform)]
-    if sys.platform == "win32":
-        library_dirs.append(os.path.join(f"deps/yoga/lib/win32/", "vs16_x86"))
 
     poga_ext = Extension(
         name="poga.libpoga_capi",
         sources=[
             "poga/capi/poga_cmodule.cpp",
             "poga/capi/poga_manager.cpp",
+            # Yoga src
+            "deps/yoga/event/event.cpp",
+            "deps/yoga/internal/experiments.cpp",
+            "deps/yoga/log.cpp",
+            "deps/yoga/Utils.cpp",
+            "deps/yoga/YGConfig.cpp",
+            "deps/yoga/YGEnums.cpp",
+            "deps/yoga/YGLayout.cpp",
+            "deps/yoga/YGNode.cpp",
+            "deps/yoga/YGNodePrint.cpp",
+            "deps/yoga/YGStyle.cpp",
+            "deps/yoga/YGValue.cpp",
+            "deps/yoga/Yoga.cpp",
         ],
         libraries=[],
-        library_dirs=library_dirs,
+        library_dirs=[],
         include_dirs=[
-            "deps/yoga/include",
+            "deps",
+            "deps/yoga",
             pybind11.get_include(),
         ],
         define_macros=[
