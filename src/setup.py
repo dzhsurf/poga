@@ -456,7 +456,10 @@ class build_ext(du_build_ext):
         # the paths to the Cairo headers and libraries,
         # respectively.
         if self.compiler_type == "msvc":
-            pass
+            args = [
+                "/std:c++17",
+            ]
+            ext.extra_compile_args += args
             #ext.libraries += ["yoga"]
         else:
             #ext.libraries += ["yoga"]
