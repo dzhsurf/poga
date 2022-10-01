@@ -102,101 +102,102 @@ MacBook Pro (15-inch, 2016)
 ```
 Timer unit: 1e-06 s
 
-Total time: 0.000124 s
+Total time: 0.000141 s
 File: benchmark.py
-Function: stack_with_flex at line 12
+Function: stack_with_flex at line 14
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
-    12                                           @profile
-    13                                           def stack_with_flex():
-    14         1         20.0     20.0     16.1      root = YGNodeNew()
-    15         1          9.0      9.0      7.3      YGNodeStyleSetWidth(root, 100)
-    16         1          3.0      3.0      2.4      YGNodeStyleSetHeight(root, 100)
-    17        11         10.0      0.9      8.1      for i in range(10):
-    18        10         17.0      1.7     13.7          child = YGNodeNew()
-    19        10         12.0      1.2      9.7          YGNodeStyleSetFlex(child, i)
-    20        10         12.0      1.2      9.7          YGNodeInsertChild(root, child, 0)
-    21
-    22         1         32.0     32.0     25.8      YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
-    23         1          9.0      9.0      7.3      YGNodeFreeRecursive(root)
+    14                                           @profile
+    15                                           def stack_with_flex():
+    16         1         20.0     20.0     14.2      root = YGNodeNew()
+    17         1         10.0     10.0      7.1      YGNodeStyleSetWidth(root, 100)
+    18         1          3.0      3.0      2.1      YGNodeStyleSetHeight(root, 100)
+    19        11         10.0      0.9      7.1      for i in range(10):
+    20        10         23.0      2.3     16.3          child = YGNodeNew()
+    21        10         12.0      1.2      8.5          YGNodeStyleSetFlex(child, i)
+    22        10         16.0      1.6     11.3          YGNodeInsertChild(root, child, 0)
+    23
+    24         1         37.0     37.0     26.2      YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
+    25         1         10.0     10.0      7.1      YGNodeFreeRecursive(root)
 
-Total time: 0.000152 s
+Total time: 0.000169 s
 File: benchmark.py
-Function: align_stretch_in_undefined_axis at line 25
+Function: align_stretch_in_undefined_axis at line 28
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
-    25                                           @profile
-    26                                           def align_stretch_in_undefined_axis():
-    27         1          5.0      5.0      3.3      root = YGNodeNew()
-    28        11          6.0      0.5      3.9      for i in range(10):
-    29        10         14.0      1.4      9.2          child = YGNodeNew()
-    30        10         10.0      1.0      6.6          YGNodeStyleSetHeight(child, 20)
-    31        10         10.0      1.0      6.6          YGNodeSetMeasureFunc(child, measure_fn)
-    32        10         11.0      1.1      7.2          YGNodeInsertChild(root, child, 0)
-    33
-    34         1         92.0     92.0     60.5      YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
-    35         1          4.0      4.0      2.6      YGNodeFreeRecursive(root)
+    28                                           @profile
+    29                                           def align_stretch_in_undefined_axis():
+    30         1          2.0      2.0      1.2      root = YGNodeNew()
+    31        11          6.0      0.5      3.6      for i in range(10):
+    32        10         14.0      1.4      8.3          child = YGNodeNew()
+    33        10         10.0      1.0      5.9          YGNodeStyleSetHeight(child, 20)
+    34        10         12.0      1.2      7.1          YGNodeSetMeasureFunc(child, measure_fn)
+    35        10         12.0      1.2      7.1          YGNodeInsertChild(root, child, 0)
+    36
+    37         1        110.0    110.0     65.1      YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
+    38         1          3.0      3.0      1.8      YGNodeFreeRecursive(root)
 
-Total time: 0.001446 s
+Total time: 0.001685 s
 File: benchmark.py
-Function: nested_flex at line 37
+Function: nested_flex at line 41
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
-    37                                           @profile
-    38                                           def nested_flex():
-    39         1          2.0      2.0      0.1      root = YGNodeNew()
-    40        11          5.0      0.5      0.3      for i in range(10):
-    41        10         19.0      1.9      1.3          child = YGNodeNew()
-    42        10          9.0      0.9      0.6          YGNodeStyleSetFlex(child, 1)
-    43        10         11.0      1.1      0.8          YGNodeInsertChild(root, child, 0)
-    44
-    45       110         47.0      0.4      3.3          for ii in range(10):
-    46       100        157.0      1.6     10.9              grand_child = YGNodeNew()
-    47       100        102.0      1.0      7.1              YGNodeSetMeasureFunc(grand_child, measure_fn);
-    48       100         90.0      0.9      6.2              YGNodeStyleSetFlex(grand_child, 1);
-    49       100        104.0      1.0      7.2              YGNodeInsertChild(child, grand_child, 0);
-    50
-    51         1        886.0    886.0     61.3      YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
-    52         1         14.0     14.0      1.0      YGNodeFreeRecursive(root)
+==============================================================
+    41                                           @profile
+    42                                           def nested_flex():
+    43         1          2.0      2.0      0.1      root = YGNodeNew()
+    44        11          6.0      0.5      0.4      for i in range(10):
+    45        10         17.0      1.7      1.0          child = YGNodeNew()
+    46        10         11.0      1.1      0.7          YGNodeStyleSetFlex(child, 1)
+    47        10         14.0      1.4      0.8          YGNodeInsertChild(root, child, 0)
+    48
+    49       110         53.0      0.5      3.1          for ii in range(10):
+    50       100        197.0      2.0     11.7              grand_child = YGNodeNew()
+    51       100        111.0      1.1      6.6              YGNodeSetMeasureFunc(grand_child, measure_fn)
+    52       100        109.0      1.1      6.5              YGNodeStyleSetFlex(grand_child, 1)
+    53       100        121.0      1.2      7.2              YGNodeInsertChild(child, grand_child, 0)
+    54
+    55         1       1029.0   1029.0     61.1      YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
+    56         1         15.0     15.0      0.9      YGNodeFreeRecursive(root)
 
-Total time: 0.090743 s
+Total time: 0.093843 s
 File: benchmark.py
-Function: huge_nested_layout at line 55
+Function: huge_nested_layout at line 59
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
-    55                                           @profile
-    56                                           def huge_nested_layout():
-    57         1          2.0      2.0      0.0      root = YGNodeNew()
-    58        11          6.0      0.5      0.0      for i in range(10):
-    59        10         18.0      1.8      0.0          child = YGNodeNew();
-    60        10          9.0      0.9      0.0          YGNodeStyleSetFlexGrow(child, 1)
-    61        10         10.0      1.0      0.0          YGNodeStyleSetWidth(child, 10)
-    62        10         10.0      1.0      0.0          YGNodeStyleSetHeight(child, 10)
-    63        10         14.0      1.4      0.0          YGNodeInsertChild(root, child, 0)
-    64
-    65       110         51.0      0.5      0.1          for ii in range(10):
-    66       100        170.0      1.7      0.2              grand_child = YGNodeNew()
-    67       100        110.0      1.1      0.1              YGNodeStyleSetFlexDirection(grand_child, YGFlexDirection.Row)
-    68       100         95.0      0.9      0.1              YGNodeStyleSetFlexGrow(grand_child, 1)
-    69       100         98.0      1.0      0.1              YGNodeStyleSetWidth(grand_child, 10)
-    70       100         93.0      0.9      0.1              YGNodeStyleSetHeight(grand_child, 10)
-    71       100        117.0      1.2      0.1              YGNodeInsertChild(child, grand_child, 0)
-    72
-    73      1100        549.0      0.5      0.6              for iii in range(10):
-    74      1000       1734.0      1.7      1.9                  grand_grand_child = YGNodeNew()
-    75      1000       1004.0      1.0      1.1                  YGNodeStyleSetFlexGrow(grand_grand_child, 1)
-    76      1000        959.0      1.0      1.1                  YGNodeStyleSetWidth(grand_grand_child, 10)
-    77      1000        932.0      0.9      1.0                  YGNodeStyleSetHeight(grand_grand_child, 10)
-    78      1000       1142.0      1.1      1.3                  YGNodeInsertChild(grand_child, grand_grand_child, 0)
-    79
-    80     11000       5273.0      0.5      5.8                  for iiii in range(10):
-    81     10000      17194.0      1.7     18.9                      grand_grand_grand_child = YGNodeNew()
-    82     10000      10855.0      1.1     12.0                      YGNodeStyleSetFlexDirection(grand_grand_grand_child, YGFlexDirection.Row);
-    83     10000       9482.0      0.9     10.4                      YGNodeStyleSetFlexGrow(grand_grand_grand_child, 1);
-    84     10000       9676.0      1.0     10.7                      YGNodeStyleSetWidth(grand_grand_grand_child, 10);
-    85     10000       9376.0      0.9     10.3                      YGNodeStyleSetHeight(grand_grand_grand_child, 10);
-    86     10000      11454.0      1.1     12.6                      YGNodeInsertChild(grand_grand_child, grand_grand_grand_child, 0);
-    87
-    88         1       8632.0   8632.0      9.5      YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
-    89         1       1678.0   1678.0      1.8      YGNodeFreeRecursive(root)
+    59                                           @profile
+    60                                           def huge_nested_layout():
+    61         1          2.0      2.0      0.0      root = YGNodeNew()
+    62        11          6.0      0.5      0.0      for i in range(10):
+    63        10         15.0      1.5      0.0          child = YGNodeNew()
+    64        10         11.0      1.1      0.0          YGNodeStyleSetFlexGrow(child, 1)
+    65        10         11.0      1.1      0.0          YGNodeStyleSetWidth(child, 10)
+    66        10         11.0      1.1      0.0          YGNodeStyleSetHeight(child, 10)
+    67        10         13.0      1.3      0.0          YGNodeInsertChild(root, child, 0)
+    68
+    69       110         44.0      0.4      0.0          for ii in range(10):
+    70       100        178.0      1.8      0.2              grand_child = YGNodeNew()
+    71       100        115.0      1.1      0.1              YGNodeStyleSetFlexDirection(grand_child, YGFlexDirection.Row)
+    72       100        101.0      1.0      0.1              YGNodeStyleSetFlexGrow(grand_child, 1)
+    73       100         97.0      1.0      0.1              YGNodeStyleSetWidth(grand_child, 10)
+    74       100         98.0      1.0      0.1              YGNodeStyleSetHeight(grand_child, 10)
+    75       100        114.0      1.1      0.1              YGNodeInsertChild(child, grand_child, 0)
+    76
+    77      1100        561.0      0.5      0.6              for iii in range(10):
+    78      1000       1782.0      1.8      1.9                  grand_grand_child = YGNodeNew()
+    79      1000       1037.0      1.0      1.1                  YGNodeStyleSetFlexGrow(grand_grand_child, 1)
+    80      1000        997.0      1.0      1.1                  YGNodeStyleSetWidth(grand_grand_child, 10)
+    81      1000        959.0      1.0      1.0                  YGNodeStyleSetHeight(grand_grand_child, 10)
+    82      1000       1177.0      1.2      1.3                  YGNodeInsertChild(grand_child, grand_grand_child, 0)
+    83
+    84     11000       5725.0      0.5      6.1                  for iiii in range(10):
+    85     10000      17682.0      1.8     18.8                      grand_grand_grand_child = YGNodeNew()
+    86     10000      11032.0      1.1     11.8                      YGNodeStyleSetFlexDirection(grand_grand_grand_child, YGFlexDirection.Row)
+    87     10000      10126.0      1.0     10.8                      YGNodeStyleSetFlexGrow(grand_grand_grand_child, 1)
+    88     10000      10035.0      1.0     10.7                      YGNodeStyleSetWidth(grand_grand_grand_child, 10)
+    89     10000       9814.0      1.0     10.5                      YGNodeStyleSetHeight(grand_grand_grand_child, 10)
+    90     10000      11796.0      1.2     12.6                      YGNodeInsertChild(grand_grand_child, grand_grand_grand_child, 0)
+    91
+    92         1       8696.0   8696.0      9.3      YGNodeCalculateLayout(root, YGUndefined, YGUndefined, YGDirection.LTR)
+    93         1       1608.0   1608.0      1.7      YGNodeFreeRecursive(root)
 ```
