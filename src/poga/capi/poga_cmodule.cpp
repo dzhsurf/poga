@@ -764,6 +764,23 @@ Returns:
         py::arg("node"));
 
     m.def(
+        "YGNodeStyleSetMaxWidth",
+        [](const PGNode& node, float max_width) {
+            YGNodeStyleSetMaxWidth(node.get(), max_width);
+        },
+        py::arg("node"), py::arg("max_width"));
+    m.def(
+        "YGNodeStyleSetMaxWidthPercent",
+        [](const PGNode& node, float max_width) {
+            YGNodeStyleSetMaxWidthPercent(node.get(), max_width);
+        },
+        py::arg("node"), py::arg("max_width"));
+    m.def(
+        "YGNodeStyleGetMaxWidth",
+        [](const PGNode& node) { return YGNodeStyleGetMaxWidth(node.get()); },
+        py::arg("node"));
+
+    m.def(
         "YGNodeStyleSetMinHeight",
         [](const PGNode& node, float min_height) {
             YGNodeStyleSetMinHeight(node.get(), min_height);
