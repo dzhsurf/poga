@@ -26,6 +26,9 @@ class MyView(PogaView):
     def subviews(self) -> Iterable[PogaView]:
         return list[PogaView]()
 
+    def is_container(self) -> bool:
+        return False
+
     def poga_layout(self) -> PogaLayout:
         return None
 

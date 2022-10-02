@@ -80,6 +80,15 @@ class PogaView(ABC):
         pass
 
     @abstractmethod
+    def is_container(self) -> bool:
+        """Return current view is container or not.
+
+        Returns:
+            bool: Return True is container.
+        """
+        pass
+
+    @abstractmethod
     def poga_layout(self) -> PogaLayout:
         """Return PogaLayout
 

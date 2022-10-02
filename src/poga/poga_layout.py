@@ -1061,9 +1061,9 @@ class PogaLayout:
             max_width (YGValue):
         """
         if max_width.unit == YGUnit.Point or max_width.unit == YGUnit.Undefined:
-            YGNodeStyleSetMinWidth(self.__node, max_width.value)
+            YGNodeStyleSetMaxWidth(self.__node, max_width.value)
         elif max_width.unit == YGUnit.Percent:
-            YGNodeStyleSetMinWidthPercent(self.__node, max_width.value)
+            YGNodeStyleSetMaxWidthPercent(self.__node, max_width.value)
 
     @property
     def max_height(self) -> YGValue:
@@ -1200,15 +1200,15 @@ class PogaLayout:
         if view is None:
             return True
 
-        if self.is_enabled:
-            for subview in view.subviews():
-                poga_layout = subview.poga_layout()
-                if poga_layout is None:
-                    continue
-                if poga_layout.is_enabled and poga_layout.is_included_in_layout:
-                    return False
-
-        return True
+        # if self.is_enabled:
+        return not view.is_container()
+            # for subview in view.subviews():
+            #     poga_layout = subview.poga_layout()
+            #     if poga_layout is None:
+            #         continue
+            #     if poga_layout.is_enabled and poga_layout.is_included_in_layout:
+            #         return False
+        # return True
 
     @property
     def is_dirty(self) -> bool:
@@ -1278,23 +1278,23 @@ class PogaLayout:
             return
 
         node = poga_layout.__node
-        top_left = (
+        left_top = (
             YGNodeLayoutGetLeft(node),
             YGNodeLayoutGetTop(node),
         )
-        bottom_right = (
-            top_left[0] + YGNodeLayoutGetWidth(node),
-            top_left[1] + YGNodeLayoutGetHeight(node),
+        right_bottom = (
+            left_top[0] + YGNodeLayoutGetWidth(node),
+            left_top[1] + YGNodeLayoutGetHeight(node),
         )
 
         origin = view.frame_origin() if preserve_origin else (0.0, 0.0)
         view.set_frame_origin(
-            PogaLayout.__round_pixel_value__(top_left[0] + origin[0]),
-            PogaLayout.__round_pixel_value__(top_left[1] + origin[1]),
+            PogaLayout.__round_pixel_value__(left_top[0] + origin[0]),
+            PogaLayout.__round_pixel_value__(left_top[1] + origin[1]),
         )
         view.set_frame_size(
-            PogaLayout.__round_pixel_value__(bottom_right[0]) - PogaLayout.__round_pixel_value__(top_left[0]),
-            PogaLayout.__round_pixel_value__(bottom_right[1]) - PogaLayout.__round_pixel_value__(top_left[1]),
+            PogaLayout.__round_pixel_value__(right_bottom[0]) - PogaLayout.__round_pixel_value__(left_top[0]),
+            PogaLayout.__round_pixel_value__(right_bottom[1]) - PogaLayout.__round_pixel_value__(left_top[1]),
         )
 
         if not poga_layout.is_leaf:
