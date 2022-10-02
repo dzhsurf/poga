@@ -495,9 +495,9 @@ class PogaLayout:
 
     def __set_margin_by_edge__(self, edge: YGEdge, value: YGValue):
         if (value.unit == YGUnit.Undefined) or (value.unit == YGUnit.Point):
-            YGNodeStyleSetMargin(self.__node, edge, value)
+            YGNodeStyleSetMargin(self.__node, edge, value.value)
         elif value.unit == YGUnit.Percent:
-            YGNodeStyleSetMarginPercent(self.__node, edge, value)
+            YGNodeStyleSetMarginPercent(self.__node, edge, value.value)
         elif value.unit == YGUnit.Auto:
             YGNodeStyleSetMarginAuto(self.__node, edge)
 
@@ -663,9 +663,9 @@ class PogaLayout:
 
     def __set_padding_by_edge__(self, edge: YGEdge, value: YGValue):
         if (value.unit == YGUnit.Undefined) or (value.unit == YGUnit.Point):
-            YGNodeStyleSetPadding(self.__node, edge, value)
+            YGNodeStyleSetPadding(self.__node, edge, value.value)
         elif value.unit == YGUnit.Percent:
-            YGNodeStyleSetPaddingPercent(self.__node, edge, value)
+            YGNodeStyleSetPaddingPercent(self.__node, edge, value.value)
 
     @property
     def padding_left(self) -> YGValue:
