@@ -1195,14 +1195,16 @@ class PogaLayout:
         if view is None:
             return True
 
+        if not view.is_container() or (view.subviews_count == 0):
+            return True
+        return False
         # if self.is_enabled:
-        return not view.is_container()
-            # for subview in view.subviews():
-            #     poga_layout = subview.poga_layout()
-            #     if poga_layout is None:
-            #         continue
-            #     if poga_layout.is_enabled and poga_layout.is_included_in_layout:
-            #         return False
+        #     for subview in view.subviews():
+        #         poga_layout = subview.poga_layout()
+        #         if poga_layout is None:
+        #             continue
+        #         if poga_layout.is_enabled and poga_layout.is_included_in_layout:
+        #             return False
         # return True
 
     @property
@@ -1259,10 +1261,8 @@ class PogaLayout:
 
     @staticmethod
     def __round_pixel_value__(value: float) -> float:
-        if isnan(value):
-            return value
-        scale = 2.0  # TODO
-        return round(value * scale) / scale
+        scale = PogaLayout.config_get_point_scale_factor()
+        return YGRoundValueToPixelGrid(value, scale, False, False)
 
     @staticmethod
     def __apply_layout_to_view_hierarchy__(view: PogaView, preserve_origin: bool):
