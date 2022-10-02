@@ -374,7 +374,7 @@ class PogaLayout:
         elif flex_basis.unit == YGUnit.Percent:
             YGNodeStyleSetFlexBasisPercent(self.__node, flex_basis.value)
         elif flex_basis.unit == YGUnit.Auto:
-            YGNodeStyleSetFlexBasisAuto(self.__node, flex_basis.value)
+            YGNodeStyleSetFlexBasisAuto(self.__node)
 
     def __get_position_by_edge__(self, edge: YGEdge) -> YGValue:
         return YGNodeStyleGetPosition(self.__node, edge)
@@ -499,7 +499,7 @@ class PogaLayout:
         elif value.unit == YGUnit.Percent:
             YGNodeStyleSetMarginPercent(self.__node, edge, value)
         elif value.unit == YGUnit.Auto:
-            YGNodeStyleSetMarginAuto(self.__node, edge, value)
+            YGNodeStyleSetMarginAuto(self.__node, edge)
 
     @property
     def margin_left(self) -> YGValue:
