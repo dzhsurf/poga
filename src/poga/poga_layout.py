@@ -719,7 +719,7 @@ class PogaLayout:
         Args:
             padding_right (YGValue): padding_right
         """
-        self.__set_padding_by_edge__()
+        self.__set_padding_by_edge__(YGEdge.Right, padding_right)
 
     @property
     def padding_bottom(self) -> YGValue:
