@@ -1240,8 +1240,8 @@ class PogaLayout:
     def __measure_view__(
         node: YGNodeRef, width: float, width_mode: YGMeasureMode, height: float, height_mode: YGMeasureMode
     ) -> YGSize:
-        constrained_width = sys.float_info.max if width_mode == YGMeasureMode.Undefined else width
-        constrained_height = sys.float_info.max if height_mode == YGMeasureMode.Undefined else height
+        constrained_width = YGUndefined if width_mode == YGMeasureMode.Undefined else width
+        constrained_height = YGUndefined if height_mode == YGMeasureMode.Undefined else height
 
         weakref_view: ReferenceType[PogaView] = YGNodeGetContext(node)
         if weakref_view is None:
