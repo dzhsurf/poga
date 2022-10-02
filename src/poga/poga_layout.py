@@ -1082,9 +1082,9 @@ class PogaLayout:
             max_height (YGValue):
         """
         if max_height.unit == YGUnit.Point or max_height.unit == YGUnit.Undefined:
-            YGNodeStyleSetMaxWidth(self.__node, max_height.value)
+            YGNodeStyleSetMaxHeight(self.__node, max_height.value)
         elif max_height.unit == YGUnit.Percent:
-            YGNodeStyleSetMaxWidthPercent(self.__node, max_height.value)
+            YGNodeStyleSetMaxHeightPercent(self.__node, max_height.value)
 
     @property
     def aspect_ratio(self) -> float:
@@ -1097,11 +1097,6 @@ class PogaLayout:
 
     @aspect_ratio.setter
     def aspect_ratio(self, aspect_ratio: float):
-        """max_height
-
-        Args:
-            aspect_ratio (float):
-        """
         YGNodeStyleSetAspectRatio(self.__node, aspect_ratio)
 
     @property
