@@ -11,10 +11,7 @@ class MyView(PogaView):
     def frame_origin(self) -> Tuple[float, float]:
         pass
 
-    def set_frame_origin(self, x: float, y: float):
-        pass
-
-    def set_frame_size(self, width: float, height: float):
+    def set_frame_position_and_size(self, x: float, y: float, width: float, height: float):
         pass
 
     def bounds_size(self) -> Tuple[float, float]:

@@ -33,22 +33,14 @@ class PogaView(ABC):
         pass
 
     @abstractmethod
-    def set_frame_origin(self, x: float, y: float):
-        """Set the frame position.
+    def set_frame_position_and_size(self, x: float, y: float, width: float, height: float):
+        """Set the frame position and size.
 
         Args:
-            x (float): The frame x position
-            y (float): The frame y position
-        """
-        pass
-
-    @abstractmethod
-    def set_frame_size(self, width: float, height: float):
-        """Set the frame size.
-
-        Args:
-            width (float): The frame width
-            height (float): The frame height
+            x (float): Frame x position
+            y (float): Frame y position
+            width (float): Frame width
+            height (float): Frame height
         """
         pass
 

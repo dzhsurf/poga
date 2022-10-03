@@ -1283,11 +1283,9 @@ class PogaLayout:
         )
 
         origin = view.frame_origin() if preserve_origin else (0.0, 0.0)
-        view.set_frame_origin(
+        view.set_frame_position_and_size(
             PogaLayout.__round_pixel_value__(left_top[0] + origin[0]),
             PogaLayout.__round_pixel_value__(left_top[1] + origin[1]),
-        )
-        view.set_frame_size(
             PogaLayout.__round_pixel_value__(right_bottom[0]) - PogaLayout.__round_pixel_value__(left_top[0]),
             PogaLayout.__round_pixel_value__(right_bottom[1]) - PogaLayout.__round_pixel_value__(left_top[1]),
         )
