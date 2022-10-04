@@ -3,6 +3,7 @@ name = "poga"
 version = "0.1.12"
 description = "Python bindings for YogaLayout"
 authors = ["dzhsurf <dzhsurf@gmail.com>"]
+maintainers = ["dzhsurf <dzhsurf@gmail.com>"]
 keywords = ["YogaLayout", "Yoga", "Poga"]
 readme = "README.md"
 license = "MIT"
