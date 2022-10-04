@@ -4,7 +4,7 @@ Poga Package
 
 .. note:: Current Version
 
-   Poga: 0.1.12
+   Poga: 0.1.13
 
    YogaLayout: 1.19.0
 
