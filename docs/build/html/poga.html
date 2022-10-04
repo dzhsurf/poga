@@ -1931,6 +1931,20 @@ int: Return number of children</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="poga.poga_view.PogaView.is_container">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_container</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#poga.poga_view.PogaView.is_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return current view is container or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Return True is container.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="poga.poga_view.PogaView.poga_layout">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">poga_layout</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#poga.poga_layout.PogaLayout" title="poga.poga_layout.PogaLayout"><span class="pre">PogaLayout</span></a></span></span><a class="headerlink" href="#poga.poga_view.PogaView.poga_layout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return PogaLayout</p>
@@ -1945,28 +1959,16 @@ int: Return number of children</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="poga.poga_view.PogaView.set_frame_origin">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_frame_origin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poga.poga_view.PogaView.set_frame_origin" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the frame position.</p>
+<dt class="sig sig-object py" id="poga.poga_view.PogaView.set_frame_position_and_size">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_frame_position_and_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poga.poga_view.PogaView.set_frame_position_and_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the frame position and size.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>float</em>) – The frame x position</p></li>
-<li><p><strong>y</strong> (<em>float</em>) – The frame y position</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="poga.poga_view.PogaView.set_frame_size">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_frame_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#poga.poga_view.PogaView.set_frame_size" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the frame size.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>width</strong> (<em>float</em>) – The frame width</p></li>
-<li><p><strong>height</strong> (<em>float</em>) – The frame height</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – Frame x position</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – Frame y position</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – Frame width</p></li>
+<li><p><strong>height</strong> (<em>float</em>) – Frame height</p></li>
 </ul>
 </dd>
 </dl>
@@ -2314,9 +2316,9 @@ int: Return number of children</p>
 <li><a class="reference internal" href="#poga.poga_view.PogaView"><code class="docutils literal notranslate"><span class="pre">PogaView</span></code></a><ul>
 <li><a class="reference internal" href="#poga.poga_view.PogaView.bounds_size"><code class="docutils literal notranslate"><span class="pre">PogaView.bounds_size()</span></code></a></li>
 <li><a class="reference internal" href="#poga.poga_view.PogaView.frame_origin"><code class="docutils literal notranslate"><span class="pre">PogaView.frame_origin()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_view.PogaView.is_container"><code class="docutils literal notranslate"><span class="pre">PogaView.is_container()</span></code></a></li>
 <li><a class="reference internal" href="#poga.poga_view.PogaView.poga_layout"><code class="docutils literal notranslate"><span class="pre">PogaView.poga_layout()</span></code></a></li>
-<li><a class="reference internal" href="#poga.poga_view.PogaView.set_frame_origin"><code class="docutils literal notranslate"><span class="pre">PogaView.set_frame_origin()</span></code></a></li>
-<li><a class="reference internal" href="#poga.poga_view.PogaView.set_frame_size"><code class="docutils literal notranslate"><span class="pre">PogaView.set_frame_size()</span></code></a></li>
+<li><a class="reference internal" href="#poga.poga_view.PogaView.set_frame_position_and_size"><code class="docutils literal notranslate"><span class="pre">PogaView.set_frame_position_and_size()</span></code></a></li>
 <li><a class="reference internal" href="#poga.poga_view.PogaView.size_that_fits"><code class="docutils literal notranslate"><span class="pre">PogaView.size_that_fits()</span></code></a></li>
 <li><a class="reference internal" href="#poga.poga_view.PogaView.subviews"><code class="docutils literal notranslate"><span class="pre">PogaView.subviews()</span></code></a></li>
 <li><a class="reference internal" href="#poga.poga_view.PogaView.subviews_count"><code class="docutils literal notranslate"><span class="pre">PogaView.subviews_count()</span></code></a></li>
