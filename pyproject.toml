@@ -14,7 +14,7 @@ packages = [
 	{ include = "poga", from = "src" },
 ]
 exclude = [ "**/*.pyc", "**/*.so", "**/*.dll" ]
-build = "src/build.py"
+build = "build.py"
 
 [tool.poetry.dependencies]
 python = ">=3.7"

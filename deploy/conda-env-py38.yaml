@@ -7,11 +7,7 @@ channels:
 dependencies:
   - python=3.8
   - pip
-  - black
-  - sphinx
   - pybind11
   - pip:
-    - myst_parser>=0.18.1
-    - piccolo-theme>=0.12.0
-    - line-profiler>=3.5.1
+    - poetry>=1.2.0
 
