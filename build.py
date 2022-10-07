@@ -14,7 +14,7 @@ from distutils.util import change_root
 
 import pybind11
 
-POGA_VERSION = "0.1.14a1"
+POGA_VERSION = "0.1.14a2"
 YOGA_VERSION_REQUIRED = "1.19.0"
 
 
