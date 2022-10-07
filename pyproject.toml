@@ -9,7 +9,6 @@ readme = "README.md"
 license = "MIT"
 homepage = "https://github.com/dzhsurf/poga"
 repository = "https://github.com/dzhsurf/poga"
-include = [ "LICENSE" ]
 packages = [
 	{ include = "poga", from = "src" },
 ]
