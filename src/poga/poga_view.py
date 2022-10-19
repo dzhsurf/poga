@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING, Iterable, Tuple
+from typing import TYPE_CHECKING, List, Optional, Tuple
 
 if TYPE_CHECKING:
     from .poga_layout import PogaLayout
@@ -63,7 +63,7 @@ class PogaView(ABC):
         pass
 
     @abstractmethod
-    def subviews(self) -> Iterable[PogaView]:
+    def subviews(self) -> List[PogaView]:
         """Return subviews, subview type must be PogaView.
 
         Returns:
@@ -81,7 +81,7 @@ class PogaView(ABC):
         pass
 
     @abstractmethod
-    def poga_layout(self) -> PogaLayout:
+    def poga_layout(self) -> Optional[PogaLayout]:
         """Return PogaLayout
 
         Returns:
