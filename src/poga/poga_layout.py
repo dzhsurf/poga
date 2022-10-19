@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import weakref
 from enum import Enum
-from typing import List, Optional, Tuple
+from typing import List, Tuple
 from weakref import ReferenceType
 
 from .libpoga_capi import *
@@ -17,7 +17,7 @@ class PogaLayout:
     """PogaLayout"""
 
     global __global_config, __global_point_scale_factor
-    __global_config: Optional[YGConfigRef] = None
+    __global_config = None
     __global_point_scale_factor = 1.0
 
     @staticmethod
