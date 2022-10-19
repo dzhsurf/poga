@@ -1,8 +1,7 @@
-import sys
+# -*- coding: utf-8 -*-
 import weakref
 from enum import Enum
-from math import isnan, nan
-from typing import Any, Dict, Iterable, List, Tuple
+from typing import List, Optional, Tuple
 from weakref import ReferenceType
 
 from .libpoga_capi import *
@@ -18,25 +17,16 @@ class PogaLayout:
     """PogaLayout"""
 
     global __global_config, __global_point_scale_factor
-    __global_config = None
+    __global_config: Optional[YGConfigRef] = None
     __global_point_scale_factor = 1.0
-
-    __node: YGNodeRef = None
-    __enabled: bool = True
-    __is_included_in_layout: bool = True
-    if sys.version_info >= (3, 9):
-        # Python 3.9+ specific definitions and imports
-        __view: ReferenceType[PogaView] = None
-    else:
-        __view: Any = None
 
     @staticmethod
     def release_global_config():
         """Release global config."""
         global __global_config
-        if PogaLayout.__global_config is not None:
-            YGConfigFree(PogaLayout.__global_config)
-            PogaLayout.__global_config = None
+        if __global_config is not None:
+            YGConfigFree(__global_config)
+            __global_config = None
 
     @staticmethod
     def config_set_point_scale_factor(scale: float):
@@ -63,11 +53,11 @@ class PogaLayout:
             YGConfigSetPointScaleFactor(__global_config, __global_point_scale_factor)
         return __global_config
 
-    def __init__(self, view: PogaView):
-        self.__node = YGNodeNewWithConfig(PogaLayout.get_global_config())
-        self.__enabled = True
-        self.__is_included_in_layout = True
-        self.__view = weakref.ref(view)
+    def __init__(self, view: PogaView) -> None:
+        self.__node: YGNodeRef = YGNodeNewWithConfig(PogaLayout.get_global_config())
+        self.__enabled: bool = True
+        self.__is_included_in_layout: bool = True
+        self.__view: ReferenceType[PogaView] = weakref.ref(view)
         YGNodeSetContext(self.__node, self.__view)
         # initial default value
         self.direction = YGDirection.LTR
@@ -419,7 +409,7 @@ class PogaLayout:
         Args:
             top (YGValue): top
         """
-        self.__set_position_by_edge__(YGEdge.Top, top)
+        self.__set_position_by_value__(YGEdge.Top, top)
 
     @property
     def right(self) -> YGValue:
@@ -437,7 +427,7 @@ class PogaLayout:
         Args:
             right (YGValue): right
         """
-        self.__set_position_by_edge__(YGEdge.Right, right)
+        self.__set_position_by_value__(YGEdge.Right, right)
 
     @property
     def bottom(self) -> YGValue:
@@ -454,7 +444,7 @@ class PogaLayout:
         Args:
             bottom (YGValue): bottom
         """
-        self.__set_position_by_edge__(YGEdge.Bottom, bottom)
+        self.__set_position_by_value__(YGEdge.Bottom, bottom)
 
     @property
     def start(self) -> YGValue:
@@ -471,7 +461,7 @@ class PogaLayout:
         Args:
             start (YGValue): bottom
         """
-        self.__set_position_by_edge__(YGEdge.Start, start)
+        self.__set_position_by_value__(YGEdge.Start, start)
 
     @property
     def end(self) -> YGValue:
@@ -488,7 +478,7 @@ class PogaLayout:
         Args:
             end (YGValue): end
         """
-        self.__set_position_by_edge__(YGEdge.End, end)
+        self.__set_position_by_value__(YGEdge.End, end)
 
     def __get_margin_by_edge__(self, edge: YGEdge) -> YGValue:
         return YGNodeStyleGetMargin(self.__node, edge)
@@ -602,7 +592,7 @@ class PogaLayout:
         Args:
             margin_end (YGValue): margin_bottom
         """
-        self.__get_margin_by_edge__(YGEdge.End, margin_end)
+        self.__set_margin_by_edge__(YGEdge.End, margin_end)
 
     @property
     def margin_horizontal(self) -> YGValue:
@@ -829,7 +819,7 @@ class PogaLayout:
         """
         self.__set_padding_by_edge__(YGEdge.All, padding)
 
-    def __get_border_by_edge__(self, edge: YGEdge) -> YGValue:
+    def __get_border_by_edge__(self, edge: YGEdge) -> float:
         return YGNodeStyleGetBorder(self.__node, edge)
 
     def __set_border_by_edge__(self, edge: YGEdge, value: float):
@@ -918,7 +908,7 @@ class PogaLayout:
 
     @border_start_width.setter
     def border_start_width(self, border_start_width: float):
-        self.__get_border_by_edge__(YGEdge.Start, border_start_width)
+        self.__set_border_by_edge__(YGEdge.Start, border_start_width)
 
     @property
     def border_end_width(self) -> float:
@@ -1154,7 +1144,7 @@ class PogaLayout:
         Returns:
             Tuple[float, float]: Return size
         """
-        constrained_size = [YGUndefined, YGUndefined]
+        constrained_size: Tuple[float, float] = (YGUndefined, YGUndefined)
         return self.calculate_layout_with_size(constrained_size)
 
     def calculate_layout_with_size(self, size: Tuple[float, float]) -> Tuple[float, float]:
@@ -1195,7 +1185,7 @@ class PogaLayout:
         if view is None:
             return True
 
-        if not view.is_container() or (view.subviews_count == 0):
+        if not view.is_container() or (view.subviews_count() == 0):
             return True
         return False
         # if self.is_enabled:
@@ -1245,10 +1235,10 @@ class PogaLayout:
 
         weakref_view: ReferenceType[PogaView] = YGNodeGetContext(node)
         if weakref_view is None:
-            return (0.0, 0.0)
+            return YGSize(0.0, 0.0)
         view = weakref_view()
         if view is None:
-            return (0.0, 0.0)
+            return YGSize(0.0, 0.0)
 
         # size_that_fits = (0.0, 0.0)
         # if view.subviews_count() > 0:
@@ -1317,7 +1307,7 @@ class PogaLayout:
             YGNodeRemoveAllChildren(node)
             YGNodeSetMeasureFunc(node, PogaLayout.__measure_view__)
         else:
-            YGNodeSetMeasureFunc(node, None)
+            YGNodeSetMeasureFunc(node, None)  # type: ignore
             subviews_to_include = list[PogaView]()
             for subview in view.subviews():
                 sub_poga = subview.poga_layout()

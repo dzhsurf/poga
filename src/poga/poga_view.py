@@ -1,7 +1,8 @@
+# -*- coding: utf-8 -*-
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING, List, Optional, Tuple
+from typing import TYPE_CHECKING, List, Tuple
 
 if TYPE_CHECKING:
     from .poga_layout import PogaLayout
@@ -81,10 +82,10 @@ class PogaView(ABC):
         pass
 
     @abstractmethod
-    def poga_layout(self) -> Optional[PogaLayout]:
+    def poga_layout(self) -> PogaLayout:
         """Return PogaLayout
 
         Returns:
             PogaLayout: PogaLayout object
         """
-        pass
+        raise ValueError("Not implement")
