@@ -70,12 +70,16 @@ ext_modules = [
     ),
 ]
 
-setup(
-    name="poga",
-    package_dir={"": "src"},
-    packages=find_packages(where="src"),
-    ext_modules=ext_modules,
-    install_requires=["pybind11>=2.2.0"],
-    cmdclass={"build_ext": BuildExt},
-    zip_safe=False,
-)
+if __name__ == "__main__":
+    if len(sys.argv) == 1:
+        sys.argv.append("bdist_wheel")
+
+    setup(
+        name="poga",
+        package_dir={"": "src"},
+        packages=find_packages(where="src"),
+        ext_modules=ext_modules,
+        install_requires=["pybind11>=2.2.0"],
+        cmdclass={"build_ext": BuildExt},
+        zip_safe=False,
+    )
