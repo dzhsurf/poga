@@ -71,8 +71,7 @@ Since there's a need for a cpp compiler to build the python extension module, yo
 
 ```shell
 # checkout the code and enter the diretory
-conda env create -f conda-env.yaml # setup the py env. highly recommended.
-conda activate poga
+pip install -r requirements.txt
 pip install -e . 
 # or you can just install the dependencies by poetry. 
 poetry install
@@ -86,8 +85,9 @@ Benchmark
 ---------
 
 ```shell
-kernprof -l benchmark.py
-python -m line_profiler benchmark.py.lprof
+# pip install line_profiler
+kernprof -l benchmark/benchmark.py
+python -m line_profiler -rmt "benchmark.py.lprof"
 ```
 
 MacBook Pro (15-inch, 2016)

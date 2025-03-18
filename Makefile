@@ -41,19 +41,27 @@ format: ## Black & isort the code
 # mypy:
 # 	poetry mypy $(SRC_DIRS)
 
+.PHONY: requirements.txt 
+requirements.txt: ## Generate requirements.txt
+	poetry export --without-hashes --format=requirements.txt --output=requirements.txt
+
+.PHONY: requirements-dev.txt 
+requirements-dev.txt: ## Generate requirements-dev.txt
+	poetry export --without-hashes --dev --format=requirements.txt --output=requirements-dev.txt
+
 .PHONY: gendocs
-gendocs:
+gendocs: ## Gendocs
 	sphinx-apidoc -o docs/source src/poga
 
 .PHONY: docs
-docs:
+docs: ## docs
 	sphinx-build -b html docs/source docs/build/html
 
 .PHONY: localinstall
-localinstall:
+localinstall: ## Install package locally
 	pip install -e .
 
 .PHONY: demo
-demo:
+demo: ## Run demo
 	poetry run bash -c 'cd src/example/ && python main.py'
 
