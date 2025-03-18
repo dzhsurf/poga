@@ -18,7 +18,7 @@ exclude = [ "**/*.pyc", "**/*.so", "**/*.dll", "**/*.pyd" ]
 python = ">=3.7"
 pybind11 = ">=2.10.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 black = ">=22.8.0"
 sphinx = ">=5.1.1"
 pytest = ">=7.1.3"
