@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poga"
-version = "0.1.18a2"
+version = "0.1.18"
 description = "Python bindings for YogaLayout"
 authors = ["dzhsurf <dzhsurf@gmail.com>"]
 maintainers = ["dzhsurf <dzhsurf@gmail.com>"]
