@@ -53,14 +53,18 @@ jobs:
 
     - name: Install Poetry on Linux and macOS
       if: runner.os != 'Windows'
+      env:
+        POETRY_VERSION: 1.8.3
       run: |
-        curl -sSL https://install.python-poetry.org | python3 -
+        curl -sSL https://install.python-poetry.org | python3 - --version 1.8.3
         echo "$HOME/.local/bin" >> $GITHUB_PATH
 
     - name: Install Poetry on Windows
       if: runner.os == 'Windows'
+      env:
+        POETRY_VERSION: 1.8.3
       run: |
-        (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -
+        (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python - --version 1.8.3
         echo "C:\\Users\\runneradmin\\AppData\\Roaming\\Python\\Scripts" >> $env:GITHUB_PATH
 
     - name: Install dependencies
