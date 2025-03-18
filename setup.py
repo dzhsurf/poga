@@ -2,25 +2,27 @@
 # -*- coding: utf-8 -*-
 
 import os
-import sys
 import re
-from setuptools import setup, Extension, find_packages
-from setuptools.command.build_ext import build_ext
+import sys
+
 import pybind11
+from setuptools import Extension, find_packages, setup
+from setuptools.command.build_ext import build_ext
 
 POGA_VERSION = "0.1.14a4"
 
 # obtain workdir
 here = os.path.abspath(os.path.dirname(__file__))
 
+
 class BuildExt(build_ext):
     c_opts = {
-        'msvc': ['/EHsc', '/std:c++17'],
-        'unix': ['-std=c++17'],
+        "msvc": ["/EHsc", "/std:c++17"],
+        "unix": ["-std=c++17"],
     }
 
-    if sys.platform == 'darwin':
-        c_opts['unix'] += ['-stdlib=libc++', '-mmacosx-version-min=10.7']
+    if sys.platform == "darwin":
+        c_opts["unix"] += ["-stdlib=libc++", "-mmacosx-version-min=10.7"]
 
     def build_extensions(self):
         ct = self.compiler.compiler_type
@@ -29,13 +31,14 @@ class BuildExt(build_ext):
             ext.extra_compile_args = opts
         build_ext.build_extensions(self)
 
+
 ext_modules = [
     Extension(
-        'poga.libpoga_capi',
+        "poga.libpoga_capi",
         [
             os.path.join("src", "poga", "capi", "poga_cmodule.cpp"),
             os.path.join("src", "poga", "capi", "poga_manager.cpp"),
-            # Yoga src 
+            # Yoga src
             os.path.join("src", "poga", "deps", "yoga", "event", "event.cpp"),
             os.path.join("src", "poga", "deps", "yoga", "internal", "experiments.cpp"),
             os.path.join("src", "poga", "deps", "yoga", "log.cpp"),
@@ -63,16 +66,16 @@ ext_modules = [
             os.path.join(here, "src", "poga", "deps", "yoga", "internal"),
             os.path.join(here, "src", "poga", "capi"),
         ],
-        language='c++'
+        language="c++",
     ),
 ]
 
 setup(
-    name='poga',
-	package_dir={"": "src"},
-	packages=find_packages(where="src"),
+    name="poga",
+    package_dir={"": "src"},
+    packages=find_packages(where="src"),
     ext_modules=ext_modules,
-    install_requires=['pybind11>=2.2.0'],
-    cmdclass={'build_ext': BuildExt},
+    install_requires=["pybind11>=2.2.0"],
+    cmdclass={"build_ext": BuildExt},
     zip_safe=False,
 )

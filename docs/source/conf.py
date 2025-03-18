@@ -6,10 +6,10 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'poga'
-copyright = '2022, Hiram Deng'
-author = 'Hiram Deng'
-release = 'https://pypi.org/project/poga/'
+project = "poga"
+copyright = "2022, Hiram Deng"
+author = "Hiram Deng"
+release = "https://pypi.org/project/poga/"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -20,7 +20,7 @@ extensions = [
     "myst_parser",
 ]
 
-templates_path = ['_templates']
+templates_path = ["_templates"]
 exclude_patterns = []
 
 # napolean settings
@@ -47,13 +47,13 @@ autodoc_add_module_names = False
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "piccolo_theme"
-html_static_path = ['_static']
+html_static_path = ["_static"]
 
 html_sidebars = {"**": ["globaltoc.html", "relations.html", "sourcelink.html", "searchbox.html"]}
-html_short_title = 'Poga Documentation'
-html_favicon = 'https://pypi.org/static/images/logo-small.95de8436.svg'
+html_short_title = "Poga Documentation"
+html_favicon = "https://pypi.org/static/images/logo-small.95de8436.svg"
 html_theme_options = {
-    "source_url": 'https://github.com/dzhsurf/poga/',
+    "source_url": "https://github.com/dzhsurf/poga/",
     "source_icon": "github",
-    #"banner_text": 'banner text',
+    # "banner_text": 'banner text',
 }
