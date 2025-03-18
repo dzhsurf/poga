@@ -9,7 +9,7 @@ import pybind11
 from setuptools import Extension, find_packages, setup
 from setuptools.command.build_ext import build_ext
 
-POGA_VERSION = "0.1.14a4"
+POGA_VERSION = "0.1.14a5"
 
 # obtain workdir
 here = os.path.abspath(os.path.dirname(__file__))
