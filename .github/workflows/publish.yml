@@ -100,7 +100,6 @@ jobs:
         mkdir -p ./dist
         mv ./artifacts/sdist-artifact/* ./dist
         mv ./artifacts/wheel-macos-latest-py3.11/* ./dist
-        mv ./artifacts/wheel-ubuntu-latest-py3.11/* ./dist
         mv ./artifacts/wheel-windows-latest-py3.11/* ./dist
         ls -l ./dist
 
