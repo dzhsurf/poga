@@ -13,7 +13,7 @@ packages = [
 	{ include = "poga", from = "src" },
 ]
 exclude = [ "**/*.pyc", "**/*.so", "**/*.dll", "**/*.pyd" ]
-build = "build.py"
+build = "setup.py"
 
 [tool.poetry.dependencies]
 python = ">=3.7"
@@ -30,8 +30,8 @@ pybind11 = ">=2.10.0"
 [tool.poetry.scripts]
 
 [build-system]
-requires = ["poetry-core>=1.0.0", "setuptools", "wheel", "pybind11>=2.10.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools", "pybind11>=2.10.0"]
+build-backend = "setuptools.build_meta"
 
 
 [tool.black]
@@ -40,4 +40,3 @@ line-length = 120
 [tool.isort]
 profile = "black"
 line_length = 120
-
