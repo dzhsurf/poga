@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poga"
-version = "0.1.14a4"
+version = "0.1.14a6"
 description = "Python bindings for YogaLayout"
 authors = ["dzhsurf <dzhsurf@gmail.com>"]
 maintainers = ["dzhsurf <dzhsurf@gmail.com>"]
@@ -12,7 +12,9 @@ repository = "https://github.com/dzhsurf/poga"
 packages = [
 	{ include = "poga", from = "src" },
 ]
-exclude = [ "**/*.pyc", "**/*.so", "**/*.dll", "**/*.pyd" ]
+include = [
+	{ path = "src/poga/libpoga_capi*.so", format = "wheel" }
+]
 
 [tool.poetry.dependencies]
 python = ">=3.7"
