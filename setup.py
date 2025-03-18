@@ -3,13 +3,15 @@
 
 import os
 import re
+import shutil
 import sys
+from distutils import log
 
 import pybind11
 from setuptools import Extension, find_packages, setup
 from setuptools.command.build_ext import build_ext
 
-POGA_VERSION = "0.1.14a4"
+POGA_VERSION = "0.1.14a8"
 
 # obtain workdir
 here = os.path.abspath(os.path.dirname(__file__))
@@ -30,6 +32,20 @@ class BuildExt(build_ext):
         for ext in self.extensions:
             ext.extra_compile_args = opts
         build_ext.build_extensions(self)
+
+    def run(self):
+        build_ext.run(self)
+        self.copy_shared_libs_to_src()
+
+    def copy_shared_libs_to_src(self):
+        for ext in self.extensions:
+            full_path = self.get_ext_fullpath(ext.name)
+            target_dir = os.path.join(here, "src", "poga")
+            if not os.path.exists(target_dir):
+                os.makedirs(target_dir)
+            target_path = os.path.join(target_dir, os.path.basename(full_path))
+            log.info("Copying %s -> %s", full_path, target_path)
+            shutil.copyfile(full_path, target_path)
 
 
 ext_modules = [
@@ -70,12 +86,17 @@ ext_modules = [
     ),
 ]
 
-setup(
-    name="poga",
-    package_dir={"": "src"},
-    packages=find_packages(where="src"),
-    ext_modules=ext_modules,
-    install_requires=["pybind11>=2.2.0"],
-    cmdclass={"build_ext": BuildExt},
-    zip_safe=False,
-)
+if __name__ == "__main__":
+    if len(sys.argv) == 1:
+        sys.argv.append("bdist_wheel")
+
+    setup(
+        name="poga",
+        version=POGA_VERSION,
+        package_dir={"": "src"},
+        packages=find_packages(where="src"),
+        ext_modules=ext_modules,
+        install_requires=["pybind11>=2.2.0"],
+        cmdclass={"build_ext": BuildExt},
+        zip_safe=False,
+    )
