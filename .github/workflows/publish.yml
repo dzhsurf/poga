@@ -87,6 +87,9 @@ jobs:
     - build-wheel
     - build-sdist
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
     - name: Download Wheel Artifacts
       uses: actions/download-artifact@v4
       with:
@@ -97,9 +100,13 @@ jobs:
       with:
         python-version: 3.9
 
-    - name: Install twine
+    - name: Install Poetry on Linux and macOS
+      if: runner.os != 'Windows'
+      env:
+        POETRY_VERSION: 1.8.3
       run: |
-        pip install twine
+        curl -sSL https://install.python-poetry.org | python3 - --version 1.8.3
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
 
     - name: Move files to dist
       run: |
@@ -118,8 +125,6 @@ jobs:
         ls -l ./dist
 
     - name: Build and Publish to PyPI
-      env:
-        TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
       run: |
-        twine upload dist/*
+        poetry config pypi-token.pypi ${{ secrets.PYPI_TOKEN }}
+        poetry publish
