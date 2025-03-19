@@ -40,8 +40,7 @@ jobs:
 
     strategy:
       matrix:
-        # os: [ubuntu-latest, windows-latest, macos-latest]
-        os: [windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
 
     steps:
@@ -113,14 +112,19 @@ jobs:
         mkdir -p ./dist
         mv ./artifacts/sdist-artifact/* ./dist
         mv ./artifacts/wheel-macos-latest-py3.8/* ./dist
+        mv ./artifacts/wheel-ubuntu-latest-py3.8/* ./dist
         mv ./artifacts/wheel-windows-latest-py3.8/* ./dist
         mv ./artifacts/wheel-macos-latest-py3.9/* ./dist
+        mv ./artifacts/wheel-ubuntu-latest-py3.9/* ./dist
         mv ./artifacts/wheel-windows-latest-py3.9/* ./dist
         mv ./artifacts/wheel-macos-latest-py3.10/* ./dist
+        mv ./artifacts/wheel-ubuntu-latest-py3.10/* ./dist
         mv ./artifacts/wheel-windows-latest-py3.10/* ./dist
         mv ./artifacts/wheel-macos-latest-py3.11/* ./dist
+        mv ./artifacts/wheel-ubuntu-latest-py3.11/* ./dist
         mv ./artifacts/wheel-windows-latest-py3.11/* ./dist
         mv ./artifacts/wheel-macos-latest-py3.12/* ./dist
+        mv ./artifacts/wheel-ubuntu-latest-py3.12/* ./dist
         mv ./artifacts/wheel-windows-latest-py3.12/* ./dist
         ls -l ./dist
 
