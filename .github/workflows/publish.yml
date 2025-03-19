@@ -126,6 +126,7 @@ jobs:
         mv ./artifacts/wheel-macos-latest-py3.12/* ./dist
         mv ./artifacts/wheel-ubuntu-latest-py3.12/* ./dist
         mv ./artifacts/wheel-windows-latest-py3.12/* ./dist
+        rm -rf .dist/poga-*-linux_x86_64.whl
         ls -l ./dist
 
     - name: Build and Publish to PyPI
