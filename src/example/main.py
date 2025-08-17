@@ -1,7 +1,6 @@
-from typing import List, Optional, Tuple
+from typing import List, Tuple
 
-from poga import *
-from poga import libpoga_capi
+from poga import PogaView, PogaLayout, libpoga_capi
 
 
 class MyView(PogaView):
@@ -11,7 +10,9 @@ class MyView(PogaView):
     def frame_origin(self) -> Tuple[float, float]:
         return (0, 0)
 
-    def set_frame_position_and_size(self, x: float, y: float, width: float, height: float):
+    def set_frame_position_and_size(
+        self, x: float, y: float, width: float, height: float
+    ):
         pass
 
     def bounds_size(self) -> Tuple[float, float]:
@@ -26,8 +27,8 @@ class MyView(PogaView):
     def is_container(self) -> bool:
         return False
 
-    def poga_layout(self) -> Optional[PogaLayout]:
-        return None
+    def poga_layout(self) -> PogaLayout:
+        return PogaLayout(self)
 
 
 def main():
